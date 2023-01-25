@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import "../../assets/css/header.scss";
-import logoSvg from "../../assets/images/logo.svg";
+import logoSvg from "../../assets/images/headerLogo.png";
 import menuIcon from "../../assets/images/hamburger.png";
 import webIcon from "../../assets/images/web-icon.png";
 import MenuDrawer from "./MenuDrawer";
@@ -13,8 +13,15 @@ const Header = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+  document.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+      document.querySelector(".header").classList.add("header__sticky");
+    } else {
+      document.querySelector(".header").classList.remove("header__sticky");
+    }
+  });
   return (
-    <div className="header">
+    <div className="header ">
       <div className="header__container custom-container">
         <div className="header__container__logo">
           <img src={logoSvg} alt="" />

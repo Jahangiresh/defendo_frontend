@@ -1,0 +1,24 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "antonio banderas",
+      "image": 1
+    },
+    {
+      "id": 2,
+      "name": "kate moss",
+      "image": 2
+    }
+  ],
+  "news": {
+    "name": "typicode"
+  }
+}
