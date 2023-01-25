@@ -40,8 +40,6 @@ const Services = () => {
     getData();
   }, []);
 
-  const getDetail = () => {};
-
   return (
     <main>
       <div className="custom-container">
@@ -53,7 +51,7 @@ const Services = () => {
               return (
                 <div key={service.id} className="col-lg-3 col-md-12 col-sm-12">
                   <Link to={`/services/${service.id}`}>
-                    <div className="custom-card" onClick={getDetail}>
+                    <div className="custom-card">
                       <img src={courthouse} alt="" />
                       <h5>{service.title}</h5>
                       <p>

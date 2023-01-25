@@ -28,7 +28,7 @@ main {
           .contact {
             padding: 32px 0 0 0;
             .link {
-              background-color: #be9140;
+              background-color: #c5ac52;
               color: #fff;
               font-size: 16px;
               font-style: normal;
@@ -36,6 +36,10 @@ main {
               line-height: 160%;
               padding: 12px 36.5px;
               text-decoration: none;
+              transition: 200ms all ease-in;
+              &:hover {
+                background-color: #be9140;
+              }
             }
           }
         }
