@@ -27,7 +27,7 @@ const ServicesDetail = () => {
   const [{ loader, service, error }, dispatch] = useReducer(reducer, {
     loader: true,
     error: false,
-    service: {},
+    service: [],
   });
   const apiEndPoint = `http://localhost:3000/services/${id}`;
 
@@ -43,7 +43,7 @@ const ServicesDetail = () => {
       }
     };
     getItem();
-  }, []);
+  }, [service]);
 
   return (
     <main>
