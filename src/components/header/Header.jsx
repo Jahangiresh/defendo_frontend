@@ -6,7 +6,12 @@ import logoSvg from "../../assets/images/logo.svg";
 import menuIcon from "../../assets/images/hamburger.png";
 import webIcon from "../../assets/images/web-icon.png";
 import MenuDrawer from "./MenuDrawer";
+import { useTranslation } from "react-i18next";
+import HeaderLangs from "./HeaderLangs";
+
 const Header = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   return (
     <div className="header">
@@ -22,7 +27,7 @@ const Header = () => {
           <ul className="header__container__nav__ul">
             <li className="header__container__nav__ul__li">
               <Link className="link-default" to="/">
-                <span className="link__span">ana sehifə</span>
+                <span className="link__span">{t("ana səhifə")}</span>
               </Link>
             </li>
             <li className="header__container__nav__ul__li">
@@ -50,6 +55,9 @@ const Header = () => {
             </li>
             <li className="header__container__nav__ul__li">
               <img src={webIcon} alt="" />
+              <div className="li__lang">
+                <HeaderLangs />
+              </div>
             </li>
           </ul>
         </div>
