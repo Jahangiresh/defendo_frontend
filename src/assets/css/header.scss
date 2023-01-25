@@ -1,0 +1,117 @@
+.upperheader {
+  background: #2d4e9d;
+  color: white;
+  height: 40px;
+  width: 100%;
+  border-bottom: 0.001rem solid #435e9f;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    &__right {
+      &__span {
+        margin-left: 27px;
+        @media (max-width: 992px) {
+          margin-left: 17px;
+        }
+      }
+    }
+    &__left {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      &__span {
+        margin-right: 24px;
+        @media (max-width: 992px) {
+          margin-right: 14px;
+        }
+      }
+    }
+  }
+}
+.header {
+  width: 100%;
+  height: 60px;
+  background: #2d4e9d;
+  color: white;
+  position: sticky;
+  top: 0;
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__nav {
+      @media (max-width: 768px) {
+        display: none;
+      }
+      &__ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        &__li {
+          list-style: none;
+          text-transform: capitalize;
+          margin-left: 56px;
+          display: flex;
+          align-items: center;
+          position: relative;
+          @media (max-width: 992px) {
+            margin-left: 26px;
+          }
+          .link__span {
+            transition: 200ms ease-in;
+          }
+          &:nth-child(-n + 4):hover {
+            .link__span {
+              color: #be9140;
+            }
+            &::after {
+              width: 100%;
+            }
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: #be9140;
+            transition: 200ms ease-in;
+          }
+
+          &__button {
+            padding: 8px 24px;
+            height: 42px;
+            background: #c5ac52;
+            font-weight: 500;
+            font-size: 16px;
+            color: white;
+            border: none;
+            @media (max-width: 992px) {
+              padding: 8px 14px;
+            }
+          }
+        }
+      }
+    }
+    &__logo {
+      width: 43px;
+      height: 40px;
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        width: 43px;
+        height: 40px;
+      }
+    }
+  }
+}

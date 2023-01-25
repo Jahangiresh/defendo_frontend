@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  // font-family: 'Merriweather', serif;
+}
+.custom-container {
+  margin: 0 auto;
+  max-width: 95%;
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+  @media (max-width: 576px) {
+    max-width: 96%;
+  }
+}
+
+.link-default {
+  text-decoration: none;
+  color: #fff;
+}

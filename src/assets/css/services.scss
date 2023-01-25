@@ -1,0 +1,15 @@
+main {
+  padding: 40px 0;
+  .custom-container {
+    .row {
+      .col-lg-3 {
+        .custom-card {
+          border: 1px solid #be9140;
+          padding: 15px;
+          text-align: center;
+          height: 315px;
+        }
+      }
+    }
+  }
+}
