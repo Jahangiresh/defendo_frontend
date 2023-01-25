@@ -1,17 +1,23 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import menuIcon from "../../assets/images/hamburger.png";
+import Header from "./Header";
+import facebookPng from "../../assets/images/facebook.png";
+import twitterPng from "../../assets/images/twitter.png";
+import instagramPng from "../../assets/images/instagram.png";
+import { Link, useNavigate } from "react-router-dom";
+import logoSvg from "../../assets/images/logo.svg";
+import cancelPng from "../../assets/images/cancel.png";
+import { useTranslation } from "react-i18next";
 
 export default function MenuDrawer() {
+  const { i18n } = useTranslation();
+
+  function clickLang(lang) {
+    i18n.changeLanguage(lang);
+  }
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -37,31 +43,109 @@ export default function MenuDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <div className="header">
+        <div className="header__container custom-container">
+          <div className="header__container__logo">
+            <img src={logoSvg} alt="" />
+          </div>
+          <div className="header__container__menu d-block d-md-none">
+            <img src={cancelPng} alt="" />
+          </div>
+        </div>
+      </div>
+      <div className="menudrawer">
+        <div className="menudrawer__container custom-container">
+          <div className="menudrawer__container__upper">
+            <span className="menudrawer__container__upper__span">
+              telefon: 012 451 45 45
+            </span>
+            <span className="menudrawer__container__upper__span">
+              email: example@gmail.com
+            </span>
+            <span className="menudrawer__container__upper__span">
+              mobile: +994 55 231 22 11
+            </span>
+            <div className="upperheader__container__right">
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icons__href"
+              >
+                <img src={facebookPng} alt="" />
+              </a>
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icons__href"
+              >
+                <img src={twitterPng} alt="" />
+              </a>
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icons__href"
+              >
+                <img src={instagramPng} alt="" />
+              </a>
+            </div>
+            <div className="menudrawer__container__upper__langs">
+              <span
+                onClick={() => clickLang("az")}
+                className="menudrawer__container__upper__langs__span"
+              >
+                Azərbaycan
+              </span>
+              <span
+                onClick={() => clickLang("en")}
+                className="menudrawer__container__upper__langs__span"
+              >
+                English
+              </span>
+              <span
+                onClick={() => clickLang("tr")}
+                className="menudrawer__container__upper__langs__span"
+              >
+                Russian
+              </span>
+            </div>
+          </div>
+          <div className="menudrawer__container__down">
+            <ul className="menudrawer__container__down__ul">
+              <li className="menudrawer__container__down__ul__li">
+                <Link className="link-default" to="/">
+                  <span className="link__span">ana sehifə</span>
+                </Link>
+              </li>
+              <li className="menudrawer__container__down__ul__li">
+                <Link className="link-default" to="/">
+                  <span className="link__span">haqqımızda </span>
+                </Link>
+              </li>
+              <li className="menudrawer__container__down__ul__li">
+                <Link className="link-default" to="/">
+                  <span className="link__span">komandamız </span>
+                </Link>
+              </li>
+              <li className="menudrawer__container__down__ul__li">
+                <Link className="link-default" to="/sa">
+                  <span className="link__span">xidmətlər </span>
+                </Link>
+              </li>
+              <li className="menudrawer__container__down__ul__li">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="menudrawer__container__down__ul__li__button"
+                >
+                  bizimlə əlaqə
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </Box>
   );
 
@@ -69,7 +153,9 @@ export default function MenuDrawer() {
     <div>
       {["top"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <img onClick={toggleDrawer(anchor, true)} src={menuIcon} alt="" />
+
+          {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
           <Drawer
             anchor={anchor}
             open={state[anchor]}
