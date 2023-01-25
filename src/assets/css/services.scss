@@ -2,12 +2,62 @@ main {
   padding: 40px 0;
   .custom-container {
     .row {
+      justify-content: center;
+      .loader {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        padding: 0;
+        object-fit: cover;
+      }
       .col-lg-3 {
+        padding: 20px 24px;
+        a {
+          text-decoration: none;
+        }
         .custom-card {
-          border: 1px solid #be9140;
-          padding: 15px;
+          border: 2px solid #be9140;
           text-align: center;
           height: 315px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          padding: 0 10px;
+          cursor: pointer;
+          transition: 200ms all ease-in;
+          img {
+            width: 70px;
+            height: 70px;
+          }
+          h5 {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 28.8px;
+            color: #262626;
+            font-family: "Merriweather";
+            transition: 200ms all ease-in;
+          }
+          p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 25.6px;
+            color: #474747;
+            padding: 0;
+            transition: 200ms all ease-in;
+          }
+          &:hover {
+            background-color: #be9140;
+            p {
+              color: #fff;
+            }
+            h5 {
+              color: #fff;
+            }
+          }
         }
       }
     }

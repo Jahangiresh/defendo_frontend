@@ -1,15 +1,10 @@
 footer {
   background-color: #2d4e9d;
-  // position: absolute;
-  // bottom: 0;
-  // right: 0;
-  width: 100%;
   #first {
     padding: 40px 0;
     .custom-container {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       #logo {
         img {
           width: 161.96px;
@@ -29,6 +24,7 @@ footer {
           margin: 0;
           padding: 0;
           li {
+            display: flex;
             color: #fff;
             a {
               text-decoration: none;
@@ -57,6 +53,7 @@ footer {
       $breakpoint-tablet: 768px;
       @media (max-width: $breakpoint-tablet) {
         display: block;
+
         #logo {
           display: flex;
           align-items: center;
@@ -65,6 +62,9 @@ footer {
         #footer-item {
           padding: 15px 0;
         }
+      }
+      @media (max-width: 970px) {
+        gap: 20px;
       }
     }
   }

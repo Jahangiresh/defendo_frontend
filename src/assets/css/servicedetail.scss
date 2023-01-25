@@ -1,0 +1,68 @@
+main {
+  #detail {
+    .custom-container {
+      .cus-row {
+        display: flex;
+        gap: 24px;
+        .info {
+          width: 80%;
+          .title {
+            padding: 0 0 12px 0;
+            h4 {
+              color: #be9140;
+              font-weight: 700;
+              font-size: 22px;
+              line-height: 38.5px;
+              font-family: "Merriweather";
+              margin: 0;
+            }
+          }
+          .desc {
+            p {
+              color: #474747;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 25.6px;
+            }
+          }
+          .contact {
+            padding: 32px 0 0 0;
+            .link {
+              background-color: #be9140;
+              color: #fff;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 160%;
+              padding: 12px 36.5px;
+              text-decoration: none;
+            }
+          }
+        }
+        .logo {
+          width: 20%;
+          height: 282px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        $breakpoint-tablet: 768px;
+        @media (max-width: $breakpoint-tablet) {
+          width: 100%;
+          .info {
+            width: 100%;
+            .contact {
+              display: flex;
+              justify-content: center;
+            }
+          }
+          .logo {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

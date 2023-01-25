@@ -1,6 +1,8 @@
 import React from "react";
 import Logo from "../assets/images/logo.svg";
 import "../assets/css/footer.scss";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer>
@@ -16,15 +18,13 @@ const Footer = () => {
               <h5>Ünvanlarımız</h5>
               <ul>
                 <li>Ak. Həsən Əliyev 82F</li>
-                <li>
+                <li className="number">
                   Telefon:
-                  <a href="tel:+994 55 465 22 52"> +994 55 465-22-52</a>
-                  <a href="tel:+994 012 465-22-52">012 465-22-52</a>
+                  <a href="tel:+994 55 465 22 52">+994 55 465-22-52</a>
                 </li>
                 <li>
                   Email:
                   <a href="mailto:officedefendo@gmail.com">
-                    {" "}
                     officedefendo@gmail.com
                   </a>
                 </li>
@@ -35,16 +35,16 @@ const Footer = () => {
             <h5>De Fendo</h5>
             <ul>
               <li>
-                <a href="">Ana səhifə</a>
+                <Link to="/">Ana səhifə</Link>
               </li>
               <li>
-                <a href="">Haqqımızda</a>
+                <Link to="">Haqqımızda</Link>
               </li>
               <li>
-                <a href="">Komandamız</a>
+                <Link to="">Komandamız</Link>
               </li>
               <li>
-                <a href="">Xidmətlər</a>
+                <Link to="/services">Xidmətlər</Link>
               </li>
             </ul>
           </div>
