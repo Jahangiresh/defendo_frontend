@@ -12,7 +12,7 @@ const UpperHeader = () => {
           <span className="upperheader__container__left__span">
             Mobil: +994 55 465-22-52
           </span>
-          <span className="upperheader__container__left__span">
+          <span className="upperheader__container__left__span home__phone">
             Telefon: 012 465-22-52
           </span>
           <span className="upperheader__container__left__span">

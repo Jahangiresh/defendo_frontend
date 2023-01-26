@@ -4,7 +4,7 @@ import "../assets/css/servicedetail.scss";
 import { useReducer } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import courthouse from "../assets/images/courthouse.png";
 import Services from "./Services";
 
@@ -22,12 +22,14 @@ const reducer = (state, action) => {
 };
 
 const ServicesDetail = () => {
+  const { pathname } = useLocation();
+
   const params = useParams();
   const id = params.id;
   const [{ loader, service, error }, dispatch] = useReducer(reducer, {
     loader: true,
     error: false,
-    service: [],
+    service: {},
   });
   const apiEndPoint = `http://localhost:3000/services/${id}`;
 
@@ -43,7 +45,7 @@ const ServicesDetail = () => {
       }
     };
     getItem();
-  }, [service]);
+  }, [pathname]);
 
   return (
     <main>

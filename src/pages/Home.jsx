@@ -7,59 +7,45 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import linePng from "../assets/images/LineBtn.png";
 import logoMain from "../assets/images/logoBlue.svg";
+import Team from "../components/Team";
 const Home = () => {
   var settings = {
     infinite: true,
     speed: 100,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoPlay: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
     arrows: false,
     dots: false,
   };
   const navigate = useNavigate();
   return (
     <div className="home">
+      <div className="home__cover__content">
+        <h1 className="home__cover__content__title">de fendo vəkil bürosu</h1>
+        <p className="home__cover__content__intro">
+          Bütün növ hüquqi xidmətlər göstərən konsaltinq şirkətidir
+        </p>
+        <button
+          onClick={() => navigate("/contact")}
+          className="home__cover__content__button"
+        >
+          bizimlə əlaqə
+        </button>
+      </div>
       <Slider {...settings} className="home__cover">
-        <div className="salam">
-          <img src={coverHomePng} alt="" />
-          <div className="home__cover__content">
-            <h1 className="home__cover__content__title">
-              de fendo vəkil bürosu
-            </h1>
-            <p className="home__cover__content__intro">
-              Bütün növ hüquqi xidmətlər göstərən konsaltinq şirkətidir
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className="home__cover__content__button"
-            >
-              bizimlə əlaqə
-            </button>
-          </div>
-        </div>
         <div>
-          {" "}
           <img src={coverHomePng} alt="" />
-          <div className="home__cover__content">
-            <h1 className="home__cover__content__title">
-              de fendo vəkil bürosu
-            </h1>
-            <p className="home__cover__content__intro">
-              Bütün növ hüquqi xidmətlər göstərən konsaltinq şirkətidir
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className="home__cover__content__button"
-            >
-              bizimlə əlaqə
-            </button>
-          </div>
+        </div>{" "}
+        <div>
+          <img src={coverHomePng} alt="" />
         </div>
       </Slider>
+
       <div className="home__container custom-container">
         <div className="home__container__about__row row">
-          <div className="home__container__about__row__left col-9">
+          <div className="home__container__about__row__left  col-lg-9 col-8">
             <h3 className="home__container__about__row__title ">Haqqımızda</h3>
             <p className="home__container__about__row__info">
               Azərbaycan Respublikasının Vəkillər Kollegiyasının əsas vəzifəsi
@@ -83,10 +69,11 @@ const Home = () => {
               daha etrafli
             </button>
           </div>
-          <div className="home__container__about__row__logo col-3">
+          <div className="home__container__about__row__logo col-lg-3 col-4">
             <img src={logoMain} alt="" />
           </div>
         </div>
+        <Team />
       </div>
     </div>
   );
