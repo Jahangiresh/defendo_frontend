@@ -13,11 +13,16 @@
     height: 100%;
     align-items: center;
     &__right {
+      display: flex;
       &__span {
         margin-left: 27px;
         @media (max-width: 992px) {
-          margin-left: 17px;
         }
+      }
+    }
+    @media (max-width: 992px) {
+      .home__phone {
+        display: none;
       }
     }
     &__left {
@@ -28,15 +33,24 @@
         margin-right: 24px;
         @media (max-width: 992px) {
           margin-right: 14px;
+          .home__phone {
+            display: none;
+          }
         }
       }
     }
   }
 }
 .header__sticky {
+  background-color: #2d4e9d !important;
+  height: 6rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
   position: fixed !important;
   top: 0 !important;
 }
+
 .header {
   width: 100%;
   height: 60px;
@@ -45,6 +59,7 @@
   position: absolute;
   z-index: 99;
   top: 40px;
+
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -104,6 +119,8 @@
             font-size: 16px;
             color: white;
             border: none;
+            width: max-content;
+
             @media (max-width: 992px) {
               padding: 8px 14px;
             }
@@ -209,6 +226,53 @@
       padding-bottom: 8px;
       color: black;
       cursor: pointer;
+    }
+  }
+}
+.headerdown {
+  height: 382px;
+  width: 100%;
+  background: #2d4e9d;
+  position: relative;
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    h1 {
+      font-family: "Merriweather";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 50px;
+      color: white;
+      text-transform: capitalize;
+      @media (max-width: 992px) {
+        font-size: 28px;
+      }
+    }
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      color: white;
+      @media (max-width: 992px) {
+        font-size: 16px;
+      }
+    }
+  }
+  &__cover {
+    margin: 0 auto;
+    width: 791px;
+    height: 100%;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }

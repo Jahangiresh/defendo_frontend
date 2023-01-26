@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import "../../assets/css/header.scss";
@@ -13,15 +13,52 @@ const Header = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-  document.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-      document.querySelector(".header").classList.add("header__sticky");
-    } else {
-      document.querySelector(".header").classList.remove("header__sticky");
-    }
-  });
+
+  function useScrollDirection() {
+    const [scrollDirection, setScrollDirection] = useState(null);
+
+    useEffect(() => {
+      let lastScrollY = window.pageYOffset;
+
+      const updateScrollDirection = () => {
+        const scrollY = window.pageYOffset;
+        let direction = scrollY > lastScrollY ? "down" : "up";
+        if (window.scrollY <= 0) {
+          setScrollDirection("top");
+        }
+        if (
+          direction !== scrollDirection &&
+          (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)
+        ) {
+          setScrollDirection(direction);
+        }
+        lastScrollY = scrollY > 0 ? scrollY : 0;
+      };
+      window.addEventListener("scroll", updateScrollDirection); // add event listener
+      return () => {
+        window.removeEventListener("scroll", updateScrollDirection); // clean up
+      };
+    }, [scrollDirection]);
+    return scrollDirection;
+  }
+
+  let scrollDirection = useScrollDirection();
+  if (window.scrollY <= 0) {
+    scrollDirection = "top";
+  }
+  console.log(scrollDirection);
   return (
-    <div className="header ">
+    <div
+      className={`header 
+      
+      ${
+        scrollDirection === "down"
+          ? ""
+          : scrollDirection === "top"
+          ? ""
+          : "header__sticky"
+      }`}
+    >
       <div className="header__container custom-container">
         <div className="header__container__logo">
           <img src={logoSvg} alt="" />
