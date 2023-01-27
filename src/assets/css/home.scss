@@ -161,6 +161,10 @@
   .team {
     text-align: center;
     margin-bottom: 200px;
+    .team__links {
+      text-decoration: none;
+      color: #474747;
+    }
     &__slider {
       display: flex;
       justify-content: space-between;
@@ -171,16 +175,17 @@
         border: 2px solid #be9140;
 
         &:hover {
-          img {
-            transform: scale(1.2);
+          .team__slider__card__image {
+            padding: 0;
           }
         }
         &__image {
           height: 334px;
           overflow: hidden;
-          img {
-            transition: 200ms ease;
+          transition: 200ms ease;
+          padding: 12px 12px 0 12px;
 
+          img {
             width: 100%;
             height: 100%;
             object-fit: cover;
