@@ -1,0 +1,65 @@
+.singleadvocate {
+  margin: 60px 0;
+  &__container {
+    &__row {
+      @media (max-width: 768px) {
+        border: 2px solid #be9140;
+      }
+      &__left {
+        @media (max-width: 768px) {
+          width: 100%;
+          text-align: center;
+        }
+        &__details {
+          &__ul {
+            padding: 0;
+            margin: 0;
+            &__li {
+              list-style: none;
+              margin-bottom: 12px;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              text-transform: capitalize;
+              img {
+                margin-right: 12px;
+              }
+            }
+          }
+        }
+        &__image {
+          height: 457px;
+
+          margin-bottom: 20px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      &__right {
+        @media (max-width: 768px) {
+          width: 100%;
+          text-align: center;
+        }
+        &__title {
+          font-family: "Merriweather";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 22px;
+          color: #be9140;
+          text-transform: capitalize;
+        }
+        &__about {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          text-align: justify;
+
+          color: #474747;
+        }
+      }
+    }
+  }
+}
