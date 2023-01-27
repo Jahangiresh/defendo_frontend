@@ -11,7 +11,7 @@ export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
 });
 
 const teamSlice = createSlice({
-  name: "team",
+  name: "advocates",
   initialState,
   reducers: {},
   extraReducers: {

@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import teamSlice, { teamFetch } from "./features/teamSlice";
 const store = configureStore({
   reducer: {
-    team: teamSlice,
+    advocates: teamSlice,
   },
 });
 store.dispatch(teamFetch());

@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import ScrollToTop from "./components/ScrollToTop";
 import HeaderDown from "./components/header/HeaderDown";
 import NotFound from "./pages/NotFound";
+import Advocates from "./pages/Advocates";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/*" element={<NotFound />} />
 
           <Route path="/" element={<Home />} />
+          <Route path="/team" element={<Advocates />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServicesDetail />} />
         </Routes>
