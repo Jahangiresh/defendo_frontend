@@ -46,7 +46,6 @@ const Header = () => {
   if (window.scrollY <= 0) {
     scrollDirection = "top";
   }
-  console.log(scrollDirection);
   return (
     <div
       className={`header 
@@ -80,7 +79,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="header__container__nav__ul__li">
-              <Link className="link-default" to="/">
+              <Link className="link-default" to="/team">
                 <span className="link__span">komandamız </span>
               </Link>
             </li>
