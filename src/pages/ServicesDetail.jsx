@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import courthouse from "../assets/images/courthouse.png";
 import Services from "./Services";
+import NotFound from "./NotFound";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,7 +40,7 @@ const ServicesDetail = () => {
         dispatch({ type: "FETCH_SUCCES", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
-        alert(error);
+        // alert(error);
       }
     };
     getItem();

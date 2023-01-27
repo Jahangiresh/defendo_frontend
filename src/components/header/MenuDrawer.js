@@ -29,7 +29,6 @@ export default function MenuDrawer() {
 
     setState({ ...state, [anchor]: open });
   };
-
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
