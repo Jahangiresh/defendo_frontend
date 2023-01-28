@@ -1,0 +1,45 @@
+.about {
+  margin: 60px 0;
+  &__container {
+    &__row {
+      padding: 0;
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        border: 2px solid #be9140;
+      }
+
+      &__left {
+        @media (max-width: 768px) {
+          width: 100%;
+          text-align: center;
+          margin-top: 24px;
+        }
+        &__title {
+          font-family: "Merriweather";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 36px;
+          color: #bf9c48;
+          text-transform: capitalize;
+          margin-bottom: 24px;
+        }
+        &__text {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          text-align: justify;
+          color: #474747;
+        }
+      }
+      &__right {
+        padding-top: 68px;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
