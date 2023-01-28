@@ -17,6 +17,7 @@ const teamSlice = createSlice({
   extraReducers: {
     [teamFetch.pending]: (state, action) => {
       state.status = "pending";
+
     },
     [teamFetch.fulfilled]: (state, action) => {
       state.status = "success";

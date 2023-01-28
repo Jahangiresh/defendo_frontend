@@ -164,6 +164,8 @@
     .team__links {
       text-decoration: none;
       color: #474747;
+      display: flex !important;
+      justify-content: center;
     }
     &__slider {
       display: flex;

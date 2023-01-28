@@ -74,7 +74,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="header__container__nav__ul__li">
-              <Link className="link-default" to="/">
+              <Link className="link-default" to="/about">
                 <span className="link__span">haqqımızda </span>
               </Link>
             </li>
