@@ -1,0 +1,126 @@
+.contact {
+    margin-top: 60px;
+
+    &__ {
+        display: flex;
+        .map{
+                border: 4px solid #BE9140;
+        }
+
+        .text{
+            h4 {
+                color: #BE9140;
+                font-weight: 700;
+                font-size: 22px;
+                line-height: 38.5px;
+            }
+    
+            p{
+                width: 558px;
+                height: 52px;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 25.6px;
+                color: #474747;
+                margin: 12px 0 24px 0;
+            }
+        }
+
+        .right {
+            margin-left: 14px;
+            .form{
+                display: flex;
+                justify-content: space-around;
+                .name {
+                    display: flex;
+                    flex-direction: column;
+    
+                    input {
+                        width: 282px;
+                        height: 44px;
+                        padding: 9px 54px 9px 16px;
+                        background-color: #fbfbfb;
+                        margin: 8px 24px 20px 0;
+                        border: 1px solid #a3a3a3;
+                    }
+    
+                }
+    
+                .tel {
+                    display: flex;
+                    flex-direction: column;
+    
+                    input {
+                        width: 282px;
+                        height: 44px;
+                        padding: 9px 54px 9px 16px;
+                        background-color: #fbfbfb;
+                        margin: 8px 0 20px 0;
+                        border: 1px solid #a3a3a3;
+                    }
+    
+                }
+    
+                .email {
+                    display: flex;
+                    flex-direction: column;
+    
+                    input {
+                        width: 282px;
+                        height: 44px;
+                        padding: 9px 54px 9px 16px;
+                        background-color: #fbfbfb;
+                        margin: 8px 24px 53px 0;
+                        border: 1px solid #a3a3a3;
+                    }
+    
+                }
+    
+                .select {
+                    display: flex;
+                    flex-direction: column;
+    
+                    select {
+                        width: 282px;
+                        height: 44px;
+                        padding: 9px 98px 9px 16px;
+                        background-color: #fbfbfb;
+                        color: #474747; 
+                        margin: 8px 0 53px 0;
+                        border: 1px solid #a3a3a3;
+                    }
+                }
+
+                .area{
+                    display: flex;
+                    flex-direction: column;
+                    textarea{
+                        box-sizing: border-box;
+                        width: 588px;
+                        height: 139px;
+                        background-color: #fbfbfb;
+                        border: 1px solid #a3a3a3;
+                        padding: 8px 380px 105px 16px;
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+        .area-btn{
+            width: 100%;
+            background-color: red;
+            display: flex;
+            justify-content: end;
+            padding: 0;
+            button{
+                background-color: #C5AC52;
+            color: #fff;
+            width: 180px;
+            height: 50px;
+            padding: 12px, 24px, 12px, 24px;
+            // margin: 32px 40px 0 0;
+            }
+        }
+    }
+}
