@@ -1,9 +1,8 @@
 import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import "../assets/css/services.scss";
-import courthouse from "../assets/images/map_courthouse.png";
 import Loader from "../assets/images/Component 1.png";
-import { Link } from "react-router-dom";
+import ServiceCard from "../components/ServiceCard";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -48,21 +47,7 @@ const Services = () => {
             <img className="loader" src={Loader} alt="" />
           ) : (
             services.map((service) => {
-              return (
-                <div key={service.id} className="col-lg-3 col-md-12 col-sm-12">
-                  <Link to={`/services/${service.id}`}>
-                    <div className="custom-card">
-                      <img src={courthouse} alt="" />
-                      <h5>{service.title}</h5>
-                      <p>
-                        {service.desc.length > 70
-                          ? service.desc.slice(0, 70) + "..."
-                          : service.desc}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              );
+              return <ServiceCard key={service.id} service={service} />;
             })
           )}
         </div>
