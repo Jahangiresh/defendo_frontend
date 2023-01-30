@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import linePng from "../assets/images/LineBtn.png";
 import logoMain from "../assets/images/logoBlue.svg";
 import Team from "../components/Team";
+import ServiceCard from "../components/ServiceCard";
 const Home = () => {
   var settings = {
     infinite: true,
@@ -74,6 +75,7 @@ const Home = () => {
           </div>
         </div>
         <Team />
+        <ServiceCard />
       </div>
     </div>
   );
