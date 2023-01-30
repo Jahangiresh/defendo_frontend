@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 const AdvocateCard = () => {
   const { items, status } = useSelector((state) => state.advocates);
-  console.log(status);
+
+
   return (
     <div className="advocatecard__slider__card__row row">
       {status === "pending" ? (

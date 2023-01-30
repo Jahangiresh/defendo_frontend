@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../assets/css/header.scss";
 import logoSvg from "../../assets/images/headerLogo.png";
 import menuIcon from "../../assets/images/hamburger.png";
@@ -11,7 +11,7 @@ import HeaderLangs from "./HeaderLangs";
 
 const Header = () => {
   const { t } = useTranslation();
-
+  const pathname = useLocation();
   const navigate = useNavigate();
 
   function useScrollDirection() {
@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <div
       className={`header 
-      
+   
       ${
         scrollDirection === "down"
           ? ""

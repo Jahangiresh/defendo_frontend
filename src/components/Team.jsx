@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Team = () => {
   const { items, status } = useSelector((state) => state.advocates);
-  console.log(status);
   var teamSettings = {
     infinite: true,
     speed: 100,
