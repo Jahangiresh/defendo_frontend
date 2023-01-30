@@ -1,13 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import headerMapPng from "../../assets/images/headerMap.png";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const HeaderDown = () => {
   const { pathname } = useLocation();
-
   return (
     <div
       style={{
-        display: pathname === "/" ? "none" : "block",
+        display: pathname === "/" || pathname === `${"/*"}` ? "none" : "block",
       }}
       className="headerdown"
     >

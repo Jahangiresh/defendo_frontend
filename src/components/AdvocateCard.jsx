@@ -7,9 +7,16 @@ import { Link } from "react-router-dom";
 const AdvocateCard = () => {
   const { items, status } = useSelector((state) => state.advocates);
 
+
   return (
     <div className="advocatecard__slider__card__row row">
-      {items &&
+      {status === "pending" ? (
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ex
+          nostrum debitis maiores?
+        </h1>
+      ) : (
+        items &&
         items.map((item) => (
           <Link
             to={`/team/${item.id}`}
@@ -21,7 +28,8 @@ const AdvocateCard = () => {
             </div>
             <div className="advocatecard__slider__card__name">{item.name}</div>
           </Link>
-        ))}
+        ))
+      )}
     </div>
   );
 };
