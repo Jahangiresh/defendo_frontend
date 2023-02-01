@@ -9,6 +9,7 @@ import linePng from "../assets/images/LineBtn.png";
 import logoMain from "../assets/images/logoBlue.svg";
 import Team from "../components/Team";
 import ServiceCard from "../components/ServiceCard";
+
 const Home = () => {
   var settings = {
     infinite: true,
@@ -22,62 +23,72 @@ const Home = () => {
   };
   const navigate = useNavigate();
   return (
-    <div className="home">
-      <div className="home__cover__content">
-        <h1 className="home__cover__content__title">de fendo vəkil bürosu</h1>
-        <p className="home__cover__content__intro">
-          Bütün növ hüquqi xidmətlər göstərən konsaltinq şirkətidir
-        </p>
-        <button
-          onClick={() => navigate("/contact")}
-          className="home__cover__content__button"
-        >
-          bizimlə əlaqə
-        </button>
-      </div>
-      <Slider {...settings} className="home__cover">
-        <div>
-          <img src={coverHomePng} alt="" />
-        </div>{" "}
-        <div>
-          <img src={coverHomePng} alt="" />
+    <>
+      <div className="home">
+        <div className="home__cover__content">
+          <h1 className="home__cover__content__title">de fendo vəkil bürosu</h1>
+          <p className="home__cover__content__intro">
+            Bütün növ hüquqi xidmətlər göstərən konsaltinq şirkətidir
+          </p>
+          <button
+            onClick={() => navigate("/contact")}
+            className="home__cover__content__button"
+          >
+            bizimlə əlaqə
+          </button>
         </div>
-      </Slider>
+        <Slider {...settings} className="home__cover">
+          <div>
+            <img src={coverHomePng} alt="" />
+          </div>{" "}
+          <div>
+            <img src={coverHomePng} alt="" />
+          </div>
+        </Slider>
 
-      <div className="home__container custom-container">
-        <div className="home__container__about__row row">
-          <div className="home__container__about__row__left  col-lg-9 col-8">
-            <h3 className="home__container__about__row__title ">Haqqımızda</h3>
-            <p className="home__container__about__row__info">
-              Azərbaycan Respublikasının Vəkillər Kollegiyasının əsas vəzifəsi
-              hər bir şəxsin hüquq və azadlıqlarının, qanunla qorunan
-              mənafelərinin müdafiə edilməsindən, onlara peşəkar, yüksək
-              keyfiyyətli, vicdanlı hüquqi yardım göstərilməsini təmin etməkdən,
-              vəkillik peşəsinin nüfuzunu yüksəltməkdən ibarətdir. Azərbaycan
-              Respublikası Vəkillər Kollegiyasının təşkili və fəaliyyəti
-              "Vəkillər və vəkillik fəaliyyəti haqqında" Azərbaycan
-              Respublikasının Qanunu və ona müvafiq olaraq qəbul edilmiş
-              Vəkillər Kollegiyasının Nizamnaməsi ilə müəyyən edilir
-            </p>
-            <button className="home__container__about__row__button">
-              <span className="home__container__about__row__button__span">
-                <img
-                  className="home__container__about__row__button__span__img"
-                  src={linePng}
-                  alt=""
-                />
-              </span>
-              daha etrafli
-            </button>
+        <div className="home__container custom-container">
+          <div className="home__container__about__row row">
+            <div className="home__container__about__row__left  col-lg-9 col-8">
+              <h3 className="home__container__about__row__title ">
+                Haqqımızda
+              </h3>
+              <p className="home__container__about__row__info">
+                Azərbaycan Respublikasının Vəkillər Kollegiyasının əsas vəzifəsi
+                hər bir şəxsin hüquq və azadlıqlarının, qanunla qorunan
+                mənafelərinin müdafiə edilməsindən, onlara peşəkar, yüksək
+                keyfiyyətli, vicdanlı hüquqi yardım göstərilməsini təmin
+                etməkdən, vəkillik peşəsinin nüfuzunu yüksəltməkdən ibarətdir.
+                Azərbaycan Respublikası Vəkillər Kollegiyasının təşkili və
+                fəaliyyəti "Vəkillər və vəkillik fəaliyyəti haqqında" Azərbaycan
+                Respublikasının Qanunu və ona müvafiq olaraq qəbul edilmiş
+                Vəkillər Kollegiyasının Nizamnaməsi ilə müəyyən edilir
+              </p>
+              <button className="home__container__about__row__button">
+                <span className="home__container__about__row__button__span">
+                  <img
+                    className="home__container__about__row__button__span__img"
+                    src={linePng}
+                    alt=""
+                  />
+                </span>
+                daha etrafli
+              </button>
+            </div>
+            <div className="home__container__about__row__logo col-lg-3 col-4">
+              <img src={logoMain} alt="" />
+            </div>
           </div>
-          <div className="home__container__about__row__logo col-lg-3 col-4">
-            <img src={logoMain} alt="" />
+          <Team />
+        </div>
+      </div>
+      <main className="p-0">
+        <div className="custom-container">
+          <div className="row">
+            <ServiceCard />
           </div>
         </div>
-        <Team />
-        <ServiceCard />
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

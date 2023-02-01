@@ -19,7 +19,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <UpperHeader />
-        <HeaderDown />
+        {/* <HeaderDown /> */}
         <Header />
         <Routes>
           <Route path="/*" element={<NotFound />} />
