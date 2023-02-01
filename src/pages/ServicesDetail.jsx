@@ -8,6 +8,8 @@ import { useLocation, useParams } from "react-router-dom";
 import courthouse from "../assets/images/courthouse.png";
 import Services from "./Services";
 import NotFound from "./NotFound";
+import HeaderDown from "../components/header/HeaderDown";
+import ServiceCard from "../components/ServiceCard";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,33 +51,43 @@ const ServicesDetail = () => {
   }, [pathname]);
 
   return (
-    <main>
-      <section id="detail">
-        <div className="custom-container">
-          <div className="cus-row">
-            <div className="info">
-              <div className="title">
-                <h4>{service.title}</h4>
+    <>
+      <HeaderDown>
+        <h1>Xidmətlər</h1>
+        <p>{service.title}</p>
+      </HeaderDown>
+      <main>
+        <section id="detail">
+          <div className="custom-container">
+            <div className="cus-row">
+              <div className="info">
+                <div className="title">
+                  <h4>{service.title}</h4>
+                </div>
+                <div className="desc">
+                  <p>{service.desc}</p>
+                </div>
+                <div className="contact">
+                  <a className="link" href="">
+                    Bizimlə əlaqə
+                  </a>
+                </div>
               </div>
-              <div className="desc">
-                <p>{service.desc}</p>
+              <div className="logo">
+                <img src={courthouse} alt="" />
               </div>
-              <div className="contact">
-                <a className="link" href="">
-                  Bizimlə əlaqə
-                </a>
-              </div>
-            </div>
-            <div className="logo">
-              <img src={courthouse} alt="" />
             </div>
           </div>
-        </div>
-      </section>
-      <section id="services">
-        <Services />
-      </section>
-    </main>
+        </section>
+        <section id="services">
+          <div className="custom-container pt-5">
+            <div className="row">
+              <ServiceCard />
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 };
 
