@@ -5,9 +5,9 @@ import "../assets/css/notfound.scss";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
-  function refreshPage() {
+  const refreshPage = () => {
     window.location.reload(false);
-  }
+  };
   const defaultOptions = {
     loop: true,
     autoplay: true,

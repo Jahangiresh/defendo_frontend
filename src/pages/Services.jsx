@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/services.scss";
+import HeaderDown from "../components/header/HeaderDown";
 import ServiceCard from "../components/ServiceCard";
 
 const Services = () => {
   return (
-    <main>
-      <div className="custom-container">
-        <div className="row">
-          <ServiceCard />
+    <>
+      <HeaderDown>
+        <h1>Xidmətlər</h1>
+        <p>Peşəkar xidmətlərimizlə tanış olun.</p>
+      </HeaderDown>
+      <main>
+        <div className="custom-container">
+          <div className="row">
+            <ServiceCard />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 
