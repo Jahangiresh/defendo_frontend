@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/css/home.scss";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -49,7 +50,7 @@ const Team = () => {
       <Slider className="team__slider" {...teamSettings}>
         {items &&
           items.map((item) => (
-            <Link className="team__links">
+            <Link to={`/team/${item.id}`} className="team__links">
               <div key={item.id} className="team__slider__card">
                 <div className="team__slider__card__image">
                   <img src={vekilPng} alt="" />
