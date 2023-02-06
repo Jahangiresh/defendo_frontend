@@ -7,6 +7,9 @@ import Slider from "react-slick";
 import vekilPng from "../assets/images/vekilPng.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import mapPng from "../assets/images/mapSvg.svg";
+import phonePng from "../assets/images/phoneSvg.svg";
+import messagePng from "../assets/images/messageSvg.svg";
 const Team = () => {
   const { items, status } = useSelector((state) => state.advocates);
   var teamSettings = {
@@ -54,6 +57,17 @@ const Team = () => {
               <div key={item.id} className="team__slider__card">
                 <div className="team__slider__card__image">
                   <img src={vekilPng} alt="" />
+                  <ul className="team__slider__card__image__ul">
+                    <li>
+                      <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                    </li>
+                    <li>
+                      <img src={phonePng} alt="" /> +994 50 555-55-55
+                    </li>
+                    <li>
+                      <img src={messagePng} alt="" /> officedefendo@gmail.com
+                    </li>
+                  </ul>
                 </div>
                 <div className="team__slider__card__name">{item.name}</div>
               </div>
