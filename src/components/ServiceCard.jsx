@@ -7,6 +7,7 @@ import Loader from "../assets/images/Component 1.png";
 
 const ServiceCard = () => {
   const { items, status } = useSelector((state) => state.services);
+  console.log(items);
   return (
     <div className="row">
       {items &&
@@ -17,9 +18,9 @@ const ServiceCard = () => {
                 <img src={courthouse} alt="" />
                 <h5>{item.title}</h5>
                 <p>
-                  {item.desc.length > 70
-                    ? item.desc.slice(0, 70) + "..."
-                    : item.desc}
+                  {item.description.length > 70
+                    ? item.description.slice(0, 70) + "..."
+                    : item.description}
                 </p>
               </div>
             </Link>

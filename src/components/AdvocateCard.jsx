@@ -9,6 +9,7 @@ import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
 const AdvocateCard = () => {
   const { items, status } = useSelector((state) => state.advocates);
+  // console.log(items);
 
   return status === "pending" ? (
     <h1>
@@ -40,7 +41,9 @@ const AdvocateCard = () => {
                 </li>
               </ul>
             </div>
-            <div className="advocatecard__slider__card__name">{item.name}</div>
+            <div className="advocatecard__slider__card__name">
+              {item.firstName}
+            </div>
           </Link>
         ))}
     </div>
