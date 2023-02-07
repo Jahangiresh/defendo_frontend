@@ -14,10 +14,10 @@ const HeaderLangs = () => {
           english
         </li>
         <li className="headerlangs__ul__li " onClick={() => clickLang("az")}>
-          azərbaycan
+          azerbaijani
         </li>
         <li className="headerlangs__ul__li" onClick={() => clickLang("tr")}>
-          russian
+          turkish
         </li>
       </ul>
     </div>

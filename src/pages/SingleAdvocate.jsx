@@ -23,6 +23,7 @@ const reducer = (state, action) => {
 
 const SingleAdvocate = () => {
   const pathname = useLocation();
+  console.log(pathname);
   const [{ advocate, loading, error }, dispatch] = useReducer(reducer, {
     advocate: {},
     loading: true,
@@ -31,15 +32,18 @@ const SingleAdvocate = () => {
   const params = useParams();
   const _id = params.id;
 
+  const apiEndPoint = `https://localhost:7148/api/v1/lawyers/${_id}`;
+
   useEffect(() => {
     const getAdvocate = async () => {
       try {
         dispatch({ type: "FETCH_REQ" });
-        const resp = await axios.get(`http://localhost:3000/team/${_id}`);
+        const resp = await axios.get(apiEndPoint);
         dispatch({ type: "FETCH_SUCCESS", payload: resp.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
-        alert("Error");
+        // alert("Error");
+        window.location.href = "/*";
       }
     };
     getAdvocate();

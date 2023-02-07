@@ -34,17 +34,18 @@ const ServicesDetail = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `http://localhost:3000/services/${id}`;
+  const apiEndPoint = `https://localhost:7148/api/v1/providedservices/${id}`;
 
   useEffect(() => {
     const getItem = async () => {
-      dispatch({ type: "FETCH_REQ" });
       try {
+        dispatch({ type: "FETCH_REQ" });
         const { data } = await axios.get(apiEndPoint);
         dispatch({ type: "FETCH_SUCCES", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
         // alert(error);
+        window.location.href = "/*";
       }
     };
     getItem();
@@ -65,7 +66,7 @@ const ServicesDetail = () => {
                   <h4>{service.title}</h4>
                 </div>
                 <div className="desc">
-                  <p>{service.desc}</p>
+                  <p>{service.description}</p>
                 </div>
                 <div className="contact">
                   <a className="link" href="">
