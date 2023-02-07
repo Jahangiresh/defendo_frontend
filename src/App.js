@@ -11,6 +11,8 @@ import HeaderDown from "./components/header/HeaderDown";
 import NotFound from "./pages/NotFound";
 import Advocates from "./pages/Advocates";
 import Contact from "./pages/Contact";
+import SingleAdvocate from "./pages/SingleAdvocate";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -18,12 +20,14 @@ function App() {
       <Router>
         <ScrollToTop />
         <UpperHeader />
-        <HeaderDown />
+        {/* <HeaderDown /> */}
         <Header />
         <Routes>
           <Route path="/*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Advocates />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/team/:id" element={<SingleAdvocate />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServicesDetail />} />
           <Route path="/contact" element={<Contact/>} />

@@ -7,6 +7,7 @@ const initialState = {
 
 export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
   const resp = await axios.get("http://localhost:3000/team");
+
   return resp?.data;
 });
 

@@ -1,15 +1,17 @@
 import React from "react";
 import "../assets/css/home.scss";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import vekilPng from "../assets/images/vekilPng.png";
 import { useSelector } from "react-redux";
-import AdvocateCard from "./AdvocateCard";
+import { Link } from "react-router-dom";
+import mapPng from "../assets/images/mapSvg.svg";
+import phonePng from "../assets/images/phoneSvg.svg";
+import messagePng from "../assets/images/messageSvg.svg";
 const Team = () => {
   const { items, status } = useSelector((state) => state.advocates);
-
-  // console.log(items);
   var teamSettings = {
     infinite: true,
     speed: 100,
@@ -18,6 +20,31 @@ const Team = () => {
     autoPlay: true,
     arrows: false,
     dots: false,
+    responsive: [
+      {
+        breakpoint: 1204,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1060,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 780,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className="team">
@@ -26,12 +53,25 @@ const Team = () => {
       <Slider className="team__slider" {...teamSettings}>
         {items &&
           items.map((item) => (
-            <div className="team__slider__card">
-              <div className="team__slider__card__image">
-                <img src={vekilPng} alt="" />
+            <Link to={`/team/${item.id}`} className="team__links">
+              <div key={item.id} className="team__slider__card">
+                <div className="team__slider__card__image">
+                  <img src={vekilPng} alt="" />
+                  <ul className="team__slider__card__image__ul">
+                    <li>
+                      <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                    </li>
+                    <li>
+                      <img src={phonePng} alt="" /> +994 50 555-55-55
+                    </li>
+                    <li>
+                      <img src={messagePng} alt="" /> officedefendo@gmail.com
+                    </li>
+                  </ul>
+                </div>
+                <div className="team__slider__card__name">{item.name}</div>
               </div>
-              <div className="team__slider__card__name">{item.name}</div>
-            </div>
+            </Link>
           ))}
       </Slider>
     </div>
