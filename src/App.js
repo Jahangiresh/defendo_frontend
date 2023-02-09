@@ -30,7 +30,7 @@ function App() {
           <Route path="/team/:id" element={<SingleAdvocate />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServicesDetail />} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
