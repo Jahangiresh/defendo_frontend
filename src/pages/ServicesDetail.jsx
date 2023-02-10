@@ -50,7 +50,7 @@ const ServicesDetail = () => {
     };
     getItem();
   }, [pathname]);
-
+  console.log(service.image.filePath);
   return (
     <>
       <HeaderDown>
@@ -75,7 +75,13 @@ const ServicesDetail = () => {
                 </div>
               </div>
               <div className="logo">
-                <img src={courthouse} alt="" />
+                <img
+                  src={
+                    "https://localhost:7148/api/v1/files?filepath=" +
+                    service.image.filePath
+                  }
+                  alt=""
+                />
               </div>
             </div>
           </div>

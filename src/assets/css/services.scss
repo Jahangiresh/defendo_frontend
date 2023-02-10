@@ -29,10 +29,18 @@ main {
           padding: 0 18px;
           cursor: pointer;
           transition: 200ms all ease-in;
-          img {
-            width: 70px;
-            height: 70px;
+          & > div {
+            width: 80px;
+            height: 80px;
             margin: 48px auto 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+              filter: invert(100%);
+            }
           }
           h5 {
             margin: 24px auto 0;

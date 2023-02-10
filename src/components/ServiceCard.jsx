@@ -14,7 +14,15 @@ const ServiceCard = () => {
           <div key={item.id} className="col-lg-4 col-md-12 col-sm-12">
             <Link to={`/services/${item.id}`}>
               <div className="custom-card">
-                <img src={courthouse} alt="" />
+                <div>
+                  <img
+                    src={
+                      "https://localhost:7148/api/v1/files?filepath=" +
+                      item.image.filePath
+                    }
+                    alt=""
+                  />
+                </div>
                 <h5>{item.title}</h5>
                 <p>
                   {item.description.length > 70
