@@ -55,33 +55,6 @@ const Contact = () => {
           }
         }
       });
-    // try {
-    //   await axios.post("https://localhost:7148/api/v1/contactusforms", values, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   });
-    //   popUp(
-    //     "Tamamlandı",
-    //     "success",
-    //     "Müraciətiniz uğurla göndərildi. 3 iş günü ərzində cavablandırılacaq!"
-    //   );
-    //   // Swal.fire(
-    //   //   "Tamamlandı",
-    //   //   "Müraciətiniz uğurla göndərildi. 3 iş günü ərzində cavablandırılacaq!",
-    //   //   "success"
-    //   // );
-    // } catch (error) {
-    //   if (error.response.status === 429) {
-    //     popUp(
-    //       "Oops...",
-    //       "error",
-    //       "Həddindən artıq sorğu. Saatda maksimum 3 sorğu göndərə bilərsiniz"
-    //     );
-    //   } else if (error.response.status === 400) {
-    //     popUp("Oops...", "error", "Zəhmət olmasa dataları düzgün daxil edin");
-    //   }
-    // }
   };
 
   return (
@@ -147,12 +120,6 @@ const Contact = () => {
                   messageText: "",
                 }}
                 onSubmit={(values) => {
-                  // let users = JSON.parse(localStorage.getItem("users"));
-                  // users.push({
-                  //   ...values,
-                  // });
-                  // localStorage.setItem("users", JSON.stringify(users));
-                  // console.log(values);
                   contactFormsPost(values);
                 }}
               >
