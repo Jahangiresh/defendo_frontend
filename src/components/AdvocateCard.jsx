@@ -28,7 +28,13 @@ const AdvocateCard = () => {
             className="advocatecard__slider__card team__links col-3"
           >
             <div className="advocatecard__slider__card__image">
-              <img src={vekilPng} alt="" />
+              <img
+                src={
+                  "https://localhost:7148/api/v1/files?filepath=" +
+                  item.image.filePath
+                }
+                alt=""
+              />
               <ul className="advocatecard__slider__card__image__ul">
                 <li>
                   <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
