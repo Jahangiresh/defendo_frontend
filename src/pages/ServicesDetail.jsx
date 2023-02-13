@@ -1,9 +1,6 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "../assets/css/servicedetail.scss";
-import { useReducer } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import courthouse from "../assets/images/courthouse.png";
 import Services from "./Services";
@@ -29,20 +26,23 @@ const ServicesDetail = () => {
 
   const params = useParams();
   const id = params.id;
+
   const [{ loader, service, error }, dispatch] = useReducer(reducer, {
     loader: true,
     error: false,
     service: {},
   });
-  const apiEndPoint = `https://localhost:7148/api/v1/providedservices/${id}`;
-
+  const apiEndPoint = `http://localhost:5000/api/v1/providedservices/${id}`;
   useEffect(() => {
+    console.log("salam");
     const getItem = async () => {
       try {
         dispatch({ type: "FETCH_REQ" });
         const { data } = await axios.get(apiEndPoint);
+        console.log(data);
         dispatch({ type: "FETCH_SUCCES", payload: data });
       } catch (error) {
+        console.log("error:" + error);
         dispatch({ type: "FETCH_FAIL" });
         // alert(error);
         window.location.href = "/*";
@@ -50,7 +50,7 @@ const ServicesDetail = () => {
     };
     getItem();
   }, [pathname]);
-
+  console.log(service);
   return (
     <>
       <HeaderDown>
@@ -69,13 +69,19 @@ const ServicesDetail = () => {
                   <p>{service.description}</p>
                 </div>
                 <div className="contact">
-                  <a className="link" href="">
+                  <a className="link" href="#">
                     Bizimlə əlaqə
                   </a>
                 </div>
               </div>
               <div className="logo">
-                <img src={courthouse} alt="" />
+                <img
+                  src={
+                    "https://localhost:7148/api/v1/files?filepath=" +
+                    service.image.filePath
+                  }
+                  alt=""
+                />
               </div>
             </div>
           </div>

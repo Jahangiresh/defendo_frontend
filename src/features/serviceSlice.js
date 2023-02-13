@@ -10,9 +10,7 @@ const initialState = {
 export const serviceFetch = createAsyncThunk(
   "service/serviceFetch",
   async () => {
-    const resp = await axios.get(
-      "https://localhost:7148/api/v1/providedservices"
-    );
+    const resp = await axios.get("api/v1/providedservices");
 
     return resp?.data;
   }
