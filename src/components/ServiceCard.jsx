@@ -16,10 +16,7 @@ const ServiceCard = () => {
               <div className="custom-card">
                 <div>
                   <img
-                    src={
-                      "https://localhost:7148/api/v1/files?filepath=" +
-                      item.image.filePath
-                    }
+                    src={"api/v1/files?filepath=" + item.image.filePath}
                     alt=""
                   />
                 </div>
