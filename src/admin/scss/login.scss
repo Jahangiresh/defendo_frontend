@@ -1,0 +1,32 @@
+.login {
+  //   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    @media (max-width: 560px) {
+      width: 100%;
+    }
+    input {
+      margin-bottom: 30px;
+      padding: 13px;
+      outline: none;
+    }
+  }
+  .login__button {
+    background: green;
+    color: white;
+    padding: 12px 50px;
+    margin-top: 20px;
+    border: none;
+    // width: 100px;
+    text-transform: uppercase;
+  }
+}
