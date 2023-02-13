@@ -1,0 +1,33 @@
+thead {
+  padding: 0 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.my__box {
+  padding: 20px 0px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  width: 100%;
+
+  tbody {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    tr {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "user": "jahangir sh",
+      "status": "pending",
+      "product": "ayaqqabi",
+      "quantity": 3
+    },
+    {
+      "id": 2,
+      "user": "ceyhun",
+      "status": "pending",
+      "product": "ayaqqabi",
+      "quantity": 4
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "role": "superadmin",
+      "name": "salam",
+      "username": "superadmin1",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "role": "redactor",
+      "name": "salam redaktorov",
+      "username": "redactor1",
+      "password": "123"
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "username": "superadmin1",
+      "password": "123",
+      "id": 8
+    },
+    {
+      "username": "superadmin1",
+      "password": "1232",
+      "id": 9
+    },
+    {
+      "username": "superadmin1",
+      "password": "1232123",
+      "id": 10
+    },
+    {
+      "username": "jahangiresh@code.edu.az",
+      "password": "salam123",
+      "id": 11
+    },
+    {
+      "username": "salam123",
+      "password": "salam123",
+      "id": 12
+    },
+    {
+      "username": "salam123",
+      "password": "33",
+      "id": 13
+    },
+    {
+      "username": "salam123",
+      "password": "33",
+      "id": 14
+    },
+    {
+      "username": "superadmin1",
+      "password": "123",
+      "id": 15
+    },
+    {
+      "username": "jahangiresh@code.edu.az",
+      "password": "salam123",
+      "id": 16
+    }
+  ]
+}

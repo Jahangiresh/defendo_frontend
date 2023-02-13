@@ -1,0 +1,147 @@
+thead {
+  padding: 0 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.my__box {
+  padding: 20px 0px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  width: 100%;
+
+  tbody {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .image__td {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
+    tr {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.save__button {
+  padding: 30px 0;
+  width: 300px;
+  margin-top: 100px;
+  background: green;
+  border: none;
+  transition: 300ms;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  border-radius: 30px;
+  font-weight: 700;
+  &:hover {
+    background-color: rgb(86, 138, 9);
+  }
+}
+.MainInfo {
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 0 20px;
+  height: 100px;
+  display: flex;
+  text-transform: capitalize;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+
+  &__row {
+    width: 100%;
+    margin-top: 100px;
+    justify-content: space-between;
+    margin: 80px 0 0 0;
+
+    &__iframe {
+      background: white;
+      box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+      padding: 11px;
+      border-radius: 30px;
+
+      .frame__input {
+        width: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #7a00d5;
+      }
+    }
+    &__col {
+      padding: 0;
+      padding: 30px 20px;
+      border-radius: 30px;
+      background-color: #fff;
+      margin-bottom: 30px;
+      box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+      text-align: center;
+      width: 31%;
+      @media (max-width: 992px) {
+        width: 49%;
+      }
+      @media (max-width: 566px) {
+        width: 100%;
+      }
+      &__input {
+        width: 100%;
+        outline: none;
+        border-radius: 4px;
+        border: 1px solid #e3e3e3;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield; /* Firefox */
+      }
+      &__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .settings__title {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    &__h {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      width: 180px;
+    }
+  }
+
+  input {
+    width: 100%;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+  }
+}

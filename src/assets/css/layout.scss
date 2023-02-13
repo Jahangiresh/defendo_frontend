@@ -1,0 +1,15 @@
+.custom-container {
+  margin: 0 auto;
+  max-width: 80%;
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+  @media (max-width: 576px) {
+    max-width: 90%;
+  }
+}
+
+.link-default {
+  text-decoration: none;
+  color: #fff;
+}
