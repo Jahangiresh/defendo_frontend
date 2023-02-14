@@ -7,17 +7,13 @@ import HeaderDown from "./header/HeaderDown";
 import mapPng from "../assets/images/mapSvg.svg";
 import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
+import LoadingBox from "./LoadingBox";
 const AdvocateCard = () => {
   const { items, status } = useSelector((state) => state.advocates);
   // console.log(items);
 
   return status === "pending" ? (
-    <h1>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aperiam
-      natus libero voluptatem id impedit sit, nostrum quidem earum ad cupiditate
-      temporibus quibusdam voluptates deserunt placeat, nesciunt dolorem
-      assumenda molestiae.z
-    </h1>
+    <LoadingBox />
   ) : (
     <div className="advocatecard__slider__card__row row">
       {items &&

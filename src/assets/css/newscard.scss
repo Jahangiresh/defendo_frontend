@@ -1,0 +1,215 @@
+.newscard {
+  margin: 60px 0;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 992px) {
+    justify-content: center;
+  }
+  &__col {
+    width: 386px;
+    border: 1px solid #a3a3a3;
+    margin-bottom: 12px;
+    &__img {
+      height: 285px;
+      margin-bottom: 16px;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__content {
+      padding: 0 16px 24px;
+      &__span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #a3a3a3;
+      }
+      &__h {
+        font-family: "Merriweather";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        color: #be9140;
+        margin: 12px 0 8px 0;
+      }
+      &__p {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #474747;
+        margin-bottom: 24px;
+      }
+      &__button {
+        padding: 4px 24px;
+        gap: 8px;
+        width: 170px;
+        height: 34px;
+        background-color: transparent;
+        border: 2px solid #c5ac52;
+        color: #c5ac52;
+        transition: 200ms ease;
+        font-weight: 400;
+        text-transform: capitalize;
+        &:hover {
+          background: #c5ac52;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.singlenews {
+  &__container {
+    &__row {
+      margin: 60px 0;
+      @media (max-width: 830px) {
+        flex-direction: column;
+      }
+      &__left {
+        padding: 0 24px;
+        border-right: 1px solid #e5e5e5;
+        border-left: 1px solid #e5e5e5;
+        @media (max-width: 830px) {
+          width: 100%;
+          border: none;
+          padding: 0;
+        }
+        &__p {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          color: #a3a3a3;
+          margin-bottom: 12px;
+        }
+        &__h {
+          font-family: "Merriweather";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 28px;
+          color: #be9140;
+          margin-bottom: 24px;
+        }
+        &__img {
+          width: 100%;
+          margin-bottom: 24px;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+          }
+        }
+        &__xulase {
+          font-family: "Merriweather";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          color: #be9140;
+        }
+        &__xulaseP {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+
+          text-align: justify;
+
+          color: #474747;
+          margin-bottom: 24px;
+        }
+        &__share {
+          border: 1px solid #e5e5e5;
+          padding: 12px 24px 24px 24px;
+          .share__h {
+            margin-bottom: 24px;
+          }
+          &__buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            @media (max-width: 830px) {
+              flex-direction: column;
+            }
+            &__button {
+              padding: 8px 24px;
+              width: 210px;
+              height: 42px;
+              @media (max-width: 1075px) {
+                height: auto;
+              }
+              @media (max-width: 830px) {
+                width: 100%;
+                margin-bottom: 12px;
+              }
+              background: #ffffff;
+              border: 1px solid #e5e5e5;
+
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              text-transform: capitalize;
+              transition: 200ms ease;
+              &:hover {
+                border: 2px solid #be9140;
+              }
+            }
+            .button__facebook {
+              color: #1877f2;
+            }
+            .button__linkedin {
+              color: #0a66c2;
+            }
+            .button__twitter {
+              color: #1d9bf0;
+            }
+          }
+        }
+      }
+      &__right {
+        padding: 0 48px;
+        @media (max-width: 830px) {
+          width: 100%;
+          border: none;
+          padding: 0;
+          margin-top: 32px;
+        }
+        &__content {
+          padding: 0;
+          border-top: 1px solid #a3a3a3;
+          &__li:last-child {
+            border: none;
+          }
+          &__li {
+            list-style: none;
+            border-bottom: 1px solid #a3a3a3 !important;
+            .title1 {
+              color: #be9140;
+            }
+            &__title {
+              font-family: "Merriweather";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 18px;
+              color: #474747;
+              line-height: 160%;
+              transition: 200ms ease;
+              &:hover {
+                color: #be9140;
+              }
+            }
+          }
+          .right__p {
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+  }
+}

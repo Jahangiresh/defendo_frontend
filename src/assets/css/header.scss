@@ -86,13 +86,17 @@
           display: flex;
           align-items: center;
           position: relative;
-          @media (max-width: 992px) {
+          @media (max-width: 1200px) {
             margin-left: 26px;
+          }
+          @media (max-width: 992px) {
+            margin-left: 16px;
+            // font-size: 12px;
           }
           .link__span {
             transition: 200ms ease-in;
           }
-          &:nth-child(-n + 4):hover {
+          &:nth-child(-n + 5):hover {
             .link__span {
               color: #be9140;
             }

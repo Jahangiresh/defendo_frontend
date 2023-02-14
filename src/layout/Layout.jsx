@@ -10,9 +10,12 @@ import Advocates from "../pages/Advocates";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
 import Services from "../pages/Services";
+import News from "../pages/News";
+
 import ServicesDetail from "../pages/ServicesDetail";
 import SingleAdvocate from "../pages/SingleAdvocate";
 import "../assets/css/layout.scss";
+import SingleNews from "../pages/SingleNews";
 
 const Layout = () => {
   return (
@@ -24,6 +27,9 @@ const Layout = () => {
         <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Advocates />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<SingleNews />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/team/:id" element={<SingleAdvocate />} />
         <Route path="/services" element={<Services />} />

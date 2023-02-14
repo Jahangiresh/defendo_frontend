@@ -134,6 +134,11 @@ export default function MenuDrawer() {
                 </Link>
               </li>
               <li className="menudrawer__container__down__ul__li">
+                <Link className="link-default" to="/sa">
+                  <span className="link__span">meqaleler </span>
+                </Link>
+              </li>
+              <li className="menudrawer__container__down__ul__li">
                 <button
                   onClick={() => navigate("/contact")}
                   className="menudrawer__container__down__ul__li__button"

@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import courthouse from "../assets/images/map_courthouse.png";
 import "../assets/css/services.scss";
 import Loader from "../assets/images/Component 1.png";
+import LoadingBox from "./LoadingBox";
 
 const ServiceCard = () => {
   const { items, status } = useSelector((state) => state.services);
-  return (
+  return status === "pending" ? (
+    <LoadingBox />
+  ) : (
     <div className="row">
       {items &&
         items.map((item) => (
