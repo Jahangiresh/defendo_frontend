@@ -83,9 +83,15 @@ const Header = () => {
                 <span className="link__span">{t("komandamız")}</span>
               </Link>
             </li>
+
             <li className="header__container__nav__ul__li">
               <Link className="link-default" to="/services">
                 <span className="link__span">{t("xidmətlər")} </span>
+              </Link>
+            </li>
+            <li className="header__container__nav__ul__li">
+              <Link className="link-default" to="/news">
+                <span className="link__span">{t("Məqalələr")} </span>
               </Link>
             </li>
             <li className="header__container__nav__ul__li">
