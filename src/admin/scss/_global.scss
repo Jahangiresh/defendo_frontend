@@ -1,57 +1,54 @@
-// @use './abstracts/' as *;
+@use "./abstracts/" as *;
 
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
-// * {
-//     padding: 0;
-//     margin: 0;
-//     box-sizing: border-box;
-// }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-// html {
-//     overflow-x: hidden;
-// }
+html {
+  overflow-x: hidden;
+}
 
-// body {
-//     font-family: $fontFamily;
-//     color: $txtColor;
-//     font-size: $fontSizeNormal;
-//     line-height: 1.5;
-//     background-color: $bodyBg;
-//     overflow-x: hidden;
-// }
+.admin-wrapper {
+  font-family: $fontFamily;
+  color: $txtColor;
+  font-size: $fontSizeNormal;
+  line-height: 1.5;
+  background-color: $bodyBg;
+  overflow-x: hidden;
+  img {
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: unset;
+  }
 
-// a {
-//     text-decoration: none;
-//     color: unset;
-// }
+  ul,
+  li {
+    list-style-type: none;
+  }
+  .mb {
+    margin-bottom: $spacing;
 
-// img {
-//     width: 100%;
-// }
+    @include tablet {
+      margin-bottom: $mobileSpacing;
+    }
+  }
 
-// ul,
-// li {
-//     list-style-type: none;
-// }
+  .title {
+    font-size: $fontSizeMedium;
+    font-weight: 700;
+  }
 
-// .mb {
-//     margin-bottom: $spacing;
+  .txt-success {
+    color: $green;
+  }
 
-//     @include tablet {
-//         margin-bottom: $mobileSpacing;
-//     }
-// }
-
-// .title {
-//     font-size: $fontSizeMedium;
-//     font-weight: 700;
-// }
-
-// .txt-success {
-//     color: $green;
-// }
-
-// .txt-danger { 
-//     color: $red;
-// }
+  .txt-danger {
+    color: $red;
+  }
+}
