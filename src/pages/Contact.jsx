@@ -65,13 +65,13 @@ const Contact = () => {
       </HeaderDown>
       <section className="wrapper">
         <div className="container">
-          <div className="row">
+          <div className="row contact__row">
             <div className="info col-lg-6 col-md-12 col-sm-12">
               <div className="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d97221.49633886272!2d49.8072587!3d40.4050456!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d40a035a6bd%3A0xa8c2cbf267a83fbd!2sHeydar%20Aliyev%20Centre!5e0!3m2!1sen!2s!4v1675850932013!5m2!1sen!2s"></iframe>
               </div>
               <div className="contact-info">
-                <div className="row">
+                <div className="row contact__row">
                   <div className="col-lg-6 col-md-6 col-sm-12 ">
                     <img src={Clock} alt="" />
                     <div>
@@ -125,7 +125,7 @@ const Contact = () => {
               >
                 {({ handleSubmit, handleChange }) => (
                   <form onSubmit={handleSubmit}>
-                    <div className="row">
+                    <div className="row contact__row">
                       <div className="col-lg-6 col-md-12 col-sm-12">
                         <div>
                           <label>Ad və soyad</label>

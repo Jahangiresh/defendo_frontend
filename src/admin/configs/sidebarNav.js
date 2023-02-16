@@ -12,29 +12,25 @@ const sidebarNav = [
     icon: <i className="bx bx-receipt"></i>,
     text: "Services",
   },
+  // {
+  //   link: "/admin/messages",
+  //   section: "messages",
+  //   icon: <i className="bx bx-cube"></i>,
+  //   text: "Messages",
+  // },
   {
-    link: "/admin/services",
-    section: "services",
-    icon: <i className="bx bx-cube"></i>,
-    text: "Services",
-  },
-  {
-    link: "/admin/customers",
-    section: "customers",
-    icon: <i className="bx bx-user"></i>,
-    text: "Customers",
     link: "/admin/advocates",
     section: "advocates",
     icon: <i className="bx bx-cube"></i>,
     text: "Advocates",
   },
 
-  {
-    link: "/admin/login",
-    section: "login",
-    icon: <i className="bx bx-cog"></i>,
-    text: "Login",
-  },
+  // {
+  //   link: "/admin/login",
+  //   section: "login",
+  //   icon: <i className="bx bx-cog"></i>,
+  //   text: "Login",
+  // },
   {
     link: "/admin/setting",
     section: "setting",
