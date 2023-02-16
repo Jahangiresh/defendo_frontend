@@ -47,24 +47,7 @@ const Sidebar = () => {
             <div className="sidebar__menu__item__txt">{nav.text}</div>
           </Link>
         ))}
-        <Accordion defaultActiveKey="0">
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>
-              {" "}
-              <i className=" setting__icon bx bx-cog"></i> Settings
-            </Accordion.Header>
-            <Accordion.Body className="accordion__body ">
-              <ul className="accordion__body__ul">
-                <Link to="/maininfo" className="accordion__body__ul__li">
-                  main information
-                </Link>
-                <li className="accordion__body__ul__li">configuration</li>
-                <li className="accordion__body__ul__li">sliders</li>
-                <li className="accordion__body__ul__li">users</li>
-              </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+
         <div className="sidebar__menu__item">
           <div className="sidebar__menu__item__icon">
             <i className="bx bx-log-out"></i>
