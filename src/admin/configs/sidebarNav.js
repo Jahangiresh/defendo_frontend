@@ -13,6 +13,16 @@ const sidebarNav = [
     text: "Services",
   },
   {
+    link: "/admin/services",
+    section: "services",
+    icon: <i className="bx bx-cube"></i>,
+    text: "Services",
+  },
+  {
+    link: "/admin/customers",
+    section: "customers",
+    icon: <i className="bx bx-user"></i>,
+    text: "Customers",
     link: "/admin/advocates",
     section: "advocates",
     icon: <i className="bx bx-cube"></i>,

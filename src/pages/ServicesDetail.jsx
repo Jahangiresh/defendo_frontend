@@ -32,7 +32,7 @@ const ServicesDetail = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `http://localhost:5000/api/v1/providedservices/${id}`;
+  const apiEndPoint = `/api/v1/providedservices/${id}`;
   useEffect(() => {
     console.log("salam");
     const getItem = async () => {
@@ -44,13 +44,12 @@ const ServicesDetail = () => {
       } catch (error) {
         console.log("error:" + error);
         dispatch({ type: "FETCH_FAIL" });
-        // alert(error);
+        alert(error);
         window.location.href = "/*";
       }
     };
     getItem();
   }, [pathname]);
-  console.log(service);
   return (
     <>
       <HeaderDown>
@@ -75,13 +74,12 @@ const ServicesDetail = () => {
                 </div>
               </div>
               <div className="logo">
-                <img
-                  src={
-                    "https://localhost:7148/api/v1/files?filepath=" +
-                    service.image.filePath
-                  }
-                  alt=""
-                />
+                {service.image && (
+                  <img
+                    src={`/api/v1/files?filepath=${service.image.filePath}`}
+                    alt=""
+                  />
+                )}
               </div>
             </div>
           </div>

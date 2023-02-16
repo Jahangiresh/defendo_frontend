@@ -21,7 +21,7 @@ const Layout = () => {
   return (
     <Router>
       <ScrollToTop />
-      <UpperHeader />
+      <UpperHeader /> 
       <Header />
       <Routes>
         <Route path="/*" element={<NotFound />} />

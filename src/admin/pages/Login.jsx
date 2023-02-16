@@ -2,24 +2,25 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../scss/login.scss";
 const Login = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const loginHandler = async () => {
     try {
-      const { data } = await axios.post(
-        "https://irp.ramanacastle.com/api/login-admin",
-        {
-          email: username,
-          password: password,
-        }
-      );
-      alert("no error");
-      console.log(data);
+      const { data } = await axios.post("../../api/v1/authentication/login", {
+        emailOrUsername: username,
+        password: password,
+      });
+      // console.log(data);
+      localStorage.setItem("user", JSON.stringify(data));
+      // navigate("/admin");
+      window.location = "/admin";
     } catch (error) {
-      alert("error");
+      alert(error);
     }
   };
 
