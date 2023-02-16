@@ -1,28 +1,32 @@
 import axios from "axios";
 import { Formik, useFormik } from "formik";
 import React from "react";
+import Swal from "sweetalert2/dist/sweetalert2";
 import "../scss/productdetails.scss";
 
 const CreateService = () => {
+  const popUp = (title, icon, text) => {
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+    });
+  };
+
   const { accessToken } = JSON.parse(localStorage.getItem("user"));
   const servicePost = async (service) => {
     const formData = new FormData();
     formData.append("title", service.title);
     formData.append("description", service.description);
     formData.append("imageFile", service.image);
-
-    // formData.append("image", service.image, service.image.name);
-    // console.log(formData.get("image"));
-
     await axios
       .post(
-        "https://localhost:7148/api/v1/providedservices",
-        formData,
-        // {
-        //   title: service.title,
-        //   description: service.description,
-        //   imageFile: formData,
-        // },
+        "../../api/v1/providedservices",
+        {
+          title: formData.get("title"),
+          description: formData.get("description"),
+          imageFile: formData.get("imageFile"),
+        },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -31,10 +35,10 @@ const CreateService = () => {
         }
       )
       .then(() => {
-        console.log("Yaradildi");
+        window.location = "/admin/services";
       })
       .catch((error) => {
-        console.log(error);
+        popUp("Oops...", "error", "Zəhmət olmasa dataları düzgün daxil edin");
       });
   };
   const formik = useFormik({
@@ -44,7 +48,6 @@ const CreateService = () => {
       image: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       servicePost(values);
     },
   });
@@ -67,11 +70,6 @@ const CreateService = () => {
             type="file"
             accept="image/*"
             onChange={(e) => {
-              // const formData = new FormData();
-              // const file = e.target.files[0];
-              // formData.append("imageFile", file, file.name);
-              // console.log(formData);
-              // console.log(e.currentTarget.files[0]);
               formik.setFieldValue("image", e.currentTarget.files[0]);
             }}
           />
