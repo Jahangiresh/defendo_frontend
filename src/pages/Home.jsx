@@ -63,7 +63,10 @@ const Home = () => {
                 Respublikasının Qanunu və ona müvafiq olaraq qəbul edilmiş
                 Vəkillər Kollegiyasının Nizamnaməsi ilə müəyyən edilir
               </p>
-              <button className="home__container__about__row__button">
+              <button
+                onClick={() => navigate("/about")}
+                className="home__container__about__row__button"
+              >
                 <span className="home__container__about__row__button__span">
                   <img
                     className="home__container__about__row__button__span__img"

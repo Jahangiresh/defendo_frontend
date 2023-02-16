@@ -58,9 +58,7 @@ const Footer = () => {
                 <a href="https://barassociation.az/">Vəkillər kollegiyası</a>
               </li>
               <li>
-                <a href="https://supremecourt.gov.az/">
-                  Azərbaycan Respublikasının Ali Məhkəməsi
-                </a>
+                <a href="https://supremecourt.gov.az/">AR Ali Məhkəməsi</a>
               </li>
               <li>
                 <a href="https://justice.gov.az/">Ədliyyə nazirliyi</a>

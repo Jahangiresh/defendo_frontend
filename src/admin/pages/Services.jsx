@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import { useSelector } from "react-redux";
@@ -100,6 +101,10 @@ const Services = () => {
       </div>
     </div>
   );
+import React from "react";
+
+const Services = () => {
+  return <div>Services</div>;
 };
 
 export default Services;

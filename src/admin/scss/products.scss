@@ -4,6 +4,7 @@ thead {
   display: flex;
   justify-content: space-between;
   & > tr {
+  tr {
     width: 100%;
     display: flex;
     justify-content: space-around;
