@@ -32,7 +32,7 @@ const SingleAdvocate = () => {
   const params = useParams();
   const _id = params.id;
 
-  const apiEndPoint = `/api/v1/lawyers/${_id}`;
+  const apiEndPoint = `http://localhost:3000/advocates/${_id}`;
 
   useEffect(() => {
     const getAdvocate = async () => {

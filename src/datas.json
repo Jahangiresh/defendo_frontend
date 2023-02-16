@@ -12,7 +12,6 @@
     {
       "id": 2,
       "title": "Miqrasiya x mərhələləri və ona təsir edən amillər",
-
       "desc": "Korporativ hüquq elmi biliklərin bir sahəsi kimi özündə korporativ normaların, doktrinal tədqiqatların, eləcə də əsas anlayışların təyini, korporativ münasibətlərinin hüquqi tənzimləməsi prinsipləri, nəzəriyyələri və korporativ hüququn predmeti olan tətbiqi baxışların işlənib hazırlanması da daxil olmaqla korporativ hüquqi münasibətləri birləşdirir. Korporativ hüquq elmi biliklərin bir sahəsi kimi özündə korporativ normaların, doktrinal tədqiqatların, eləcə də əsas anlayışların təyini, korporativ münasibətlərinin hüquqi tənzimləməsi prinsipləri, nəzəriyyələri və korporativ hüququn predmeti olan tətbiqi baxışların işlənib hazırlanması da daxil olmaqla korporativ hüquqi münasibətləri birləşdirir. Korporativ hüquq elmi biliklərin bir sahəsi kimi özündə korporativ normaların, doktrinal tədqiqatların, eləcə də əsas anlayışların təyini, korporativ münasibətlərinin hüquqi tənzimləməsi prinsipləri, nəzəriyyələri və korporativ hüququn predmeti olan tətbiqi baxışların işlənib hazırlanması da daxil olmaqla korporativ hüquqi münasibətləri birləşdirir.",
       "image": "",
       "createdAt": "02/02/2022"
@@ -20,10 +19,59 @@
     {
       "id": 3,
       "title": "Miqrasiya proseslərinin mərhələləri və ona təsir edən amillər",
-
       "desc": "Ailə, əmək münasibətləri, təbii ehtiyatlardan istifadə, ətraf mühitin mühafizəsi, müəlliflik hüququ ilə bağlı münasibətlər, əgər ailə, əmək, torpaq, təbiəti mühafizə, müəlliflik və digər xüsusi qanunvericilikdə ayrı qayda nəzərdə tutulmayıbsa, mülki qanunvericilik və başqa hüquqi aktlar ilə tənzimlənir. Ailə, əmək münasibətləri, təbii ehtiyatlardan istifadə, ətraf mühitin mühafizəsi, müəlliflik hüququ ilə bağlı münasibətlər, əgər ailə, əmək, torpaq, təbiəti mühafizə, müəlliflik və digər xüsusi qanunvericilikdə ayrı qayda nəzərdə tutulmayıbsa, mülki qanunvericilik və başqa hüquqi aktlar ilə tənzimlənir. Ailə, əmək münasibətləri, təbii ehtiyatlardan istifadə, ətraf mühitin mühafizəsi, müəlliflik hüququ ilə bağlı münasibətlər, əgər ailə, əmək, torpaq, təbiəti mühafizə, müəlliflik və digər xüsusi qanunvericilikdə ayrı qayda nəzərdə tutulmayıbsa, mülki qanunvericilik və başqa hüquqi aktlar ilə tənzimlənir.",
       "image": "",
       "createdAt": "02/02/2022"
+    }
+  ],
+  "advocates": [
+    {
+      "id": 4,
+      "firstName": "asda",
+      "lastName": "asdasdasd",
+      "email": "asdasd",
+      "phoneNumber": 123,
+      "moreInfo": "asd",
+      "image": {
+        "id": 1,
+        "filePath": "asd",
+        "fileName": "s"
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "asda",
+      "lastName": "asdasdasd",
+      "email": "asdasd",
+      "phoneNumber": 123,
+      "moreInfo": "asd",
+      "image": {
+        "id": 1,
+        "filePath": "asd",
+        "fileName": "s"
+      }
+    },
+    {
+      "id": 1,
+      "firstName": "asda",
+      "lastName": "asdasdasd",
+      "email": "asdasd",
+      "phoneNumber": 123,
+      "moreInfo": "asd",
+      "image": {
+        "id": 1,
+        "filePath": "asd",
+        "fileName": "s"
+      }
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asd",
+      "email": "jahangiresh@code.edu.az",
+      "phoneNumber": "0556182523",
+      "moreInfo": "asd",
+      "image": {},
+      "id": 7
     }
   ]
 }

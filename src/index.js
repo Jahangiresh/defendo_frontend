@@ -4,7 +4,9 @@ import App from "./App";
 import "./i18next";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import teamSlice, { teamFetch } from "./features/teamSlice";
+import teamSlice, {
+  teamFetch,
+} from "./features/teamSlice";
 import serviceSlice, { serviceFetch } from "./features/serviceSlice";
 import newsSlice, { newsFetch } from "./features/newsSlice";
 

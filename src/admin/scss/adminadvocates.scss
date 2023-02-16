@@ -1,0 +1,56 @@
+.adminadvocates {
+  .adminadvocates__add {
+    margin: 20px 0 20px 16px;
+    background: transparent;
+    padding: 13px;
+    transition: 200ms;
+    .plus__icon {
+      transition: 200ms;
+      opacity: 0;
+      visibility: hidden;
+    }
+    &:hover {
+      .plus__icon {
+        transform: rotate(360deg);
+        color: green;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  .adminadvocates__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .adminadvocates__icons {
+    font-size: 20px;
+    .edit__icons {
+      cursor: pointer;
+    }
+  }
+}
+.createadvocates {
+  &__forms {
+    display: flex;
+    flex-direction: column;
+    &__label {
+      text-transform: capitalize;
+      font-weight: 400;
+    }
+    &__input {
+      outline: none;
+      margin-bottom: 12px;
+    }
+    &__button {
+      background: white;
+      transition: 200ms;
+      padding: 13px;
+      margin-top: 20px;
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+}
