@@ -32,7 +32,7 @@ const SingleAdvocate = () => {
   const params = useParams();
   const _id = params.id;
 
-  const apiEndPoint = `https://localhost:7148/api/v1/lawyers/${_id}`;
+  const apiEndPoint = `/api/v1/lawyers/${_id}`;
 
   useEffect(() => {
     const getAdvocate = async () => {
@@ -42,7 +42,6 @@ const SingleAdvocate = () => {
         dispatch({ type: "FETCH_SUCCESS", payload: resp.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
-        // alert("Error");
         window.location.href = "/*";
       }
     };
@@ -60,7 +59,12 @@ const SingleAdvocate = () => {
           <div className="singleadvocate__container__row row">
             <div className="singleadvocate__container__row__left col-lg-4 col-6">
               <div className="singleadvocate__container__row__left__image">
-                <img src={advocatePng} alt="" />
+                {advocate.image && (
+                  <img
+                    src={"/api/v1/files?filepath=" + advocate.image.filePath}
+                    alt=""
+                  />
+                )}
               </div>
               <div className="singleadvocate__container__row__left__details">
                 <ul className="singleadvocate__container__row__left__details__ul">
