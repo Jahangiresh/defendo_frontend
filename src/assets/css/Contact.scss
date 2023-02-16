@@ -1,7 +1,7 @@
 .wrapper {
   padding: 60px 0;
   .container {
-    & > .row {
+    & > .contact__row {
       & > .info {
         .map {
           width: 100%;
@@ -12,7 +12,7 @@
           }
         }
         & > .contact-info {
-          & > .row {
+          & > .contact__row {
             & > .col-lg-6 {
               margin: 24px 0;
               display: flex;
@@ -60,7 +60,7 @@
         }
         form {
           height: 100%;
-          & > .row {
+          & > .contact__row {
             & > div {
               & > div {
                 display: flex;
