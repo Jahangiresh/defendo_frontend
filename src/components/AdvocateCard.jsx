@@ -8,10 +8,12 @@ import mapPng from "../assets/images/mapSvg.svg";
 import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
 import LoadingBox from "./LoadingBox";
+import { getAllAdvocates, getStatus } from "../features/teamSlice";
 const AdvocateCard = () => {
-  const { items, status } = useSelector((state) => state.advocates);
-  // console.log(items);
+  const items = useSelector(getAllAdvocates);
+  const status = useSelector(getStatus);
 
+  console.log(status);
   return status === "pending" ? (
     <LoadingBox />
   ) : (

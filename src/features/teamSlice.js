@@ -2,13 +2,36 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
   items: [],
+  singleAdvocate: {},
   status: null,
+  isDeleting: false,
 };
 
 export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
-  const resp = await axios.get("api/v1/lawyers");
+  const resp = await axios.get("http://localhost:3000/advocates");
   return resp?.data;
 });
+
+export const deleteAdvocate = createAsyncThunk(
+  "advocates/deleteApi",
+  async (payload) => {
+    const response = await axios.delete(
+      `http://localhost:3000/advocates/${payload}`
+    );
+    return response.data;
+  }
+);
+
+export const createAdvocate = createAsyncThunk(
+  "advocates/postApi",
+  async (payload) => {
+    const response = await axios.post(
+      `http://localhost:3000/advocates`,
+      payload
+    );
+    return response.data;
+  }
+);
 
 const teamSlice = createSlice({
   name: "advocates",
@@ -27,4 +50,9 @@ const teamSlice = createSlice({
     },
   },
 });
+export const getAllAdvocates = (state) => state.advocates.items;
+
+export const getStatus = (state) => state.advocates.status;
+export const getIsDeleting = (state) => state.advocates.isDeleting;
+
 export default teamSlice.reducer;

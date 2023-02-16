@@ -4,14 +4,14 @@ import "../admin/assets/libs/boxicons-2.1.1/css/boxicons.min.css";
 import "../admin/scss/App.scss";
 import Dashboard from "../admin/pages/Dashboard";
 import MainLayout from "../admin/layout/MainLayout";
-import Users from "../admin/pages/Users";
 import Login from "../admin/pages/Login";
 import Settings from "../admin/pages/Settings";
 import Services from "../admin/pages/Services";
 import ServiceDetails from "../admin/pages/ServiceDetails";
 import CreateService from "../admin/pages/CreateService";
 import Advocates from "../admin/pages/Advocates";
-
+import CreateAdvocate from "../admin/pages/CreateAdvocate";
+import EditAdvocate from "../admin/pages/EditAdvocate";
 const AdminLayout = () => {
   const user = localStorage.getItem("user");
   // if (user) {
@@ -46,7 +46,12 @@ const AdminLayout = () => {
               <Route path="/admin/services" element={<Services />} />
               <Route path="/admin/services/:id" element={<ServiceDetails />} />
               <Route path="/admin/service/create" element={<CreateService />} />
-              <Route path="admin/customers" element={<Users />} />
+              <Route
+                path="/admin/advocates/create"
+                element={<CreateAdvocate />}
+              />
+              <Route path="/admin/advocates/:id" element={<EditAdvocate />} />
+
               <Route path="/admin/login" element={<Login />} />
               <Route path="/admin/services" element={<Services />} />
               <Route path="/admin/setting" element={<Settings />} />
