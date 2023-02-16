@@ -4,7 +4,7 @@ import Clock from "../assets/images/contact-clock.svg";
 import Map from "../assets/images/contact-map.svg";
 import Email from "../assets/images/contatct-email.svg";
 import Headset from "../assets/images/contact-headset.svg";
-import Swal from "sweetalert2/dist/sweetalert2.js";
+import { Swal } from "sweetalert2/dist/sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 import HeaderDown from "../components/header/HeaderDown";
 import { Formik } from "formik";
