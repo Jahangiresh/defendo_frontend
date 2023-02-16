@@ -33,6 +33,14 @@ export const createAdvocate = createAsyncThunk(
   }
 );
 
+// export const editAdvocate = createAsyncThunk(
+//   "advocates/putAdvocate",
+//   async (payload) => {
+//     await axios.put(`http://localhost:3000/advocates${payload.id}`, payload);
+//     console.log(payload.id);
+//   }
+// );
+
 const teamSlice = createSlice({
   name: "advocates",
   initialState,
