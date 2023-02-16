@@ -44,7 +44,7 @@
   &__cover {
     width: 100%;
     margin-bottom: 60px;
-    position: relative;
+    position: relative !important;
 
     .slick-list {
       height: 100%;
@@ -68,9 +68,10 @@
         object-position: 55% 50%;
       }
     }
+
     &__content {
       position: absolute;
-      top: 50%;
+      top: 45%;
       z-index: 9;
       left: 50%;
 
@@ -80,6 +81,11 @@
       @media (max-width: 768px) {
         width: 100%;
         padding: 0 16px;
+        top: 35%;
+      }
+      @media (max-width: 1132px) {
+        width: 100%;
+        top: 33%;
       }
       &__title {
         font-family: "Merriweather";
