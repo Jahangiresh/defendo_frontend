@@ -26,19 +26,6 @@
   ],
   "advocates": [
     {
-      "id": 4,
-      "firstName": "asda",
-      "lastName": "asdasdasd",
-      "email": "asdasd",
-      "phoneNumber": 123,
-      "moreInfo": "asd",
-      "image": {
-        "id": 1,
-        "filePath": "asd",
-        "fileName": "s"
-      }
-    },
-    {
       "id": 2,
       "firstName": "asda",
       "lastName": "asdasdasd",
@@ -52,25 +39,20 @@
       }
     },
     {
-      "id": 1,
-      "firstName": "asda",
-      "lastName": "asdasdasd",
-      "email": "asdasd",
-      "phoneNumber": 123,
-      "moreInfo": "asd",
-      "image": {
-        "id": 1,
-        "filePath": "asd",
-        "fileName": "s"
-      }
-    },
-    {
-      "firstName": "asd",
-      "lastName": "asd",
+      "firstName": "Jahangir",
+      "lastName": "Shirinov",
       "email": "jahangiresh@code.edu.az",
       "phoneNumber": "0556182523",
-      "moreInfo": "asd",
+      "moreInfo": "salamsad",
       "image": {},
+      "id": 1
+    },
+    {
+      "firstName": "Jahangir",
+      "lastName": "Shirinov",
+      "email": "jahangiresh@code.edu.az",
+      "phoneNumber": "asds",
+      "moreInfo": "s",
       "id": 7
     }
   ]

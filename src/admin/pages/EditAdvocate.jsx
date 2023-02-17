@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
-import { getSingleAdvocate } from "../../features/teamSlice";
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { async } from "q";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQ":
@@ -45,23 +46,26 @@ const EditAdvocate = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      moreInfo: "",
-      image: "",
+      firstName: advocate.firstName,
+      lastName: advocate.lastName,
+      email: advocate.email,
+      phoneNumber: advocate.phoneNumber,
+      moreInfo: advocate.moreInfo,
+      image: advocate.image,
+      id: advocate.id,
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        var req = new FormData();
-        req.append("firstName", values.firstName);
-        req.append("lastName", values.lastName);
-        req.append("email", values.email);
-        req.append("phoneNumber", values.phoneNumber);
-        req.append("moreInfo", values.moreInfo);
-        req.append("image", values.image);
-        // dispatch(updateAdvocate(req));
+        await axios.put(`http://localhost:3000/advocates/${id}`, {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phoneNumber: values.phoneNumber,
+          moreInfo: values.moreInfo,
+          image: values.image,
+        });
+
+        window.location = "/admin/advocates";
       } catch (error) {
         alert("salam");
       }
