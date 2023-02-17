@@ -32,7 +32,7 @@ const EditAdvocate = () => {
       dispatch({ type: "FETCH_REQ" });
 
       try {
-        const resp = await axios.get(`http://localhost:3000/advocates/${id}`);
+        const resp = await axios.get(`../api/v1/lawyers/${id}`);
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
