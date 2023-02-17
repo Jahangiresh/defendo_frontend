@@ -8,6 +8,8 @@ import { BsPencil } from "react-icons/bs";
 import { AiOutlineUpload } from "react-icons/ai";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import { height } from "@mui/system";
+import { useFormik } from "formik";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -47,88 +49,138 @@ const ProductDetails = () => {
     getItem();
   }, [pathname]);
 
+  const { accessToken } = JSON.parse(localStorage.getItem("user"));
+  const servicePost = async (service) => {
+    const formData = new FormData();
+    formData.append("title", service.title);
+    formData.append("description", service.description);
+    formData.append("imageFile", service.image);
+
+    await axios
+      .put(`../../api/v1/providedservices/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        window.location = "/admin/services";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      image: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      servicePost(values);
+    },
+  });
+
   const [change, setChange] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  useEffect(() => {});
   return (
     <div className="productdetails">
       <div className="productdetails__images">
         <div className="productdetails__images__image">
           {service.image && (
             <img
+              style={{ width: "200px" }}
               src={"../../api/v1/files?filepath=" + service.image.filePath}
               alt=""
             />
           )}
         </div>
       </div>
-      <label className="custom-file-upload">
-        <input type="file" accept="image/*" />
-        {/* <span> Upload image</span> <AiOutlineUpload /> */}
-      </label>
-      <div className="productdetails__title">
-        <h3 className="title__h">Başlıq:</h3>
-        {change && change ? (
+      <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+        <label className="custom-file-upload mt-3">
           <input
-            style={{ marginLeft: "20px" }}
-            className="edit_inputs "
-            type="text"
-            defaultValue={service.title}
-            readOnly
+            name="image"
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              formik.setFieldValue("image", e.currentTarget.files[0]);
+            }}
           />
-        ) : (
-          <input
-            style={{ marginLeft: "20px" }}
-            className="edit_inputs"
-            type="text"
-            defaultValue={service.title}
-          />
-        )}
-        {change && change ? (
-          <BsPencil
-            className="pencil__class"
-            onClick={() => setChange((value) => !value)}
-          />
-        ) : (
-          //   <button onClick={() => setChange((value) => !value)}> change</button>
-          <BsPencil
-            className="text-success pencil__class"
-            onClick={() => setChange((value) => !value)}
-          />
-        )}
-      </div>
-      <div className="productdetails__title">
-        <h3 className="title__h">Təsviri:</h3>
-        {change && change ? (
-          <textarea
-            style={{ marginLeft: "20px" }}
-            className="edit_inputs "
-            type="text"
-            defaultValue={service.description}
-            readOnly
-          ></textarea>
-        ) : (
-          <textarea
-            style={{ marginLeft: "20px" }}
-            className="edit_inputs"
-            type="text"
-            defaultValue={service.description}
-          ></textarea>
-        )}
-        {change && change ? (
-          <BsPencil
-            className="pencil__class"
-            onClick={() => setChange((value) => !value)}
-          />
-        ) : (
-          //   <button onClick={() => setChange((value) => !value)}> change</button>
-          <BsPencil
-            className="text-success pencil__class"
-            onClick={() => setChange((value) => !value)}
-          />
-        )}
-      </div>
-      <button className="bg-success  text-light  ">save</button>
+          {/* <span> Upload image</span> <AiOutlineUpload /> */}
+        </label>
+        <div className="productdetails__title">
+          <h3 className="title__h mt-2">Başlıq:</h3>
+          {change && change ? (
+            <input
+              style={{ width: "90%", padding: "10px" }}
+              className="edit_inputs "
+              type="text"
+              defaultValue={service.title}
+              readOnly
+            />
+          ) : (
+            <input
+              style={{ width: "90%", padding: "10px" }}
+              className="edit_inputs"
+              type="text"
+              defaultValue={service.title}
+              name="title"
+              onChange={formik.handleChange}
+            />
+          )}
+          {change && change ? (
+            <BsPencil
+              className="pencil__class"
+              onClick={() => setChange((value) => !value)}
+            />
+          ) : (
+            //   <button onClick={() => setChange((value) => !value)}> change</button>
+            <BsPencil
+              className="text-success pencil__class"
+              onClick={() => setChange((value) => !value)}
+            />
+          )}
+        </div>
+        <div className="productdetails__title">
+          <h3 className="title__h mt-2">Təsviri:</h3>
+          {change && change ? (
+            <textarea
+              style={{ width: "90%", height: "200px", padding: "15px" }}
+              className="edit_inputs "
+              type="text"
+              defaultValue={service.description}
+              readOnly
+            ></textarea>
+          ) : (
+            <textarea
+              style={{ width: "90%", height: "200px", padding: "15px" }}
+              className="edit_inputs"
+              type="text"
+              name="description"
+              defaultValue={service.description}
+              onChange={formik.handleChange}
+            ></textarea>
+          )}
+          {change && change ? (
+            <BsPencil
+              className="pencil__class"
+              onClick={() => setChange((value) => !value)}
+            />
+          ) : (
+            <BsPencil
+              className="text-success pencil__class"
+              onClick={() => setChange((value) => !value)}
+            />
+          )}
+        </div>
+        <button
+          type="submit"
+          className="bg-success btn btn-success text-light  "
+        >
+          Yadd saxla
+        </button>
+      </form>
     </div>
   );
 };
