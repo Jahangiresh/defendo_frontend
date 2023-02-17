@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
   items: [],
-  singleAdvocate: {},
+  // singleAdvocate: {},
   status: null,
   isDeleting: false,
 };
@@ -37,7 +37,6 @@ export const createAdvocate = createAsyncThunk(
 //   "advocates/putAdvocate",
 //   async (payload) => {
 //     await axios.put(`http://localhost:3000/advocates${payload.id}`, payload);
-//     console.log(payload.id);
 //   }
 // );
 
