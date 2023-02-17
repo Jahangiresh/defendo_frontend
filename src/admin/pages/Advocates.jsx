@@ -43,7 +43,7 @@ export default function Advocates() {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteAdvocate(id));
-        window.location.reload(false);
+        // window.location.reload(false);
 
         if (isDeleting) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");

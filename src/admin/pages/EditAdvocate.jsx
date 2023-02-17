@@ -33,7 +33,9 @@ const EditAdvocate = () => {
       dispatch({ type: "FETCH_REQ" });
 
       try {
-        const resp = await axios.get(`http://localhost:3000/advocates/${id}`);
+        const resp = await axios.get(
+          `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${id}`
+        );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
@@ -56,14 +58,18 @@ const EditAdvocate = () => {
     },
     onSubmit: async (values) => {
       try {
-        await axios.put(`http://localhost:3000/advocates/${id}`, {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          phoneNumber: values.phoneNumber,
-          moreInfo: values.moreInfo,
-          image: values.image,
-        });
+        await axios.put(
+          `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${id}`,
+          {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phoneNumber: values.phoneNumber,
+            moreInfo: values.moreInfo,
+            image: values.image,
+            role: values.role,
+          }
+        );
 
         window.location = "/admin/advocates";
       } catch (error) {
@@ -152,6 +158,20 @@ const EditAdvocate = () => {
             type="moreInfo"
             onChange={formik.handleChange}
             defaultValue={advocate.moreInfo}
+          />
+          <label
+            className="createadvocates__forms__label"
+            htmlFor="phoneNumber"
+          >
+            role
+          </label>
+          <input
+            className="createadvocates__forms__input"
+            id="role"
+            name="role"
+            type="role"
+            onChange={formik.handleChange}
+            defaultValue={advocate.role}
           />
           <button className="createadvocates__forms__button" type="submit">
             Submit

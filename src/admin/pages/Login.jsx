@@ -11,16 +11,19 @@ const Login = () => {
 
   const loginHandler = async () => {
     try {
-      const { data } = await axios.post("../../api/v1/authentication/login", {
-        emailOrUsername: username,
-        password: password,
-      });
-      // console.log(data);
+      const { data } = await axios.post(
+        "http://defendo-001-site1.atempurl.com/api/v1/authentication/login",
+        {
+          emailOrUsername: username,
+          password: password,
+        }
+      );
+      console.log(data);
       localStorage.setItem("user", JSON.stringify(data));
       // navigate("/admin");
       window.location = "/admin";
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 

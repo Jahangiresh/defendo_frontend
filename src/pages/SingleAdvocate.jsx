@@ -32,7 +32,7 @@ const SingleAdvocate = () => {
   const params = useParams();
   const _id = params.id;
 
-  const apiEndPoint = `http://localhost:3000/advocates/${_id}`;
+  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${_id}`;
 
   useEffect(() => {
     const getAdvocate = async () => {
@@ -61,7 +61,10 @@ const SingleAdvocate = () => {
               <div className="singleadvocate__container__row__left__image">
                 {advocate.image && (
                   <img
-                    src={"/api/v1/files?filepath=" + advocate.image.filePath}
+                    src={
+                      "http://defendo-001-site1.atempurl.com/api/v1/files?filepath=" +
+                      advocate.image.filePath
+                    }
                     alt=""
                   />
                 )}

@@ -21,7 +21,7 @@ const CreateService = () => {
     formData.append("imageFile", service.image);
     await axios
       .post(
-        "../../api/v1/providedservices",
+        "http://defendo-001-site1.atempurl.com/api/v1/providedservices",
         {
           title: formData.get("title"),
           description: formData.get("description"),
@@ -54,14 +54,7 @@ const CreateService = () => {
   return (
     <div className="productdetails">
       <div className="productdetails__images">
-        <div className="productdetails__images__image">
-          {/* {service.image && (
-            <img
-              src={"../../api/v1/files?filepath=" + service.image.filePath}
-              alt=""
-            />
-          )} */}
-        </div>
+        <div className="productdetails__images__image"></div>
       </div>
       <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
         <label className="custom-file-upload">

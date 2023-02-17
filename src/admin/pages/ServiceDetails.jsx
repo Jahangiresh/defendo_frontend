@@ -34,7 +34,7 @@ const ProductDetails = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `../../api/v1/providedservices/${id}`;
+  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`;
   useEffect(() => {
     const getItem = async () => {
       try {
@@ -57,12 +57,16 @@ const ProductDetails = () => {
     formData.append("imageFile", service.image);
 
     await axios
-      .put(`../../api/v1/providedservices/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      .put(
+        `http://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((res) => {
         window.location = "/admin/services";
       })

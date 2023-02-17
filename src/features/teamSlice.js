@@ -8,7 +8,9 @@ const initialState = {
 };
 
 export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
-  const resp = await axios.get("http://localhost:3000/advocates");
+  const resp = await axios.get(
+    "http://defendo-001-site1.atempurl.com/api/v1/lawyers"
+  );
   return resp?.data;
 });
 
@@ -16,20 +18,32 @@ export const deleteAdvocate = createAsyncThunk(
   "advocates/deleteApi",
   async (payload) => {
     const response = await axios.delete(
-      `http://localhost:3000/advocates/${payload}`
+      `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${payload}`
     );
+    console.log(payload);
     return response.data;
   }
 );
 
+const localData = localStorage.getItem("user");
 export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
-    const response = await axios.post(
-      `http://localhost:3000/advocates`,
-      payload
-    );
-    return response.data;
+    try {
+      const response = await axios.post(
+        `http://defendo-001-site1.atempurl.com/api/v1/lawyers`,
+        payload,
+        {
+          headers: {
+            Authorization: localData ? `Bearer ${localData.accessToken}` : "",
+          },
+        }
+      );
+      window.location = "/admin/advocates";
+      return response.data;
+    } catch (error) {
+      alert(error);
+    }
   }
 );
 

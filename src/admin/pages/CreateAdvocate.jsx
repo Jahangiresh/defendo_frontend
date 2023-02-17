@@ -15,6 +15,7 @@ const CreateAdvocate = () => {
       phoneNumber: "",
       moreInfo: "",
       image: "",
+      role: "",
     },
     onSubmit: (values) => {
       try {
@@ -24,15 +25,15 @@ const CreateAdvocate = () => {
         req.append("email", values.email);
         req.append("phoneNumber", values.phoneNumber);
         req.append("moreInfo", values.moreInfo);
-        req.append("image", values.image);
+        req.append("imageFile", values.image);
+        req.append("role", values.role);
+
         dispatch(createAdvocate(req));
       } catch (error) {
         alert("salam");
       }
     },
   });
-
- 
 
   return (
     <div className="createadvocates">
@@ -104,6 +105,17 @@ const CreateAdvocate = () => {
           type="moreInfo"
           onChange={formik.handleChange}
           value={formik.values.moreInfo}
+        />
+        <label className="createadvocates__forms__label" htmlFor="phoneNumber">
+          role
+        </label>
+        <input
+          className="createadvocates__forms__input"
+          id="role"
+          name="role"
+          type="role"
+          onChange={formik.handleChange}
+          value={formik.values.role}
         />
         <button className="createadvocates__forms__button" type="submit">
           Submit

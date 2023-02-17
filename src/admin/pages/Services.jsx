@@ -39,7 +39,7 @@ const Services = () => {
     error: false,
     services: [],
   });
-  const apiEndPoint = `../api/v1/providedservices`;
+  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/providedservices`;
   useEffect(() => {
     const getItem = async () => {
       try {
