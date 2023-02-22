@@ -2,10 +2,9 @@ import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { async } from "q";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQ":
@@ -33,7 +32,7 @@ const EditAdvocate = () => {
       dispatch({ type: "FETCH_REQ" });
 
       try {
-        const resp = await axios.get(`http://localhost:3000/advocates/${id}`);
+        const resp = await axios.get(`../api/v1/lawyers/${id}`);
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {

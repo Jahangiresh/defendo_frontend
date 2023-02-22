@@ -4,24 +4,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../scss/login.scss";
+import AuthService from "../services/AuthService";
+
 const Login = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const navigate = useNavigate();
 
   const loginHandler = async () => {
-    try {
-      const { data } = await axios.post("../../api/v1/authentication/login", {
-        emailOrUsername: username,
-        password: password,
-      });
-      // console.log(data);
-      localStorage.setItem("user", JSON.stringify(data));
-      // navigate("/admin");
-      window.location = "/admin";
-    } catch (error) {
-      alert(error);
-    }
+    await AuthService.login(username, password);
   };
 
   return (

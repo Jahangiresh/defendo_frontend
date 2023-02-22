@@ -7,17 +7,23 @@ const initialState = {
   isDeleting: false,
 };
 
+const { accessToken } = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : "";
+
 export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
-  const resp = await axios.get("http://localhost:3000/advocates");
+  const resp = await axios.get("../../api/v1/lawyers");
   return resp?.data;
 });
 
 export const deleteAdvocate = createAsyncThunk(
   "advocates/deleteApi",
   async (payload) => {
-    const response = await axios.delete(
-      `http://localhost:3000/advocates/${payload}`
-    );
+    const response = await axios.delete(`../../api/v1/lawyers/${payload}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     return response.data;
   }
 );
@@ -25,10 +31,19 @@ export const deleteAdvocate = createAsyncThunk(
 export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
-    const response = await axios.post(
-      `http://localhost:3000/advocates`,
-      payload
-    );
+    const response = await axios
+      .post(`../../api/v1/lawyers`, payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(() => {
+        window.location = "/admin/advocates";
+      })
+      .catch((err) => {
+        alert(err);
+      });
     return response.data;
   }
 );

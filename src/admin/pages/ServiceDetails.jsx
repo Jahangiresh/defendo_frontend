@@ -34,7 +34,7 @@ const ProductDetails = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `../../api/v1/providedservices/${id}`;
+  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`;
   useEffect(() => {
     const getItem = async () => {
       try {

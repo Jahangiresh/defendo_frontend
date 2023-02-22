@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
 import { useDispatch } from "react-redux";
 import { createAdvocate } from "../../features/teamSlice";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 const CreateAdvocate = () => {
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const CreateAdvocate = () => {
       email: "",
       phoneNumber: "",
       moreInfo: "",
-      image: "",
+      imageFile: "",
     },
     onSubmit: (values) => {
       try {
@@ -24,15 +24,22 @@ const CreateAdvocate = () => {
         req.append("email", values.email);
         req.append("phoneNumber", values.phoneNumber);
         req.append("moreInfo", values.moreInfo);
-        req.append("image", values.image);
-        dispatch(createAdvocate(req));
+        req.append("imageFile", values.imageFile);
+        dispatch(
+          createAdvocate({
+            firstName: req.get("firstName"),
+            lastName: req.get("lastName"),
+            email: req.get("email"),
+            phoneNumber: req.get("phoneNumber"),
+            moreInfo: req.get("moreInfo"),
+            imageFile: req.get("imageFile"),
+          })
+        );
       } catch (error) {
-        alert("salam");
+        alert(error);
       }
     },
   });
-
- 
 
   return (
     <div className="createadvocates">
@@ -43,11 +50,11 @@ const CreateAdvocate = () => {
         <input
           className="createadvocates__forms__input"
           id="image"
-          name="image"
+          name="imageFile"
           accept="image/*"
           type="file"
           onChange={(e) => {
-            formik.setFieldValue("image", e.currentTarget.files[0]);
+            formik.setFieldValue("imageFile", e.currentTarget.files[0]);
           }}
         />
         <label className="createadvocates__forms__label" htmlFor="firstName">

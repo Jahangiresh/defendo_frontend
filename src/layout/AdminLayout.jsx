@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "../admin/assets/libs/boxicons-2.1.1/css/boxicons.min.css";
 import "../admin/scss/App.scss";
@@ -12,30 +12,43 @@ import CreateService from "../admin/pages/CreateService";
 import Advocates from "../admin/pages/Advocates";
 import CreateAdvocate from "../admin/pages/CreateAdvocate";
 import EditAdvocate from "../admin/pages/EditAdvocate";
+import AuthService from "../admin/services/AuthService";
+
 const AdminLayout = () => {
   const user = localStorage.getItem("user");
-  // if (user) {
-  //   const { accessToken, refreshToken } = JSON.parse(user);
-  //   // setInterval(() => {
-  //   const get = async () => {
-  //     await axios
-  //       .post("../../api/v1/authentication/refreshtokenlogin", {
-  //         accessToken: accessToken,
-  //         refreshToken: refreshToken,
-  //       })
-  //       .then((res) => {
-  //         console.log(res);
-  //         // localStorage.removeItem("user");
-  //         // localStorage.setItem("user", res.data);
-  //         user = res.data;
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
-  //   get();
-  //   // }, 10000);
-  // }
+
+  const checkTokenExpiration = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.accessToken) {
+      const decodedToken = parseJwt(user.accessToken);
+      if (decodedToken.exp * 1000 < Date.now()) {
+        try {
+          await AuthService.refreshToken();
+        } catch (error) {
+          AuthService.logout();
+        }
+      }
+    }
+  };
+
+  function parseJwt(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
+  }
+
+  setInterval(checkTokenExpiration, 60000 * 5);
+
   return (
     <div className="admin-wrapper">
       <Router>
