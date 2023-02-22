@@ -21,7 +21,7 @@ const CreateService = () => {
     formData.append("imageFile", service.image);
     await axios
       .post(
-        "../../api/v1/providedservices",
+        "http://defendo-001-site1.atempurl.com/api/v1/providedservices",
         {
           title: formData.get("title"),
           description: formData.get("description"),
@@ -30,7 +30,6 @@ const CreateService = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
           },
         }
       )
@@ -38,6 +37,7 @@ const CreateService = () => {
         window.location = "/admin/services";
       })
       .catch((error) => {
+        console.log(error);
         popUp("Oops...", "error", "Zəhmət olmasa dataları düzgün daxil edin");
       });
   };
