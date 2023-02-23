@@ -59,7 +59,7 @@ const Services = () => {
   const deleteService = async (e, id) => {
     e.stopPropagation();
     await axios
-      .delete(`${apiEndPoint}/${id}`)
+      .delete(`https://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`)
       .then(() => {
         // window.location.reload(false);
         // const swalWithBootstrapButtons = Swal.mixin({

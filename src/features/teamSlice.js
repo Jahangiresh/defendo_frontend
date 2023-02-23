@@ -19,11 +19,14 @@ export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
 export const deleteAdvocate = createAsyncThunk(
   "advocates/deleteApi",
   async (payload) => {
-    const response = await axios.delete(`../../api/v1/lawyers/${payload}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const response = await axios.delete(
+      `http://defendo-001-site1.atempurl.com/api/v1/lawyers${payload}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return response.data;
   }
 );
@@ -32,7 +35,7 @@ export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
     const response = await axios
-      .post(`../../api/v1/lawyers`, payload, {
+      .post(`http://defendo-001-site1.atempurl.com/api/v1/lawyers`, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${accessToken}`,

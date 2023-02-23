@@ -55,14 +55,17 @@ const EditAdvocate = () => {
     },
     onSubmit: async (values) => {
       try {
-        await axios.put(`http://localhost:3000/advocates/${id}`, {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          phoneNumber: values.phoneNumber,
-          moreInfo: values.moreInfo,
-          image: values.image,
-        });
+        await axios.put(
+          `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${id}`,
+          {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phoneNumber: values.phoneNumber,
+            moreInfo: values.moreInfo,
+            image: values.image,
+          }
+        );
 
         window.location = "/admin/advocates";
       } catch (error) {

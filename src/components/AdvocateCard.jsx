@@ -28,7 +28,7 @@ const AdvocateCard = () => {
             <div className="advocatecard__slider__card__image">
               <img
                 src={
-                  "https://localhost:7148/api/v1/files?filepath=" +
+                  "http://defendo-001-site1.atempurl.com/api/v1/files?filepath=" +
                   item.image.filePath
                 }
                 alt=""

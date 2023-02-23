@@ -13,6 +13,8 @@ import Advocates from "../admin/pages/Advocates";
 import CreateAdvocate from "../admin/pages/CreateAdvocate";
 import EditAdvocate from "../admin/pages/EditAdvocate";
 import AuthService from "../admin/services/AuthService";
+import Blogs from "../admin/pages/Blogs";
+import CreateBlog from "../admin/pages/CreateBlog";
 
 const AdminLayout = () => {
   const user = localStorage.getItem("user");
@@ -57,6 +59,8 @@ const AdminLayout = () => {
             <Route path="/admin" element={<MainLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="/admin/services" element={<Services />} />
+              <Route path="/admin/blogs" element={<Blogs />} />
+              <Route path="/admin/blogs/create" element={<CreateBlog />} />
               <Route path="/admin/services/:id" element={<ServiceDetails />} />
               <Route path="/admin/service/create" element={<CreateService />} />
               <Route

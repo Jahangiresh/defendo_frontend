@@ -24,11 +24,15 @@ const Contact = () => {
 
   const contactFormsPost = async (values) => {
     await axios
-      .post("https://localhost:7148/api/v1/contactusforms", values, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .post(
+        "http://defendo-001-site1.atempurl.com/api/v1/contactusforms",
+        values,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then(() => {
         popUp(
           "Tamamlandı",
