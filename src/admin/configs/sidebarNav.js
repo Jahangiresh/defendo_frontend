@@ -12,6 +12,12 @@ const sidebarNav = [
     icon: <i className="bx bx-receipt"></i>,
     text: "Services",
   },
+  {
+    link: "/admin/blogs",
+    section: "blogs",
+    icon: <i className="bx bx-receipt"></i>,
+    text: "Blogs",
+  },
   // {
   //   link: "/admin/messages",
   //   section: "messages",
