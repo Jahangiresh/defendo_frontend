@@ -32,17 +32,15 @@ const ServicesDetail = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `/api/v1/providedservices/${id}`;
+  const apiEndPoint = `https://defendovb.az/api/v1/providedservices/${id}`;
   useEffect(() => {
-    console.log("salam");
     const getItem = async () => {
       try {
         dispatch({ type: "FETCH_REQ" });
         const { data } = await axios.get(apiEndPoint);
-        console.log(data);
         dispatch({ type: "FETCH_SUCCES", payload: data });
       } catch (error) {
-        console.log("error:" + error);
+        alert("error:" + error);
         dispatch({ type: "FETCH_FAIL" });
         alert(error);
         window.location.href = "/*";
@@ -76,7 +74,7 @@ const ServicesDetail = () => {
               <div className="logo">
                 {service.image && (
                   <img
-                    src={`/api/v1/files?filepath=${service.image.filePath}`}
+                    src={`https://defendovb.az/api/v1/files?filepath=${service.image.filePath}`}
                     alt=""
                   />
                 )}

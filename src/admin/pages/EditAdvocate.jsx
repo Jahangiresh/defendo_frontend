@@ -32,7 +32,7 @@ const EditAdvocate = () => {
       dispatch({ type: "FETCH_REQ" });
 
       try {
-        const resp = await axios.get(`../api/v1/lawyers/${id}`);
+        const resp = await axios.get(`https://defendovb.az/api/v1/lawyers/${id}`);
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
@@ -56,7 +56,7 @@ const EditAdvocate = () => {
     onSubmit: async (values) => {
       try {
         await axios.put(
-          `http://defendo-001-site1.atempurl.com/api/v1/lawyers/${id}`,
+          `https://defendovb.az/api/v1/lawyers/${id}`,
           {
             firstName: values.firstName,
             lastName: values.lastName,

@@ -23,7 +23,6 @@ const reducer = (state, action) => {
 
 const SingleAdvocate = () => {
   const pathname = useLocation();
-  console.log(pathname);
   const [{ advocate, loading, error }, dispatch] = useReducer(reducer, {
     advocate: {},
     loading: true,
@@ -61,7 +60,10 @@ const SingleAdvocate = () => {
               <div className="singleadvocate__container__row__left__image">
                 {advocate.image && (
                   <img
-                    src={"/api/v1/files?filepath=" + advocate.image.filePath}
+                    src={
+                      "https://defendovb.az/api/v1/files?filepath=" +
+                      advocate.image.filePath
+                    }
                     alt=""
                   />
                 )}

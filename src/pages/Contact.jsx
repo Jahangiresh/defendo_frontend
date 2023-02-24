@@ -25,7 +25,7 @@ const Contact = () => {
   const contactFormsPost = async (values) => {
     await axios
       .post(
-        "http://defendo-001-site1.atempurl.com/api/v1/contactusforms",
+        "https://defendovb.az/api/v1/contactusforms",
         values,
         {
           headers: {
@@ -55,7 +55,7 @@ const Contact = () => {
               "Zəhmət olmasa dataları düzgün daxil edin"
             );
           } else {
-            console.log("An error occurred while sending the request: ", error);
+            alert("An error occurred while sending the request: ", error);
           }
         }
       });

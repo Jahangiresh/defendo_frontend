@@ -13,7 +13,6 @@ const AdvocateCard = () => {
   const items = useSelector(getAllAdvocates);
   const status = useSelector(getStatus);
 
-  console.log(status);
   return status === "pending" ? (
     <LoadingBox />
   ) : (
@@ -28,7 +27,7 @@ const AdvocateCard = () => {
             <div className="advocatecard__slider__card__image">
               <img
                 src={
-                  "http://defendo-001-site1.atempurl.com/api/v1/files?filepath=" +
+                  "https://defendovb.az/api/v1/files?filepath=" +
                   item.image.filePath
                 }
                 alt=""

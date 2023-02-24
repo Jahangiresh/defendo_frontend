@@ -1,12 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://defendo-001-site1.atempurl.com/api/v1";
+const API_URL = "https://defendovb.az/api/v1/";
 
 class AuthService {
   async login(username, password) {
-    console.log("sa");
     return await axios
-      .post(API_URL + "/authentication/login", {
+      .post(API_URL + "authentication/login", {
         emailOrUsername: username,
         password: password,
       })
@@ -34,7 +33,7 @@ class AuthService {
     const user = JSON.parse(localStorage.getItem("user"));
     await axios
       .post(
-        API_URL + "/defendo/authentication/refreshtokenlogin",
+        API_URL + "/authentication/refreshtokenlogin",
         {
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
@@ -57,7 +56,7 @@ class AuthService {
         // return response.data;
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }
 }
