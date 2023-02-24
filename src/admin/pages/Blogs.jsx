@@ -47,7 +47,7 @@ export default function Blogs() {
         dispatch(deleteBlog(id));
         setTimeout(() => {
           window.location.reload(false);
-        });
+        }, 700);
         if (isDeleting) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
