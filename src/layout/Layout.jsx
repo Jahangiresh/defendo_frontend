@@ -16,19 +16,20 @@ import ServicesDetail from "../pages/ServicesDetail";
 import SingleAdvocate from "../pages/SingleAdvocate";
 import "../assets/css/layout.scss";
 import SingleNews from "../pages/SingleNews";
+import Blogs from "../admin/pages/Blogs";
 
 const Layout = () => {
   return (
     <Router>
       <ScrollToTop />
-      <UpperHeader /> 
+      <UpperHeader />
       <Header />
       <Routes>
         <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Advocates />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/news/:id" element={<SingleNews />} />
+        <Route path="/blogs" element={<News />} />
+        <Route path="/blogs/:id" element={<SingleNews />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/team/:id" element={<SingleAdvocate />} />

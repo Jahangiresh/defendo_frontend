@@ -45,7 +45,7 @@
     width: 100%;
     margin-bottom: 60px;
     position: relative !important;
-
+    height: 100vh;
     .slick-list {
       height: 100%;
     }
@@ -71,7 +71,7 @@
 
     &__content {
       position: absolute;
-      top: 45%;
+      top: 50%;
       z-index: 9;
       left: 50%;
 
@@ -81,11 +81,11 @@
       @media (max-width: 768px) {
         width: 100%;
         padding: 0 16px;
-        top: 35%;
+        top: 50%;
       }
       @media (max-width: 1132px) {
         width: 100%;
-        top: 33%;
+        // top: 50%;
       }
       &__title {
         font-family: "Merriweather";
@@ -216,8 +216,14 @@
       display: flex !important;
       justify-content: center;
     }
+    // .slick-track {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   margin: 0;
+    // }
     &__slider {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       &__card {
         height: 402px;

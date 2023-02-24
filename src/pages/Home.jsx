@@ -9,8 +9,12 @@ import linePng from "../assets/images/LineBtn.png";
 import logoMain from "../assets/images/logoBlue.svg";
 import Team from "../components/Team";
 import ServiceCard from "../components/ServiceCard";
+import { useSelector } from "react-redux";
+import { getAllSlides, getStatus } from "../features/slideSlice";
 
 const Home = () => {
+  const slides = useSelector(getAllSlides);
+  const status = useSelector(getStatus);
   var settings = {
     infinite: true,
     speed: 100,
@@ -38,12 +42,21 @@ const Home = () => {
           </button>
         </div>
         <Slider {...settings} className="home__cover">
-          <div>
+          {slides &&
+            slides.map((slide) => (
+              <div key={slide.id}>
+                <img
+                  src={`https://defendovb.az/api/v1/files?filepath=${slide.image.filePath}`}
+                  alt=""
+                />
+              </div>
+            ))}
+          {/* <div>
             <img src={coverHomePng} alt="" />
           </div>{" "}
           <div>
             <img src={coverHomePng} alt="" />
-          </div>
+          </div> */}
         </Slider>
 
         <div className="home__container custom-container">

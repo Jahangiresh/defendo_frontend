@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 import mapPng from "../assets/images/mapSvg.svg";
 import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
+import { getAllAdvocates, getStatus } from "../features/teamSlice";
 const Team = () => {
-  const { items, status } = useSelector((state) => state.advocates);
+  const advocates = useSelector(getAllAdvocates);
+  const status = useSelector(getStatus);
   var teamSettings = {
     infinite: true,
     speed: 100,
@@ -46,33 +48,71 @@ const Team = () => {
       },
     ],
   };
+  console.log(advocates);
   return (
     <div className="team">
       <h3 className="team__title">komandamız</h3>
       <p className="team__intro">pesekar komandamiz ile tanish ol</p>
-      <Slider className="team__slider" {...teamSettings}>
-        {items &&
-          items.map((item) => (
-            <Link to={`/team/${item.id}`} className="team__links">
-              <div key={item.id} className="team__slider__card">
-                <div className="team__slider__card__image">
-                  <img src={vekilPng} alt="" />
-                  <ul className="team__slider__card__image__ul">
-                    <li>
-                      <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
-                    </li>
-                    <li>
-                      <img src={phonePng} alt="" /> +994 50 555-55-55
-                    </li>
-                    <li>
-                      <img src={messagePng} alt="" /> officedefendo@gmail.com
-                    </li>
-                  </ul>
-                </div>
-                <div className="team__slider__card__name">{item.name}</div>
-              </div>
-            </Link>
-          ))}
+
+      <Slider className="team__slider row" {...teamSettings}>
+        <Link to={`/team/id}`} className="team__links ">
+          <div className="team__slider__card">
+            <div className="team__slider__card__image">
+              <img src={vekilPng} alt="wqe" />
+              <ul className="team__slider__card__image__ul">
+                <li>
+                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                </li>
+                <li>
+                  <img src={phonePng} alt="" /> +994 50 555-55-55
+                </li>
+                <li>
+                  <img src={messagePng} alt="" /> officedefendo@gmail.com
+                </li>
+              </ul>
+            </div>
+            <div className="team__slider__card__name">sasd </div>
+          </div>
+        </Link>
+        <Link to={`/team/id}`} className="team__links ">
+          <div className="team__slider__card">
+            <div className="team__slider__card__image">
+              <img src={vekilPng} alt="wqe" />
+              <ul className="team__slider__card__image__ul">
+                <li>
+                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                </li>
+                <li>
+                  <img src={phonePng} alt="" /> +994 50 555-55-55
+                </li>
+                <li>
+                  <img src={messagePng} alt="" /> officedefendo@gmail.com
+                </li>
+              </ul>
+            </div>
+            <div className="team__slider__card__name">sasd </div>
+          </div>
+        </Link>
+        
+        <Link to={`/team/id}`} className="team__links ">
+          <div className="team__slider__card">
+            <div className="team__slider__card__image">
+              <img src={vekilPng} alt="wqe" />
+              <ul className="team__slider__card__image__ul">
+                <li>
+                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                </li>
+                <li>
+                  <img src={phonePng} alt="" /> +994 50 555-55-55
+                </li>
+                <li>
+                  <img src={messagePng} alt="" /> officedefendo@gmail.com
+                </li>
+              </ul>
+            </div>
+            <div className="team__slider__card__name">sasd </div>
+          </div>
+        </Link>
       </Slider>
     </div>
   );

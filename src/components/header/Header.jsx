@@ -90,7 +90,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="header__container__nav__ul__li">
-              <Link className="link-default" to="/news">
+              <Link className="link-default" to="/blogs">
                 <span className="link__span">{t("Məqalələr")} </span>
               </Link>
             </li>
