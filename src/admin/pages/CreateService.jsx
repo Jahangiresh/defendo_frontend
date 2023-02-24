@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Formik, useFormik } from "formik";
 import React from "react";
+import { json } from "react-router-dom";
 import Swal from "sweetalert2/dist/sweetalert2";
 import "../scss/productdetails.scss";
 
@@ -14,6 +15,7 @@ const CreateService = () => {
   };
 
   const { accessToken } = JSON.parse(localStorage.getItem("user"));
+  console.log(accessToken);
   const servicePost = async (service) => {
     const formData = new FormData();
     formData.append("title", service.title);
@@ -21,15 +23,17 @@ const CreateService = () => {
     formData.append("imageFile", service.image);
     await axios
       .post(
-        "http://defendo-001-site1.atempurl.com/api/v1/providedservices",
-        {
-          title: formData.get("title"),
-          description: formData.get("description"),
-          imageFile: formData.get("imageFile"),
-        },
+        "http://defendo-001-site1.atempurl.com/api/v1/defendo/providedservices",
+        // {
+        //   title: formData.get("title"),
+        //   description: formData.get("description"),
+        //   imageFile: formData.get("imageFile"),
+        // },
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       )

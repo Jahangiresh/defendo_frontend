@@ -54,8 +54,6 @@ const Services = () => {
     getItem();
   }, []);
 
-  // const { accessToken } = JSON.parse(localStorage.getItem("user"));
-
   const deleteService = async (e, id) => {
     e.stopPropagation();
     await axios
@@ -144,7 +142,10 @@ const Services = () => {
                   <TableCell component="th" scope="row">
                     <img
                       style={{ width: "50px" }}
-                      src={"../api/v1/files?filepath=" + service.image.filePath}
+                      src={
+                        "http://defendo-001-site1.atempurl.com/api/v1/files?filepath=" +
+                        service.image.filePath
+                      }
                       alt=""
                     />
                   </TableCell>

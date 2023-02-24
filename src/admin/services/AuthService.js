@@ -1,17 +1,21 @@
 import axios from "axios";
 
-const API_URL = "http://defendo-001-site1.atempurl.com/api/v1/authentication";
+const API_URL = "http://defendo-001-site1.atempurl.com/api/v1";
 
 class AuthService {
   async login(username, password) {
-    await axios
-      .post(API_URL + "/login", {
+    console.log("sa");
+    return await axios
+      .post(API_URL + "/authentication/login", {
         emailOrUsername: username,
         password: password,
       })
       .then((response) => {
         if (response.data.accessToken) {
           localStorage.setItem("user", JSON.stringify(response.data));
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.accessToken}`;
         }
         window.location = "/admin";
         return response.data;
@@ -23,13 +27,14 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
+    axios.defaults.headers.common["Authorization"] = "";
   }
 
   async refreshToken() {
     const user = JSON.parse(localStorage.getItem("user"));
-    return await axios
+    await axios
       .post(
-        API_URL + "/refreshtokenlogin",
+        API_URL + "/defendo/authentication/refreshtokenlogin",
         {
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
@@ -41,12 +46,18 @@ class AuthService {
         }
       )
       .then((response) => {
-        if (response.data.accessToken) {
+        if (response.data) {
           user.accessToken = response.data.accessToken;
           user.refreshToken = response.data.refreshToken;
           localStorage.setItem("user", JSON.stringify(user));
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.accessToken}`;
         }
-        return response.data;
+        // return response.data;
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 }

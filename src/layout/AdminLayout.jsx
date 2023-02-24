@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "../admin/assets/libs/boxicons-2.1.1/css/boxicons.min.css";
 import "../admin/scss/App.scss";
@@ -49,7 +49,12 @@ const AdminLayout = () => {
     return JSON.parse(jsonPayload);
   }
 
-  setInterval(checkTokenExpiration, 60000 * 5);
+  useEffect(() => {
+    const intervalId = setInterval(checkTokenExpiration, 60000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div className="admin-wrapper">
