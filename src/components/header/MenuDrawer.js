@@ -119,22 +119,22 @@ export default function MenuDrawer() {
                 </Link>
               </li>
               <li className="menudrawer__container__down__ul__li">
-                <Link className="link-default" to="/">
+                <Link className="link-default" to="/about">
                   <span className="link__span">haqqımızda </span>
                 </Link>
               </li>
               <li className="menudrawer__container__down__ul__li">
-                <Link className="link-default" to="/">
+                <Link className="link-default" to="/team">
                   <span className="link__span">komandamız </span>
                 </Link>
               </li>
               <li className="menudrawer__container__down__ul__li">
-                <Link className="link-default" to="/sa">
+                <Link className="link-default" to="/services">
                   <span className="link__span">xidmətlər </span>
                 </Link>
               </li>
               <li className="menudrawer__container__down__ul__li">
-                <Link className="link-default" to="/sa">
+                <Link className="link-default" to="/blogs">
                   <span className="link__span">meqaleler </span>
                 </Link>
               </li>

@@ -11,6 +11,7 @@ import facebookIcon from "../assets/images/facebookIcon.png";
 import linkedinIcon from "../assets/images/linkedinIcon.png";
 import twitterIcon from "../assets/images/twitterIcon.png";
 import { useSelector } from "react-redux";
+import { getAllBlogs, getStatus } from "../features/blogSlice";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,7 +27,9 @@ const reducer = (state, action) => {
 };
 
 const SingleNews = () => {
-  const { items, status } = useSelector((state) => state.news);
+  const blogs = useSelector(getAllBlogs);
+  const status = useSelector(getStatus);
+
   const [{ loading, item, error }, dispatch] = useReducer(reducer, {
     loading: true,
     item: {},
@@ -39,7 +42,7 @@ const SingleNews = () => {
     const getItem = async () => {
       try {
         dispatch({ type: "FETCH_REQ" });
-        const resp = await axios.get(`http://localhost:3000/news/${id}`);
+        const resp = await axios.get(`https://defendovb.az/api/v1/blogs/${id}`);
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -69,11 +72,11 @@ const SingleNews = () => {
             </div>
             <h3 className="singlenews__container__row__left__xulase">Xülasə</h3>
             <p className="singlenews__container__row__left__xulaseP">
-              {item.xulase}
+              {item.title}
             </p>
             <h3 className="singlenews__container__row__left__xulase">Məqalə</h3>
             <p className="singlenews__container__row__left__xulaseP">
-              {item.meqale}
+              {item.body}
             </p>
             <div className="singlenews__container__row__left__share">
               <h3 className="singlenews__container__row__left__xulase share__h">
@@ -102,8 +105,8 @@ const SingleNews = () => {
                   {item.title}
                 </h3>
               </li>
-              {items &&
-                items
+              {blogs &&
+                blogs
                   .filter((it) => it.id != id)
                   .map((it) => (
                     <Link

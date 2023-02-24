@@ -45,6 +45,9 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/services">Xidmətlər</Link>
+              </li>{" "}
+              <li>
+                <Link to="/blogs">Məqalələr</Link>
               </li>
             </ul>
           </div>
