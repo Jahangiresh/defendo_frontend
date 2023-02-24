@@ -39,7 +39,7 @@ const Services = () => {
     error: false,
     services: [],
   });
-  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/providedservices`;
+  const apiEndPoint = `https://defendovb.az/api/v1/providedservices`;
   useEffect(() => {
     const getItem = async () => {
       try {
@@ -57,7 +57,7 @@ const Services = () => {
   const deleteService = async (e, id) => {
     e.stopPropagation();
     await axios
-      .delete(`https://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`)
+      .delete(`https://defendovb.az/api/v1/providedservices/${id}`)
       .then(() => {
         // window.location.reload(false);
         // const swalWithBootstrapButtons = Swal.mixin({
@@ -143,7 +143,7 @@ const Services = () => {
                     <img
                       style={{ width: "50px" }}
                       src={
-                        "http://defendo-001-site1.atempurl.com/api/v1/files?filepath=" +
+                        "https://defendovb.az/api/v1/files?filepath=" +
                         service.image.filePath
                       }
                       alt=""

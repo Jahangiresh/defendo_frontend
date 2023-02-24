@@ -10,7 +10,7 @@ const initialState = {
 export const serviceFetch = createAsyncThunk(
   "service/serviceFetch",
   async () => {
-    const resp = await axios.get("api/v1/providedservices");
+    const resp = await axios.get("https://defendovb.az/api/v1/providedservices");
 
     return resp?.data;
   }

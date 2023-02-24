@@ -12,7 +12,7 @@ const { accessToken } = localStorage.getItem("user")
 
 export const blogFetch = createAsyncThunk("blogs/blogFetch", async () => {
   const resp = await axios.get(
-    "http://defendo-001-site1.atempurl.com/api/v1/blogs"
+    "https://defendovb.az/api/v1/blogs"
   );
   return resp?.data;
 });
@@ -21,7 +21,7 @@ export const deleteBlog = createAsyncThunk(
   "blogs/deleteApi",
   async (payload) => {
     const response = await axios.delete(
-      `http://defendo-001-site1.atempurl.com/api/v1/defendo/blogs/${payload}`,
+      `https://defendovb.az/api/v1/blogs/${payload}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -35,7 +35,7 @@ export const deleteBlog = createAsyncThunk(
 export const createBLog = createAsyncThunk("blogs/postApi", async (payload) => {
   const response = await axios
     .post(
-      `http://defendo-001-site1.atempurl.com/api/v1/defendo/blogs`, payload, {
+      `https://defendovb.az/api/v1/blogs`, payload, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${accessToken}`,

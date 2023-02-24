@@ -19,7 +19,7 @@ const ServiceCard = () => {
               <div className="custom-card">
                 <div>
                   <img
-                    src={"api/v1/files?filepath=" + item.image.filePath}
+                    src={"https://defendovb.az/api/v1/files?filepath=" + item.image.filePath}
                     alt=""
                   />
                 </div>

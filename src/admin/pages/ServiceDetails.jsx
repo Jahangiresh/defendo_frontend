@@ -34,7 +34,7 @@ const ProductDetails = () => {
     error: false,
     service: {},
   });
-  const apiEndPoint = `http://defendo-001-site1.atempurl.com/api/v1/providedservices/${id}`;
+  const apiEndPoint = `https://defendovb.az/api/v1/providedservices/${id}`;
   useEffect(() => {
     const getItem = async () => {
       try {
@@ -57,7 +57,7 @@ const ProductDetails = () => {
     formData.append("imageFile", service.image);
 
     await axios
-      .put(`../../api/v1/providedservices/${id}`, formData, {
+      .put(`https://defendovb.az/api/v1/providedservices/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${accessToken}`,
@@ -67,7 +67,7 @@ const ProductDetails = () => {
         window.location = "/admin/services";
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   };
   const formik = useFormik({
@@ -77,7 +77,6 @@ const ProductDetails = () => {
       image: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       servicePost(values);
     },
   });
@@ -91,7 +90,7 @@ const ProductDetails = () => {
           {service.image && (
             <img
               style={{ width: "200px" }}
-              src={"../../api/v1/files?filepath=" + service.image.filePath}
+              src={"https://defendovb.az/api/v1/files?filepath=" + service.image.filePath}
               alt=""
             />
           )}

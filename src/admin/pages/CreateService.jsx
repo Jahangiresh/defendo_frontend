@@ -15,7 +15,6 @@ const CreateService = () => {
   };
 
   const { accessToken } = JSON.parse(localStorage.getItem("user"));
-  console.log(accessToken);
   const servicePost = async (service) => {
     const formData = new FormData();
     formData.append("title", service.title);
@@ -23,7 +22,7 @@ const CreateService = () => {
     formData.append("imageFile", service.image);
     await axios
       .post(
-        "http://defendo-001-site1.atempurl.com/api/v1/defendo/providedservices",
+        "https://defendovb.az/api/v1/providedservices",
         // {
         //   title: formData.get("title"),
         //   description: formData.get("description"),
@@ -41,7 +40,6 @@ const CreateService = () => {
         window.location = "/admin/services";
       })
       .catch((error) => {
-        console.log(error);
         popUp("Oops...", "error", "Zəhmət olmasa dataları düzgün daxil edin");
       });
   };

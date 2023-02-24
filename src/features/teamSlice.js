@@ -12,7 +12,7 @@ const { accessToken } = localStorage.getItem("user")
   : "";
 
 export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
-  const resp = await axios.get("../../api/v1/lawyers");
+  const resp = await axios.get("https://defendovb.az/api/v1/lawyers");
   return resp?.data;
 });
 
@@ -20,7 +20,7 @@ export const deleteAdvocate = createAsyncThunk(
   "advocates/deleteApi",
   async (payload) => {
     const response = await axios.delete(
-      `http://defendo-001-site1.atempurl.com/api/v1/lawyers${payload}`,
+      `https://defendovb.az/api/v1/lawyers${payload}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -35,7 +35,7 @@ export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
     const response = await axios
-      .post(`http://defendo-001-site1.atempurl.com/api/v1/lawyers`, payload, {
+      .post(`https://defendovb.az/api/v1/lawyers`, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${accessToken}`,

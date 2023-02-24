@@ -18,17 +18,17 @@ import LoadingBox from "../../components/LoadingBox";
 import Swal from "sweetalert2";
 
 import {
-  getAllBlogs,
-  deleteBlog,
+  getAllSlides,
+  deleteSlide,
   getStatus,
   getIsDeleting,
-} from "../../features/blogSlice";
+} from "../../features/slideSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Blogs() {
+export default function Slides() {
   const navigate = useNavigate();
-  const blogs = useSelector(getAllBlogs);
+  const slides = useSelector(getAllSlides);
   const status = useSelector(getStatus);
   const isDeleting = useSelector(getIsDeleting);
 
@@ -44,7 +44,7 @@ export default function Blogs() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteBlog(id));
+        dispatch(deleteSlide(id));
         setTimeout(() => {
           window.location.reload(false);
         }, 700);
@@ -63,35 +63,33 @@ export default function Blogs() {
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
-            <TableCell align="left">name</TableCell>
-            <TableCell align="left">email</TableCell>
+            <TableCell align="left">order</TableCell>
             <TableCell align="right">
               <span>edit</span>/<span>delete</span>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {blogs.map((blog) => (
+          {slides.map((slide) => (
             <TableRow
-              key={blog.id}
+              key={slide.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 <img
                   className="adminadvocates__img"
-                  src={`https://defendovb.az/api/v1/files?filepath=${blog.image.filePath}`}
+                  src={`https://defendovb.az/api/v1/files?filepath=${slide.image.filePath}`}
                   alt="img"
                 />
               </TableCell>
-              <TableCell align="left">{blog.title}</TableCell>
-              <TableCell align="left">{blog.body}</TableCell>
+              <TableCell align="left">{slide.order}</TableCell>
               <TableCell align="right" className="adminadvocates__icons">
                 <AiOutlineEdit
-                  onClick={() => navigate(`/admin/blogs/${blog.id}`)}
+                  onClick={() => navigate(`/admin/slides/${slide.id}`)}
                   className="edit__icons"
                 />
                 <AiOutlineDelete
-                  onClick={() => handleDelete(blog.id)}
+                  onClick={() => handleDelete(slide.id)}
                   className="edit__icons"
                 />
               </TableCell>
@@ -100,7 +98,7 @@ export default function Blogs() {
         </TableBody>
       </Table>
       <button
-        onClick={() => navigate("/admin/blogs/create")}
+        onClick={() => navigate("/admin/slides/create")}
         className="adminadvocates__add"
       >
         blog əlavə et <AiOutlinePlusCircle className="plus__icon" />

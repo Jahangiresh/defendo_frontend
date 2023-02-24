@@ -18,6 +18,12 @@ const sidebarNav = [
     icon: <i className="bx bx-receipt"></i>,
     text: "Blogs",
   },
+  {
+    link: "/admin/slides",
+    section: "slides",
+    icon: <i className="bx bx-receipt"></i>,
+    text: "Slides",
+  },
   // {
   //   link: "/admin/messages",
   //   section: "messages",

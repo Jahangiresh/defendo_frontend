@@ -40,7 +40,6 @@ const SingleNews = () => {
       try {
         dispatch({ type: "FETCH_REQ" });
         const resp = await axios.get(`http://localhost:3000/news/${id}`);
-        console.log(resp);
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
