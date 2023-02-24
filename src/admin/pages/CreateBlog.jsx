@@ -23,7 +23,9 @@ const CreateBlog = () => {
         var req = new FormData();
         req.append("title", values.title);
         req.append("body", values.body);
-        req.append("tags", ...["sad", "asdsasd"]);
+        myTags.forEach((tag) => {
+          req.append("tags", tag);
+        });
         req.append("imageFile", values.imageFile);
         dispatch(
           createBLog({
