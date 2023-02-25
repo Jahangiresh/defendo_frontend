@@ -21,21 +21,12 @@ const CreateService = () => {
     formData.append("description", service.description);
     formData.append("imageFile", service.image);
     await axios
-      .post(
-        "https://defendovb.az/api/v1/providedservices",
-        // {
-        //   title: formData.get("title"),
-        //   description: formData.get("description"),
-        //   imageFile: formData.get("imageFile"),
-        // },
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
+      .post("https://defendovb.az/api/v1/providedservices", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then(() => {
         window.location = "/admin/services";
       })
@@ -55,17 +46,13 @@ const CreateService = () => {
   });
   return (
     <div className="productdetails">
-      <div className="productdetails__images">
-        <div className="productdetails__images__image">
-          {/* {service.image && (
-            <img
-              src={"../../api/v1/files?filepath=" + service.image.filePath}
-              alt=""
-            />
-          )} */}
-        </div>
-      </div>
-      <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+      <form
+        style={{
+          width: "100%",
+        }}
+        onSubmit={formik.handleSubmit}
+        encType="multipart/form-data"
+      >
         <label className="custom-file-upload">
           <input
             name="image"
@@ -81,7 +68,7 @@ const CreateService = () => {
           <h3 className="title__h">Başlıq:</h3>
           <input
             name="title"
-            style={{ marginLeft: "20px" }}
+            style={{ marginLeft: "20px", width: "90%", height: "50px" }}
             className="edit_inputs "
             type="text"
             onChange={formik.handleChange}
@@ -91,7 +78,7 @@ const CreateService = () => {
           <h3 className="title__h">Təsviri:</h3>
           <textarea
             name="description"
-            style={{ marginLeft: "20px" }}
+            style={{ marginLeft: "20px", width: "90%", height: "150px" }}
             className="edit_inputs "
             type="text"
             onChange={formik.handleChange}

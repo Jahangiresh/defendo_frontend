@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
 import { useDispatch } from "react-redux";
 import { createAdvocate } from "../../features/teamSlice";
+import { Swal } from "sweetalert2/dist/sweetalert2";
 // import { toast } from "react-toastify";
 const CreateAdvocate = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const CreateAdvocate = () => {
           })
         );
       } catch (error) {
-        alert(error);
+        console.log(error);
       }
     },
   });

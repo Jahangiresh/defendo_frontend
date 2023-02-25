@@ -26,7 +26,6 @@ const AdminLayout = () => {
   const user = localStorage.getItem("user");
 
   const checkTokenExpiration = async () => {
-    console.log("sorgu getdi");
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && user.accessToken) {
       const decodedToken = parseJwt(user.accessToken);
@@ -57,11 +56,11 @@ const AdminLayout = () => {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(checkTokenExpiration, 60000);
+    const intervalId = setInterval(checkTokenExpiration, 1000);
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  });
 
   return (
     <div className="admin-wrapper">

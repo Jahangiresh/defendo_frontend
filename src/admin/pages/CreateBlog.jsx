@@ -23,22 +23,16 @@ const CreateBlog = () => {
         var req = new FormData();
         req.append("title", values.title);
         req.append("body", values.body);
-        // req.append("tags", myTags);
         myTags.forEach((tag, index) => {
           req.append(`tags[${index}]`, tag);
         });
         req.append("imageFile", values.imageFile);
-        // console.log(req.get("tags"));
         dispatch(createBLog(req));
       } catch (error) {
         alert(error);
       }
     },
   });
-  // const name = { ...myTags };
-  const [tagName, setTagName] = useState("");
-  const [myTags, setMyTags] = useState([]);
-  const name = { ...myTags };
   return (
     <div className="createadvocates">
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
