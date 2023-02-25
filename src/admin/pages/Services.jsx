@@ -53,7 +53,6 @@ const Services = () => {
     };
     getItem();
   }, []);
-
   const deleteService = async (e, id) => {
     e.stopPropagation();
     await axios
@@ -97,6 +96,7 @@ const Services = () => {
         //   });
       })
       .catch((err) => {
+        console.log(err);
         popUp("Oops...", "error", "Nəsə səhv getdi");
       });
   };

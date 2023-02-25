@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
 import { useDispatch } from "react-redux";
@@ -6,15 +6,15 @@ import { useState } from "react";
 import { createBLog } from "../../features/blogSlice";
 // import { toast } from "react-toastify";
 const CreateBlog = () => {
+  const [tagName, setTagName] = useState("");
+  const [myTags, setMyTags] = useState([]);
   const dispatch = useDispatch();
-  let nextId = 1;
 
   const formik = useFormik({
     initialValues: {
       title: "",
       body: "",
       tags: [],
-
       imageFile: "",
     },
 
@@ -23,27 +23,19 @@ const CreateBlog = () => {
         var req = new FormData();
         req.append("title", values.title);
         req.append("body", values.body);
-        myTags.forEach((tag) => {
-          req.append("tags", tag);
+        // req.append("tags", myTags);
+        myTags.forEach((tag, index) => {
+          req.append(`tags[${index}]`, tag);
         });
         req.append("imageFile", values.imageFile);
-        dispatch(
-          createBLog({
-            title: req.get("title"),
-            body: req.get("body"),
-            tags: req.get("tags"),
-            imageFile: req.get("imageFile"),
-          })
-        );
+        // console.log(req.get("tags"));
+        dispatch(createBLog(req));
       } catch (error) {
         alert(error);
       }
     },
   });
-  const [tagName, setTagName] = useState("");
-  const [myTags, setMyTags] = useState([]);
-  const name = { ...myTags };
-  console.log(myTags);
+  // const name = { ...myTags };
   return (
     <div className="createadvocates">
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
@@ -90,19 +82,16 @@ const CreateBlog = () => {
         <button
           type="button"
           onClick={() => {
+            setMyTags([tagName, ...myTags]);
             setTagName("");
-            myTags.push({
-              // id: nextId++,
-              name: tagName,
-            });
           }}
         >
           Add
         </button>
 
         <ul>
-          {myTags.map((myTag) => (
-            <li key={myTag.id}>{myTag.name}</li>
+          {myTags.map((myTag, index) => (
+            <li key={index}>{myTag}</li>
           ))}
         </ul>
         <button className="createadvocates__forms__button" type="submit">

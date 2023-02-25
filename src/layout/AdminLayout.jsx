@@ -19,11 +19,14 @@ import EditBlog from "../admin/pages/EditBlog";
 import Slides from "../admin/pages/Slides";
 import CreateSlide from "../admin/pages/CreateSlide";
 import EditSlide from "../admin/pages/EditSlide";
+import CreateSetting from "../admin/pages/CreateSetting";
+import SettingDetails from "../admin/pages/SettingDetails";
 
 const AdminLayout = () => {
   const user = localStorage.getItem("user");
 
   const checkTokenExpiration = async () => {
+    console.log("sorgu getdi");
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && user.accessToken) {
       const decodedToken = parseJwt(user.accessToken);
@@ -71,6 +74,7 @@ const AdminLayout = () => {
               <Route path="/admin/blogs" element={<Blogs />} />
               <Route path="/admin/blogs/create" element={<CreateBlog />} />
               <Route path="/admin/services/:id" element={<ServiceDetails />} />
+              <Route path="/admin/setting/:id" element={<SettingDetails />} />
               <Route path="/admin/service/create" element={<CreateService />} />
               <Route
                 path="/admin/advocates/create"
@@ -86,6 +90,7 @@ const AdminLayout = () => {
 
               <Route path="/admin/services" element={<Services />} />
               <Route path="/admin/setting" element={<Settings />} />
+              <Route path="/admin/setting/create" element={<CreateSetting />} />
               <Route path="/admin/advocates" element={<Advocates />} />
             </Route>
           ) : (

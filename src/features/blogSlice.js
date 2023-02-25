@@ -11,9 +11,7 @@ const { accessToken } = localStorage.getItem("user")
   : "";
 
 export const blogFetch = createAsyncThunk("blogs/blogFetch", async () => {
-  const resp = await axios.get(
-    "https://defendovb.az/api/v1/blogs"
-  );
+  const resp = await axios.get("https://defendovb.az/api/v1/blogs");
   return resp?.data;
 });
 
@@ -24,6 +22,7 @@ export const deleteBlog = createAsyncThunk(
       `https://defendovb.az/api/v1/blogs/${payload}`,
       {
         headers: {
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${accessToken}`,
         },
       }
@@ -34,8 +33,7 @@ export const deleteBlog = createAsyncThunk(
 
 export const createBLog = createAsyncThunk("blogs/postApi", async (payload) => {
   const response = await axios
-    .post(
-      `https://defendovb.az/api/v1/blogs`, payload, {
+    .post(`https://defendovb.az/api/v1/blogs`, payload, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${accessToken}`,
