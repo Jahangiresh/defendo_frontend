@@ -74,7 +74,11 @@ export default function Advocates() {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                <img className="adminadvocates__img" src={advImg} alt="" />
+                <img
+                  className="adminadvocates__img"
+                  src={`https://defendovb.az/api/v1/files?filepath=${advocate.image.filePath}`}
+                  alt=""
+                />
               </TableCell>
               <TableCell align="right">
                 {advocate.firstName} {advocate.lastName}

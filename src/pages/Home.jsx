@@ -16,7 +16,7 @@ const Home = () => {
   const slides = useSelector(getAllSlides);
   const status = useSelector(getStatus);
   var settings = {
-    infinite: true,
+    infinite: false,
     speed: 100,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -46,7 +46,9 @@ const Home = () => {
             slides.map((slide) => (
               <div key={slide.id}>
                 <img
-                  src={`https://defendovb.az/api/v1/files?filepath=${slide.image.filePath}`}
+                  src={`https://defendovb.az/api/v1/files?filepath=${
+                    slide && slide.image.filePath
+                  }`}
                   alt=""
                 />
               </div>
@@ -101,6 +103,14 @@ const Home = () => {
         <div className="custom-container">
           <div className="row">
             <ServiceCard />
+          </div>
+          <div className="button__parent mb-5 d-flex justify-content-center">
+            <button
+              onClick={() => navigate("/services")}
+              className="show__all__button"
+            >
+              hamisini gor
+            </button>
           </div>
         </div>
       </main>

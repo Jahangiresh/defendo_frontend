@@ -31,7 +31,6 @@ const CreateSlide = () => {
       }
     },
   });
-  console.log(formik.values.image);
   return (
     <div className="createadvocates">
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>

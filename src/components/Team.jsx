@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import vekilPng from "../assets/images/vekilPng.png";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mapPng from "../assets/images/mapSvg.svg";
 import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
@@ -15,8 +15,9 @@ const Team = () => {
   const advocates = useSelector(getAllAdvocates);
   const status = useSelector(getStatus);
   var teamSettings = {
-    infinite: true,
+    infinite: false,
     speed: 100,
+
     slidesToShow: 4,
     slidesToScroll: 1,
     autoPlay: true,
@@ -48,72 +49,46 @@ const Team = () => {
       },
     ],
   };
-  console.log(advocates);
+  const navigate = useNavigate();
   return (
     <div className="team">
       <h3 className="team__title">komandamız</h3>
       <p className="team__intro">pesekar komandamiz ile tanish ol</p>
 
-      <Slider className="team__slider row" {...teamSettings}>
-        <Link to={`/team/id}`} className="team__links ">
-          <div className="team__slider__card">
-            <div className="team__slider__card__image">
-              <img src={vekilPng} alt="wqe" />
-              <ul className="team__slider__card__image__ul">
-                <li>
-                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
-                </li>
-                <li>
-                  <img src={phonePng} alt="" /> +994 50 555-55-55
-                </li>
-                <li>
-                  <img src={messagePng} alt="" /> officedefendo@gmail.com
-                </li>
-              </ul>
-            </div>
-            <div className="team__slider__card__name">sasd </div>
-          </div>
-        </Link>
-        <Link to={`/team/id}`} className="team__links ">
-          <div className="team__slider__card">
-            <div className="team__slider__card__image">
-              <img src={vekilPng} alt="wqe" />
-              <ul className="team__slider__card__image__ul">
-                <li>
-                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
-                </li>
-                <li>
-                  <img src={phonePng} alt="" /> +994 50 555-55-55
-                </li>
-                <li>
-                  <img src={messagePng} alt="" /> officedefendo@gmail.com
-                </li>
-              </ul>
-            </div>
-            <div className="team__slider__card__name">sasd </div>
-          </div>
-        </Link>
-        
-        <Link to={`/team/id}`} className="team__links ">
-          <div className="team__slider__card">
-            <div className="team__slider__card__image">
-              <img src={vekilPng} alt="wqe" />
-              <ul className="team__slider__card__image__ul">
-                <li>
-                  <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
-                </li>
-                <li>
-                  <img src={phonePng} alt="" /> +994 50 555-55-55
-                </li>
-                <li>
-                  <img src={messagePng} alt="" /> officedefendo@gmail.com
-                </li>
-              </ul>
-            </div>
-            <div className="team__slider__card__name">sasd </div>
-          </div>
-        </Link>
+      <Slider className="team__slider" {...teamSettings}>
+        {advocates &&
+          advocates.map((advocate) => (
+            <Link to={`/team/${advocate.id}`} className="team__links ">
+              <div className="team__slider__card">
+                <div className="team__slider__card__image">
+                  <img
+                    src={`https://defendovb.az/api/v1/files?filepath=${advocate.image.filePath}`}
+                    alt="adv.jpg"
+                  />
+                  <ul className="team__slider__card__image__ul">
+                    <li>
+                      <img src={mapPng} alt="" /> Ak. Həsən Əliyev 82F
+                    </li>
+                    <li>
+                      <img src={phonePng} alt="" />
+                      {advocate.phoneNumber}
+                    </li>
+                    <li>
+                      <img src={messagePng} alt="" />
+                      {advocate.email}
+                    </li>
+                  </ul>
+                </div>
+                <div className="team__slider__card__name">
+                  {advocate.firstName} {advocate.lastName}
+                </div>
+              </div>
+            </Link>
+          ))}
       </Slider>
+      <button onClick={() => navigate("/team")} className="show__all__button">
+        hamisini gor
+      </button>
     </div>
   );
 };

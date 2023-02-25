@@ -43,7 +43,6 @@ const CreateBlog = () => {
   const [tagName, setTagName] = useState("");
   const [myTags, setMyTags] = useState([]);
   const name = { ...myTags };
-  console.log(myTags);
   return (
     <div className="createadvocates">
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
