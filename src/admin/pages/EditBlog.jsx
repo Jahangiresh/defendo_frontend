@@ -79,7 +79,6 @@ const EditBlog = () => {
       }
     },
   });
-  console.log(formik.values.image);
   return (
     <div className="createadvocates">
       <img

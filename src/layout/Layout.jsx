@@ -25,17 +25,16 @@ const Layout = () => {
       <UpperHeader />
       <Header />
       <Routes>
-        <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Advocates />} />
+        <Route path="/team/:id" element={<SingleAdvocate />} />
         <Route path="/blogs" element={<News />} />
         <Route path="/blogs/:id" element={<SingleNews />} />
-
-        <Route path="/about" element={<About />} />
-        <Route path="/team/:id" element={<SingleAdvocate />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServicesDetail />} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
