@@ -8,121 +8,141 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useFormik } from "formik";
 import "../scss/settings.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { Swal } from "sweetalert2/dist/sweetalert2";
+import { useReducer } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_REQ":
+      return { ...state, loader: true };
+    case "FETCH_SUCCES":
+      return { ...state, settings: action.payload, loader: false };
+    case "FETCH_FAIL":
+      return { ...state, error: true };
+    default:
+      return state;
+  }
+};
 
 export default function Settings() {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      phone: "",
-      address: "",
-      instagram: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+  const popUp = (title, icon, text) => {
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+    });
+  };
+  const navigate = useNavigate();
+
+  const [{ loader, settings, error }, dispatch] = useReducer(reducer, {
+    loader: true,
+    error: false,
+    settings: [],
   });
+  const apiEndPoint = `https://defendovb.az/api/v1/settings`;
+  useEffect(() => {
+    const getItem = async () => {
+      try {
+        dispatch({ type: "FETCH_REQ" });
+        const { data } = await axios.get(apiEndPoint);
+        dispatch({ type: "FETCH_SUCCES", payload: data });
+      } catch (error) {
+        dispatch({ type: "FETCH_FAIL" });
+        popUp("Oops...", "error", "Nəsə səhf getdi");
+      }
+    };
+    getItem();
+  }, []);
+  const deleteService = async (e, id) => {
+    const { accessToken } = JSON.parse(localStorage.getItem("user"));
+    e.stopPropagation();
+    await axios
+      .delete(`https://defendovb.az/api/v1/settings/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(() => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        popUp("Oops...", "error", "Nəsə səhv getdi");
+      });
+  };
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <>
+      <Link
+        to={"/admin/setting/create"}
+        style={{
+          padding: "5px 10px",
+          backgroundColor: "green",
+          color: "white",
+          borderRadius: "20px",
+        }}
+      >
+        Setting Yartamaq
+      </Link>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right">
-                <label className="settings__label" htmlFor="address">
-                  address
-                </label>
-              </TableCell>
-              <TableCell align="right"></TableCell>
-              {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
+              <TableCell>#</TableCell>
+              <TableCell>Açar söz</TableCell>
+              <TableCell>Şəkil & Dəyər</TableCell>
+              <TableCell align="right">Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <input
-                  className="settings__input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                />
-              </TableCell>
-              <TableCell align="right">
-                {" "}
-                <input
-                  className="settings__input"
-                  id="phone"
-                  name="phone"
-                  type="text"
-                  onChange={formik.handleChange}
-                  value={formik.values.phone}
-                />
-              </TableCell>
-
-              {/* <TableCell align="right">{row.protein}</TableCell> */}
-            </TableRow>
-          </TableBody>
-        </Table>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="right">
-                <label className="settings__label" htmlFor="address">
-                  email
-                </label>
-              </TableCell>
-              <TableCell align="right"></TableCell>
-              {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <input
-                  className="settings__input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                />
-              </TableCell>
-              <TableCell align="right">
-                {" "}
-                <input
-                  className="settings__input"
-                  id="phone"
-                  name="phone"
-                  type="text"
-                  onChange={formik.handleChange}
-                  value={formik.values.phone}
-                />
-              </TableCell>
-
-              {/* <TableCell align="right">{row.protein}</TableCell> */}
-            </TableRow>
+            {settings &&
+              settings.map((setting, index) => (
+                <TableRow
+                  onClick={() => {
+                    window.location = `/admin/setting/${setting.id}`;
+                  }}
+                  style={{ cursor: "pointer" }}
+                  key={setting.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {index + 1}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {setting.key}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {setting.image ? (
+                      <img
+                        style={{ width: "50px" }}
+                        src={
+                          "https://defendovb.az/api/v1/files?filepath=" +
+                          setting.image.filePath
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      setting.value
+                    )}
+                  </TableCell>
+                  <TableCell component="th" scope="row" align="right">
+                    <button
+                      className="btn btn-danger"
+                      onClick={(e) => deleteService(e, setting.id)}
+                    >
+                      Delete
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <button className="settings__button" type="submit">
-        Submit
-      </button>
-    </form>
+    </>
   );
 }

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "https://defendovb.az/api/v1/";
+const API_URL = "https://defendovb.az/api/v1";
 
 class AuthService {
   async login(username, password) {
     return await axios
-      .post(API_URL + "authentication/login", {
+      .post(API_URL + "/authentication/login", {
         emailOrUsername: username,
         password: password,
       })
@@ -45,17 +45,20 @@ class AuthService {
         }
       )
       .then((response) => {
+        console.log(response.data);
         if (response.data) {
           user.accessToken = response.data.accessToken;
           user.refreshToken = response.data.refreshToken;
           localStorage.setItem("user", JSON.stringify(user));
           axios.defaults.headers.common[
             "Authorization"
-          ] = `Bearer ${response.data.accessToken}`;
+          ] = `Bearer ${user.accessToken}`;
         }
+        console.log(user);
         // return response.data;
       })
       .catch((err) => {
+        console.log(err);
         alert(err);
       });
   }

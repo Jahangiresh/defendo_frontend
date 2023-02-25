@@ -82,6 +82,9 @@ const EditBlog = () => {
   return (
     <div className="createadvocates">
       <img
+        style={{
+          width: "150px",
+        }}
         src={`https://defendovb.az/api/v1/files?filepath=${
           blog.image && blog.image.filePath
         }`}

@@ -63,8 +63,8 @@ export default function Blogs() {
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
-            <TableCell align="left">name</TableCell>
-            <TableCell align="left">email</TableCell>
+            <TableCell align="left">title</TableCell>
+            <TableCell align="left">body</TableCell>
             <TableCell align="right">
               <span>edit</span>/<span>delete</span>
             </TableCell>
@@ -83,8 +83,12 @@ export default function Blogs() {
                   alt="img"
                 />
               </TableCell>
-              <TableCell align="left">{blog.title}</TableCell>
-              <TableCell align="left">{blog.body}</TableCell>
+              <TableCell align="left">
+                {blog.title > 20 ? blog.title.slice(0, 20) + "..." : blog.title}
+              </TableCell>
+              <TableCell align="left">
+                {blog.body > 25 ? blog.body.slice(0, 25) + "..." : blog.body}
+              </TableCell>
               <TableCell align="right" className="adminadvocates__icons">
                 <AiOutlineEdit
                   onClick={() => navigate(`/admin/blogs/${blog.id}`)}
