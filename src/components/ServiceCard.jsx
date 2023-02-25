@@ -5,29 +5,36 @@ import courthouse from "../assets/images/map_courthouse.png";
 import "../assets/css/services.scss";
 import Loader from "../assets/images/Component 1.png";
 import LoadingBox from "./LoadingBox";
+import { getAllServices, getStatus } from "../features/serviceSlice";
 
 const ServiceCard = () => {
-  const { items, status } = useSelector((state) => state.services);
+  // const { items, status } = useSelector((state) => state.services);
+  const services = useSelector(getAllServices);
+  const status = useSelector(getStatus);
+  console.log(services);
   return status === "pending" ? (
     <LoadingBox />
   ) : (
     <div className="row">
-      {items &&
-        items.map((item) => (
-          <div key={item.id} className="col-lg-4 col-md-12 col-sm-12">
-            <Link to={`/services/${item.id}`}>
+      {services &&
+        services.map((service) => (
+          <div key={service.id} className="col-lg-4 col-md-12 col-sm-12">
+            <Link to={`/services/${service.id}`}>
               <div className="custom-card">
                 <div>
                   <img
-                    src={"https://defendovb.az/api/v1/files?filepath=" + item.image.filePath}
+                    src={
+                      "https://defendovb.az/api/v1/files?filepath=" +
+                      service.image.filePath
+                    }
                     alt=""
                   />
                 </div>
-                <h5>{item.title}</h5>
+                <h5>{service.title}</h5>
                 <p>
-                  {item.description.length > 70
-                    ? item.description.slice(0, 70) + "..."
-                    : item.description}
+                  {service.description.length > 70
+                    ? service.description.slice(0, 70) + "..."
+                    : service.description}
                 </p>
               </div>
             </Link>

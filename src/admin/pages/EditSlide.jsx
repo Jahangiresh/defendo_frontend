@@ -75,7 +75,6 @@ const EditSlide = () => {
       }
     },
   });
-  console.log(formik.values.imageFile);
   return (
     <div className="createadvocates">
       <img

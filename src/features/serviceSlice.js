@@ -10,8 +10,9 @@ const initialState = {
 export const serviceFetch = createAsyncThunk(
   "service/serviceFetch",
   async () => {
-    const resp = await axios.get("https://defendovb.az/api/v1/providedservices");
-
+    const resp = await axios.get(
+      "https://defendovb.az/api/v1/providedservices"
+    );
     return resp?.data;
   }
 );
@@ -34,4 +35,7 @@ const serviceSlice = createSlice({
     },
   },
 });
+export const getAllServices = (state) => state.services.items;
+export const getStatus = (state) => state.services.status;
+
 export default serviceSlice.reducer;

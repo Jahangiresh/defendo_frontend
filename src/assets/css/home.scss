@@ -210,6 +210,7 @@
   .team {
     text-align: center;
     margin-bottom: 68px;
+
     .team__links {
       text-decoration: none;
       color: #474747;
@@ -222,9 +223,10 @@
     //   margin: 0;
     // }
     &__slider {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: space-between;
+
       &__card {
         height: 402px;
         width: 282px !important;
@@ -318,5 +320,27 @@
       color: #474747;
       text-transform: capitalize;
     }
+  }
+}
+.show__all__button {
+  padding: 8px 24px;
+
+  /* Button Color/600 */
+
+  border: 2px solid #c5ac52;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  color: #c5ac52;
+  margin-top: 32px;
+  background: #fff;
+  text-transform: capitalize;
+  transition: 200ms;
+  &:hover {
+    background: #c5ac52;
+    color: white;
   }
 }
