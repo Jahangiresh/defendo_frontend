@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Swal } from "sweetalert2/dist/sweetalert2";
 const initialState = {
   items: [],
   // singleAdvocate: {},
@@ -30,7 +31,13 @@ export const deleteAdvocate = createAsyncThunk(
     return response.data;
   }
 );
-
+const popUp = (title, icon, text) => {
+  Swal.fire({
+    icon: icon,
+    title: title,
+    text: text,
+  });
+};
 export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
@@ -45,7 +52,7 @@ export const createAdvocate = createAsyncThunk(
         window.location = "/admin/advocates";
       })
       .catch((err) => {
-        alert(err);
+        popUp("Oops...", "error", err.response.data.title);
       });
     return response.data;
   }

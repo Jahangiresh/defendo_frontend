@@ -1,22 +1,22 @@
 const sidebarNav = [
   {
     link: "/admin",
-    section: "home",
+    section: "Home",
     icon: <i className="bx bx-home-alt"></i>,
-    text: "Home",
+    text: "Əsas Səhifə",
   },
 
   {
     link: "/admin/services",
-    section: "services",
+    section: "Services",
     icon: <i className="bx bx-receipt"></i>,
-    text: "Services",
+    text: "Servislər",
   },
   {
     link: "/admin/blogs",
     section: "blogs",
     icon: <i className="bx bx-receipt"></i>,
-    text: "Blogs",
+    text: "Bloglar",
   },
   {
     link: "/admin/slides",
@@ -34,7 +34,7 @@ const sidebarNav = [
     link: "/admin/advocates",
     section: "advocates",
     icon: <i className="bx bx-cube"></i>,
-    text: "Advocates",
+    text: "Vəkillər",
   },
 
   // {

@@ -12,9 +12,6 @@ class AuthService {
       .then((response) => {
         if (response.data.accessToken) {
           localStorage.setItem("user", JSON.stringify(response.data));
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${response.data.accessToken}`;
         }
         window.location = "/admin";
         return response.data;
@@ -26,7 +23,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
-    axios.defaults.headers.common["Authorization"] = "";
+    window.location = "/admin";
   }
 
   async refreshToken() {
@@ -45,21 +42,16 @@ class AuthService {
         }
       )
       .then((response) => {
-        console.log(response.data);
         if (response.data) {
           user.accessToken = response.data.accessToken;
           user.refreshToken = response.data.refreshToken;
           localStorage.setItem("user", JSON.stringify(user));
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${user.accessToken}`;
         }
-        console.log(user);
         // return response.data;
       })
       .catch((err) => {
+        this.logout();
         console.log(err);
-        alert(err);
       });
   }
 }
