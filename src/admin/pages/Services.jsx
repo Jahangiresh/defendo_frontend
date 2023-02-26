@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "../scss/products.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,54 +11,23 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { Helmet } from "react-helmet";
-import { getIsDeleting } from "../../features/serviceSlice";
-import { useSelector } from "react-redux";
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "FETCH_REQ":
-      return { ...state, loader: true };
-    case "FETCH_SUCCES":
-      return { ...state, services: action.payload, loader: false };
-    case "FETCH_FAIL":
-      return { ...state, error: true };
-    default:
-      return state;
-  }
-};
+import {
+  deleteService,
+  getAllServices,
+  getIsDeleting,
+  getStatus,
+} from "../../features/serviceSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Services = () => {
-  const popUp = (title, icon, text) => {
-    Swal.fire({
-      icon: icon,
-      title: title,
-      text: text,
-    });
-  };
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [{ loader, services, error }, dispatch] = useReducer(reducer, {
-    loader: true,
-    error: false,
-    services: [],
-  });
-  const apiEndPoint = `https://defendovb.az/api/v1/providedservices`;
-  useEffect(() => {
-    const getItem = async () => {
-      try {
-        dispatch({ type: "FETCH_REQ" });
-        const { data } = await axios.get(apiEndPoint);
-        dispatch({ type: "FETCH_SUCCES", payload: data });
-      } catch (error) {
-        dispatch({ type: "FETCH_FAIL" });
-        popUp("Oops...", "error", "Nəsə səhf getdi");
-      }
-    };
-    getItem();
-  }, []);
+  const services = useSelector(getAllServices);
   const isDeleting = useSelector(getIsDeleting);
-
-  const deleteService = (e, id) => {
+  // const status = useSelector(getStatus);
+  // const deleteSrv = useSelector(deleteService);
+  const deleteHandler = (e, id) => {
     e.stopPropagation();
     Swal.fire({
       title: "Are you sure?",
@@ -70,32 +39,17 @@ const Services = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(5);
         dispatch(deleteService(id));
-        window.location.reload(false);
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 700);
         if (isDeleting) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
       }
     });
   };
-
-  // const deleteService = async (e, id) => {
-  //   e.stopPropagation();
-  //   const { accessToken } = JSON.parse(localStorage.getItem("user"));
-  //   await axios
-  //     .delete(`https://defendovb.az/api/v1/providedservices/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     })
-  //     .then(() => {
-  //       window.location.reload(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       popUp("Oops...", "error", "Nəsə səhv getdi");
-  //     });
-  // };
 
   return (
     <>
@@ -128,9 +82,7 @@ const Services = () => {
             {services &&
               services.map((service, index) => (
                 <TableRow
-                  onClick={() => {
-                    window.location = `/admin/services/${service.id}`;
-                  }}
+                  onClick={() => navigate(`/admin/services/${service.id}`)}
                   style={{ cursor: "pointer" }}
                   key={service.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -161,7 +113,7 @@ const Services = () => {
                   <TableCell component="th" scope="row" align="right">
                     <button
                       className="btn btn-danger"
-                      onClick={(e) => deleteService(e, service.id)}
+                      onClick={(e) => deleteHandler(e, service.id)}
                     >
                       Delete
                     </button>
