@@ -25,6 +25,7 @@ import {
 } from "../../features/slideSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Slides() {
   const navigate = useNavigate();
@@ -59,6 +60,9 @@ export default function Slides() {
     <LoadingBox />
   ) : (
     <TableContainer component={Paper} className="adminadvocates">
+      <Helmet>
+        <title>slides</title>
+      </Helmet>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

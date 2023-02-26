@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -81,6 +82,9 @@ const EditBlog = () => {
   });
   return (
     <div className="createadvocates">
+      <Helmet>
+        <title>update blog</title>
+      </Helmet>
       <img
         style={{
           width: "150px",

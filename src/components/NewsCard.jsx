@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/newscard.scss";
-import newsPng from "../assets/images/newsPng.png";
 import timePng from "../assets/images/time.png";
 import { getAllBlogs, getStatus } from "../features/blogSlice";
 import LoadingBox from "./LoadingBox";

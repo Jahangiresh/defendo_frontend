@@ -13,9 +13,9 @@ import {
   AiOutlinePlusCircle,
 } from "react-icons/ai";
 import "../scss/adminadvocates.scss";
-import advImg from "../assets/images/avt.jpg";
 import LoadingBox from "../../components/LoadingBox";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 import {
   getAllAdvocates,
@@ -24,6 +24,7 @@ import {
   deleteAdvocate,
 } from "../../features/teamSlice";
 import { useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 export default function Advocates() {
   const navigate = useNavigate();
@@ -56,6 +57,12 @@ export default function Advocates() {
     <LoadingBox />
   ) : (
     <TableContainer component={Paper} className="adminadvocates">
+      <div>
+        <Toaster />
+      </div>
+      <Helmet>
+        <title>lawyers</title>
+      </Helmet>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

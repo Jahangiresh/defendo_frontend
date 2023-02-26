@@ -4,6 +4,7 @@ import "../scss/adminadvocates.scss";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { createSlide } from "../../features/slideSlice";
+import { Helmet } from "react-helmet";
 // import { toast } from "react-toastify";
 const CreateSlide = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ const CreateSlide = () => {
   });
   return (
     <div className="createadvocates">
+      <Helmet>
+        <title>add slide</title>
+      </Helmet>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
           image

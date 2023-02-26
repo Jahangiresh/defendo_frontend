@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Swal } from "sweetalert2/dist/sweetalert2";
+import { toast } from "react-hot-toast";
 const initialState = {
   items: [],
-  // singleAdvocate: {},
   status: null,
   isDeleting: false,
 };
@@ -20,24 +19,25 @@ export const teamFetch = createAsyncThunk("team/teamFetch", async () => {
 export const deleteAdvocate = createAsyncThunk(
   "advocates/deleteApi",
   async (payload) => {
-    const response = await axios.delete(
-      `https://defendovb.az/api/v1/lawyers${payload}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.delete(
+        `https://defendovb.az/api/v1/lawyers/${payload}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      toast.success("succesfully deleted");
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.Detail);
+    }
   }
 );
-const popUp = (title, icon, text) => {
-  Swal.fire({
-    icon: icon,
-    title: title,
-    text: text,
-  });
-};
+
 export const createAdvocate = createAsyncThunk(
   "advocates/postApi",
   async (payload) => {
@@ -49,21 +49,15 @@ export const createAdvocate = createAsyncThunk(
         },
       })
       .then(() => {
+        toast.success("Successfully toasted!");
         window.location = "/admin/advocates";
       })
       .catch((err) => {
-        popUp("Oops...", "error", err.response.data.title);
+        toast.error(err.response.data.title);
       });
     return response.data;
   }
 );
-
-// export const editAdvocate = createAsyncThunk(
-//   "advocates/putAdvocate",
-//   async (payload) => {
-//     await axios.put(`http://localhost:3000/advocates${payload.id}`, payload);
-//   }
-// );
 
 const teamSlice = createSlice({
   name: "advocates",

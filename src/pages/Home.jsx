@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/home.scss";
-import coverHomePng from "../assets/images/coverHome.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -11,6 +10,8 @@ import Team from "../components/Team";
 import ServiceCard from "../components/ServiceCard";
 import { useSelector } from "react-redux";
 import { getAllSlides, getStatus } from "../features/slideSlice";
+import { Helmet } from "react-helmet";
+import LoadingBox from "../components/LoadingBox";
 
 const Home = () => {
   const slides = useSelector(getAllSlides);
@@ -26,9 +27,14 @@ const Home = () => {
     dots: false,
   };
   const navigate = useNavigate();
-  return (
+  return status === "pending" ? (
+    <LoadingBox />
+  ) : (
     <>
       <div className="home">
+        <Helmet>
+          <title>əsas səhifə</title>
+        </Helmet>
         <div className="home__cover__content">
           <h1 className="home__cover__content__title">de fendo vəkil bürosu</h1>
           <p className="home__cover__content__intro">

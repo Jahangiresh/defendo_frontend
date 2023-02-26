@@ -12,6 +12,7 @@ import linkedinIcon from "../assets/images/linkedinIcon.png";
 import twitterIcon from "../assets/images/twitterIcon.png";
 import { useSelector } from "react-redux";
 import { getAllBlogs, getStatus } from "../features/blogSlice";
+import { Helmet } from "react-helmet";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,11 +51,13 @@ const SingleNews = () => {
     };
     getItem();
   }, [id]);
-  const navigate = useNavigate();
   return loading ? (
     <LoadingBox />
   ) : (
     <div className="singlenews">
+      <Helmet>
+        <title>məqalələr</title>
+      </Helmet>
       <HeaderDown>
         <h1>Hüquqi məqalələr</h1>
       </HeaderDown>

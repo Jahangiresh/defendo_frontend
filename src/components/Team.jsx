@@ -4,13 +4,13 @@ import "../assets/css/home.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import vekilPng from "../assets/images/vekilPng.png";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import mapPng from "../assets/images/mapSvg.svg";
 import phonePng from "../assets/images/phoneSvg.svg";
 import messagePng from "../assets/images/messageSvg.svg";
 import { getAllAdvocates, getStatus } from "../features/teamSlice";
+import LoadingBox from "./LoadingBox";
 const Team = () => {
   const advocates = useSelector(getAllAdvocates);
   const status = useSelector(getStatus);
@@ -50,7 +50,9 @@ const Team = () => {
     ],
   };
   const navigate = useNavigate();
-  return (
+  return status === "pending" ? (
+    <LoadingBox />
+  ) : (
     <div className="team">
       <h3 className="team__title">komandamız</h3>
       <p className="team__intro">pesekar komandamiz ile tanish ol</p>

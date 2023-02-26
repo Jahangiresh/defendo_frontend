@@ -2,6 +2,8 @@ import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -32,7 +34,9 @@ const EditAdvocate = () => {
       dispatch({ type: "FETCH_REQ" });
 
       try {
-        const resp = await axios.get(`https://defendovb.az/api/v1/lawyers/${id}`);
+        const resp = await axios.get(
+          `https://defendovb.az/api/v1/lawyers/${id}`
+        );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
       } catch (error) {
@@ -55,27 +59,31 @@ const EditAdvocate = () => {
     },
     onSubmit: async (values) => {
       try {
-        await axios.put(
-          `https://defendovb.az/api/v1/lawyers/${id}`,
-          {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phoneNumber: values.phoneNumber,
-            moreInfo: values.moreInfo,
-            image: values.image,
-          }
-        );
+        await axios.put(`https://defendovb.az/api/v1/lawyers/${id}`, {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phoneNumber: values.phoneNumber,
+          moreInfo: values.moreInfo,
+          image: values.image,
+        });
+        toast.success("lawyer updated");
 
         window.location = "/admin/advocates";
       } catch (error) {
-        alert("salam");
+        toast.error(error.response.data.Detail);
       }
     },
   });
   return (
     <div>
       <div className="createadvocates">
+        <Helmet>
+          <title>update lawyer</title>
+        </Helmet>
+        <div>
+          <Toaster />
+        </div>
         <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
           <label className="createadvocates__forms__label" htmlFor="image">
             image

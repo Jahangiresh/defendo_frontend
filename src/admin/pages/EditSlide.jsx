@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -77,6 +78,9 @@ const EditSlide = () => {
   });
   return (
     <div className="createadvocates">
+      <Helmet>
+        <title>update slide</title>
+      </Helmet>
       <img
         src={`https://defendovb.az/api/v1/files?filepath=${
           slide.image && slide.image.filePath

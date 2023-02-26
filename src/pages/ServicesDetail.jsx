@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import "../assets/css/servicedetail.scss";
 import { useLocation, useParams } from "react-router-dom";
-import courthouse from "../assets/images/courthouse.png";
-import Services from "./Services";
-import NotFound from "./NotFound";
 import HeaderDown from "../components/header/HeaderDown";
 import ServiceCard from "../components/ServiceCard";
+import { Helmet } from "react-helmet";
+import LoadingBox from "../components/LoadingBox";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -48,13 +47,18 @@ const ServicesDetail = () => {
     };
     getItem();
   }, [pathname]);
-  return (
+  return loader ? (
+    <LoadingBox />
+  ) : (
     <>
       <HeaderDown>
         <h1>Xidmətlər</h1>
         <p>{service.title}</p>
       </HeaderDown>
       <main>
+        <Helmet>
+          <title>xidmətlər</title>
+        </Helmet>
         <section id="detail">
           <div className="custom-container">
             <div className="cus-row">

@@ -48,12 +48,7 @@ export const createBLog = createAsyncThunk("blogs/postApi", async (payload) => {
   return response.data;
 });
 
-// export const editAdvocate = createAsyncThunk(
-//   "advocates/putAdvocate",
-//   async (payload) => {
-//     await axios.put(`http://localhost:3000/advocates${payload.id}`, payload);
-//   }
-// );
+
 
 const blogSlice = createSlice({
   name: "blogs",

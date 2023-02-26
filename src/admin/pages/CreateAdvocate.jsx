@@ -3,8 +3,8 @@ import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
 import { useDispatch } from "react-redux";
 import { createAdvocate } from "../../features/teamSlice";
-import { Swal } from "sweetalert2/dist/sweetalert2";
-// import { toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 const CreateAdvocate = () => {
   const dispatch = useDispatch();
 
@@ -19,34 +19,36 @@ const CreateAdvocate = () => {
       role: "",
     },
     onSubmit: (values) => {
-      try {
-        var req = new FormData();
-        req.append("firstName", values.firstName);
-        req.append("lastName", values.lastName);
-        req.append("email", values.email);
-        req.append("phoneNumber", values.phoneNumber);
-        req.append("moreInfo", values.moreInfo);
-        req.append("role", values.role);
-        req.append("imageFile", values.imageFile);
-        dispatch(
-          createAdvocate({
-            firstName: req.get("firstName"),
-            lastName: req.get("lastName"),
-            email: req.get("email"),
-            phoneNumber: req.get("phoneNumber"),
-            moreInfo: req.get("moreInfo"),
-            imageFile: req.get("imageFile"),
-            role: req.get("role"),
-          })
-        );
-      } catch (error) {
-        console.log(error);
-      }
+      var req = new FormData();
+      req.append("firstName", values.firstName);
+      req.append("lastName", values.lastName);
+      req.append("email", values.email);
+      req.append("phoneNumber", values.phoneNumber);
+      req.append("moreInfo", values.moreInfo);
+      req.append("role", values.role);
+      req.append("imageFile", values.imageFile);
+      dispatch(
+        createAdvocate({
+          firstName: req.get("firstName"),
+          lastName: req.get("lastName"),
+          email: req.get("email"),
+          phoneNumber: req.get("phoneNumber"),
+          moreInfo: req.get("moreInfo"),
+          imageFile: req.get("imageFile"),
+          role: req.get("role"),
+        })
+      );
     },
   });
 
   return (
     <div className="createadvocates">
+      <Helmet>
+        <title>create lawyer</title>
+      </Helmet>
+      <div>
+        <Toaster />
+      </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
           firstName{" "}
@@ -108,7 +110,7 @@ const CreateAdvocate = () => {
         <label className="createadvocates__forms__label" htmlFor="moreInfo">
           moreInfo
         </label>
-        <input
+        <textarea
           className="createadvocates__forms__input"
           id="moreInfo"
           name="moreInfo"

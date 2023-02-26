@@ -10,6 +10,7 @@ import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { height } from "@mui/system";
 import { useFormik } from "formik";
+import { Helmet } from "react-helmet";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -85,12 +86,18 @@ const ProductDetails = () => {
   const [isActive, setIsActive] = useState(false);
   return (
     <div className="productdetails">
+      <Helmet>
+        <title>service</title>
+      </Helmet>
       <div className="productdetails__images">
         <div className="productdetails__images__image">
           {service.image && (
             <img
               style={{ width: "200px" }}
-              src={"https://defendovb.az/api/v1/files?filepath=" + service.image.filePath}
+              src={
+                "https://defendovb.az/api/v1/files?filepath=" +
+                service.image.filePath
+              }
               alt=""
             />
           )}

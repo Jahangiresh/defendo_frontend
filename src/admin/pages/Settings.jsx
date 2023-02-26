@@ -20,6 +20,7 @@ import {
   getAllSetting,
   isDeleting,
 } from "../../features/settingSlice";
+import { Helmet } from "react-helmet";
 
 export default function Settings() {
   const settings = useSelector(getAllSetting);
@@ -58,6 +59,9 @@ export default function Settings() {
 
   return (
     <>
+    <Helmet>
+        <title>setting</title>
+      </Helmet>
       <Link
         to={"/admin/setting/create"}
         style={{

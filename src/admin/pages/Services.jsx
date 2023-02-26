@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Swal from "sweetalert2/dist/sweetalert2";
+import { Helmet } from "react-helmet";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -73,6 +74,9 @@ const Services = () => {
 
   return (
     <>
+      <Helmet>
+        <title>service</title>
+      </Helmet>
       <Link
         to={"/admin/service/create"}
         style={{
