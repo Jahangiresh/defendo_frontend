@@ -1,14 +1,14 @@
 import React from "react";
 import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
-import { useDispatch } from "react-redux";
-import { createAdvocate } from "../../features/teamSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { createAdvocate, getError } from "../../features/teamSlice";
 import { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 const CreateAdvocate = () => {
   const dispatch = useDispatch();
-
+  const [errors, setErrors] = useState();
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -104,10 +104,11 @@ const CreateAdvocate = () => {
         <div className="phonenumber__div">
           <span>+994</span>
           <select
-            onChange={(e) => setFullNumber("+994" + " " + e.target.value)}
+            onChange={(e) => setFullNumber("+994" + " " + e.target.value + " ")}
             name=""
             id=""
           >
+            <option selected disabled hidden></option>
             <option value="55">55</option>
             <option value="50">50</option>
             <option value="51">51</option>

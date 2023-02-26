@@ -11,6 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { Helmet } from "react-helmet";
+import { getIsDeleting } from "../../features/serviceSlice";
+import { useSelector } from "react-redux";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,23 +56,46 @@ const Services = () => {
     };
     getItem();
   }, []);
-  const deleteService = async (e, id) => {
+  const isDeleting = useSelector(getIsDeleting);
+
+  const deleteService = (e, id) => {
     e.stopPropagation();
-    const { accessToken } = JSON.parse(localStorage.getItem("user"));
-    await axios
-      .delete(`https://defendovb.az/api/v1/providedservices/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then(() => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteService(id));
         window.location.reload(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        popUp("Oops...", "error", "Nəsə səhv getdi");
-      });
+        if (isDeleting) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+      }
+    });
   };
+
+  // const deleteService = async (e, id) => {
+  //   e.stopPropagation();
+  //   const { accessToken } = JSON.parse(localStorage.getItem("user"));
+  //   await axios
+  //     .delete(`https://defendovb.az/api/v1/providedservices/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //     })
+  //     .then(() => {
+  //       window.location.reload(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       popUp("Oops...", "error", "Nəsə səhv getdi");
+  //     });
+  // };
 
   return (
     <>
