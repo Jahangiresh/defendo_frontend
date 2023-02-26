@@ -9,28 +9,20 @@ import Paper from "@mui/material/Paper";
 import { useFormik } from "formik";
 import "../scss/settings.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { Swal } from "sweetalert2/dist/sweetalert2";
+import Swal from "sweetalert2";
+
 import { useReducer } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "FETCH_REQ":
-      return { ...state, loader: true };
-    case "FETCH_SUCCES":
-      return { ...state, settings: action.payload, loader: false };
-    case "FETCH_FAIL":
-      return { ...state, error: true };
-    default:
-      return state;
-  }
-};
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteSetting,
+  getAllSetting,
+  isDeleting,
+} from "../../features/settingSlice";
 
 export default function Settings() {
+  const settings = useSelector(getAllSetting);
   const popUp = (title, icon, text) => {
     Swal.fire({
       icon: icon,
@@ -40,42 +32,30 @@ export default function Settings() {
   };
   const navigate = useNavigate();
 
-  const [{ loader, settings, error }, dispatch] = useReducer(reducer, {
-    loader: true,
-    error: false,
-    settings: [],
-  });
-  const apiEndPoint = `https://defendovb.az/api/v1/settings`;
-  useEffect(() => {
-    const getItem = async () => {
-      try {
-        dispatch({ type: "FETCH_REQ" });
-        const { data } = await axios.get(apiEndPoint);
-        dispatch({ type: "FETCH_SUCCES", payload: data });
-      } catch (error) {
-        dispatch({ type: "FETCH_FAIL" });
-        popUp("Oops...", "error", "Nəsə səhf getdi");
-      }
-    };
-    getItem();
-  }, []);
-  const deleteService = async (e, id) => {
-    const { accessToken } = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
+  const handleDelete = (e, id) => {
     e.stopPropagation();
-    await axios
-      .delete(`https://defendovb.az/api/v1/settings/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then(() => {
-        window.location.reload(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        popUp("Oops...", "error", "Nəsə səhv getdi");
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteSetting(id));
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 700);
+        if (isDeleting) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+      }
+    });
   };
+
   return (
     <>
       <Link
@@ -133,7 +113,7 @@ export default function Settings() {
                   <TableCell component="th" scope="row" align="right">
                     <button
                       className="btn btn-danger"
-                      onClick={(e) => deleteService(e, setting.id)}
+                      onClick={(e) => handleDelete(e, setting.id)}
                     >
                       Delete
                     </button>

@@ -2,8 +2,11 @@ import React from "react";
 import Logo from "../assets/images/logo.svg";
 import "../assets/css/footer.scss";
 import { Link } from "react-router-dom";
-
+import { getAllSetting } from "../features/settingSlice.js";
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const settings = useSelector(getAllSetting);
+
   return (
     <footer>
       <section id="first">
@@ -17,16 +20,39 @@ const Footer = () => {
             <div id="footer-item">
               <h5>Ünvanlarımız</h5>
               <ul>
-                <li>Ak. Həsən Əliyev 82F</li>
+                <li>
+                  {settings &&
+                    settings
+                      .filter((setting) => setting.key === "Unvan")
+                      .map((s) => (
+                        <>
+                          {s.key} : {s.value}
+                        </>
+                      ))}
+                </li>
                 <li className="number">
-                  Telefon:
-                  <a href="tel:+994 55 465 22 52">+994 55 465-22-52</a>
+                  {settings &&
+                    settings
+                      .filter((setting) => setting.key === "Telefon")
+                      .map((s) => (
+                        <>
+                          {s.key} :{" "}
+                          <a href="tel:+994 55 465 22 52">{s.value}</a>
+                        </>
+                      ))}
                 </li>
                 <li>
-                  Email:
-                  <a href="mailto:officedefendo@gmail.com">
-                    officedefendo@gmail.com
-                  </a>
+                  <li className="number">
+                    {settings &&
+                      settings
+                        .filter((setting) => setting.key === "Email")
+                        .map((s) => (
+                          <>
+                            {s.key} :{" "}
+                            <a href={`mailto:${s.value}`}>{s.value}</a>
+                          </>
+                        ))}
+                  </li>
                 </li>
               </ul>
             </div>
@@ -38,10 +64,10 @@ const Footer = () => {
                 <Link to="/">Ana səhifə</Link>
               </li>
               <li>
-                <Link to="">Haqqımızda</Link>
+                <Link to="about">Haqqımızda</Link>
               </li>
               <li>
-                <Link to="">Komandamız</Link>
+                <Link to="team">Komandamız</Link>
               </li>
               <li>
                 <Link to="/services">Xidmətlər</Link>
