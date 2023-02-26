@@ -18,7 +18,10 @@ const NewsCard = () => {
         blogs.map((blog) => (
           <div className="newscard__col col-4">
             <div className="newscard__col__img">
-              <img src={newsPng} alt="" />
+              <img
+                src={`https://defendovb.az/api/v1/files?filepath=${blog.image.filePath}`}
+                alt=""
+              />
             </div>
             <div className="newscard__col__content">
               <span className="newscard__col__content__span">

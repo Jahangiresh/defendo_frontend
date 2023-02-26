@@ -60,7 +60,9 @@ const Header = () => {
     >
       <div className="header__container custom-container">
         <div className="header__container__logo">
-          <img src={logoSvg} alt="" />
+          <Link to="/">
+            <img src={logoSvg} alt="" />
+          </Link>
         </div>
         <div className="header__container__menu d-block d-md-none">
           {/* <img src={menuIcon} alt="" /> */}

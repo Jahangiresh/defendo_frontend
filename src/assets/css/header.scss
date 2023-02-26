@@ -145,9 +145,10 @@
         }
       }
     }
+
     &__logo {
       width: 54px;
-      height: 50px;
+      height: 100%;
       margin-top: 10px;
       img {
         object-fit: cover;

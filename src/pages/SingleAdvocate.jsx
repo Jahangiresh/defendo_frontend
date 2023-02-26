@@ -31,7 +31,7 @@ const SingleAdvocate = () => {
   const params = useParams();
   const _id = params.id;
 
-  const apiEndPoint = `http://localhost:3000/advocates/${_id}`;
+  const apiEndPoint = `https://defendovb.az/api/v1/lawyers/${_id}`;
 
   useEffect(() => {
     const getAdvocate = async () => {
