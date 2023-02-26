@@ -13,6 +13,7 @@ import twitterIcon from "../assets/images/twitterIcon.png";
 import { useSelector } from "react-redux";
 import { getAllBlogs, getStatus } from "../features/blogSlice";
 import { Helmet } from "react-helmet";
+import parse from "html-react-parser";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -73,13 +74,13 @@ const SingleNews = () => {
             <div className="singlenews__container__row__left__img">
               <img src={newsPng} alt="" />
             </div>
-            <h3 className="singlenews__container__row__left__xulase">Xülasə</h3>
+            {/* <h3 className="singlenews__container__row__left__xulase">Xülasə</h3>
             <p className="singlenews__container__row__left__xulaseP">
               {item.title}
-            </p>
-            <h3 className="singlenews__container__row__left__xulase">Məqalə</h3>
+            </p> */}
+            {/* <h3 className="singlenews__container__row__left__xulase">Məqalə</h3> */}
             <p className="singlenews__container__row__left__xulaseP">
-              {item.body}
+              {parse(item.body)}
             </p>
             <div className="singlenews__container__row__left__share">
               <h3 className="singlenews__container__row__left__xulase share__h">

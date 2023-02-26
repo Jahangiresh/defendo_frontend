@@ -5,6 +5,8 @@ import "../assets/css/newscard.scss";
 import timePng from "../assets/images/time.png";
 import { getAllBlogs, getStatus } from "../features/blogSlice";
 import LoadingBox from "./LoadingBox";
+import parse from "html-react-parser";
+
 const NewsCard = () => {
   const blogs = useSelector(getAllBlogs);
   const status = useSelector(getStatus);
@@ -28,7 +30,9 @@ const NewsCard = () => {
               </span>
               <h3 className="newscard__col__content__h">{blog.title}</h3>
               <p className="newscard__col__content__p">
-                {blog.body.substring(0, 100)}...
+                {parse(blog.body) > 10
+                  ? parse(blog.body).slice(0, 10) + "..."
+                  : parse(blog.body)}
               </p>
               <button
                 onClick={() => navigate(`/blogs/${blog.id}`)}
