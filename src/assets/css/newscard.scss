@@ -15,8 +15,11 @@
     &__img {
       height: 285px;
       margin-bottom: 16px;
+      width: 100%;
       img {
         height: 100%;
+        width: 100%;
+
         object-fit: cover;
       }
     }
@@ -37,6 +40,7 @@
         color: #be9140;
         margin: 12px 0 8px 0;
       }
+
       &__p {
         font-family: "Poppins";
         font-style: normal;
@@ -44,6 +48,7 @@
         font-size: 16px;
         color: #474747;
         margin-bottom: 24px;
+        overflow: hidden;
       }
       &__button {
         padding: 4px 24px;
