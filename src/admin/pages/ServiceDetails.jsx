@@ -103,7 +103,13 @@ const ProductDetails = () => {
           )}
         </div>
       </div>
-      <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+      <form
+        onSubmit={formik.handleSubmit}
+        encType="multipart/form-data"
+        style={{
+          width: "100%",
+        }}
+      >
         <label className="custom-file-upload mt-3">
           <input
             name="image"

@@ -22,14 +22,14 @@ const Login = () => {
       </Helmet>
       <h1>login</h1>
       <div className="login__inputs">
-        <label htmlFor="username">username</label>
+        <label htmlFor="username">username or email</label>
         <input
           onChange={(e) => setUsername(e.target.value)}
           type="text"
           name="username"
           id="username"
         />
-        <label htmlFor="password">username</label>
+        <label htmlFor="password">password</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           type="password"

@@ -23,7 +23,7 @@ import CreateSetting from "../admin/pages/CreateSetting";
 import SettingDetails from "../admin/pages/SettingDetails";
 
 const AdminLayout = () => {
-  const user = localStorage.getItem("user");
+  let user1 = localStorage.getItem("user");
 
   const checkTokenExpiration = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -32,6 +32,7 @@ const AdminLayout = () => {
       if (decodedToken.exp * 1000 < Date.now()) {
         try {
           await AuthService.refreshToken();
+          user1 = localStorage.getItem("user");
         } catch (error) {
           AuthService.logout();
         }
@@ -46,7 +47,7 @@ const AdminLayout = () => {
       window
         .atob(base64)
         .split("")
-        .map(function (c) {
+        .map(function(c) {
           return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
         })
         .join("")
@@ -56,17 +57,19 @@ const AdminLayout = () => {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(checkTokenExpiration, 1000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  });
+    if (user1) {
+      const intervalId = setInterval(checkTokenExpiration, 1000 * 10);
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, []);
 
   return (
     <div className="admin-wrapper">
       <Router>
         <Routes>
-          {user ? (
+          {user1 ? (
             <Route path="/admin" element={<MainLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="/admin/services" element={<Services />} />
@@ -82,7 +85,7 @@ const AdminLayout = () => {
               <Route path="/admin/advocates/:id" element={<EditAdvocate />} />
               <Route path="/admin/blogs/:id" element={<EditBlog />} />
 
-              <Route path="/admin/login" element={<Login />} />
+              {/* <Route path="/admin/login" element={<Login />} /> */}
               <Route path="/admin/slides" element={<Slides />} />
               <Route path="/admin/slides/create" element={<CreateSlide />} />
               <Route path="/admin/slides/:id" element={<EditSlide />} />

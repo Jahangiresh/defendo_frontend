@@ -13,9 +13,11 @@ import axios from "axios";
 import { getAllSetting } from "../features/settingSlice";
 import { Helmet } from "react-helmet";
 import LoadingBox from "../components/LoadingBox";
+import { toast, Toaster } from "react-hot-toast";
 const Contact = () => {
   const settings = useSelector(getAllSetting);
   const popUp = (title, icon, text) => {
+    console.log("sa");
     Swal.fire({
       icon: icon,
       title: title,
@@ -33,26 +35,16 @@ const Contact = () => {
         },
       })
       .then(() => {
-        popUp(
-          "Tamamlandı",
-          "success",
-          "Müraciətiniz uğurla göndərildi. 3 iş günü ərzində cavablandırılacaq!"
-        );
+        toast.success("Mesaj göndərildi");
       })
       .catch((error) => {
         if (error.response) {
           if (error.response.status === 429) {
-            popUp(
-              "Oops...",
-              "error",
+            toast.error(
               "Həddindən artıq sorğu. Saatda maksimum 3 sorğu göndərə bilərsiniz"
             );
           } else if (error.response.status === 400) {
-            popUp(
-              "Oops...",
-              "error",
-              "Zəhmət olmasa dataları düzgün daxil edin"
-            );
+            toast.error("Zəhmət olmasa dataları düzgün daxil edin");
           } else {
             alert("An error occurred while sending the request: ", error);
           }
@@ -72,6 +64,9 @@ const Contact = () => {
         <p>Müraciətiniz 3 iş günü ərzində cavablandırılacaq</p>
       </HeaderDown>
       <section className="wrapper">
+        <div>
+          <Toaster />
+        </div>
         <div className="container">
           <div className="row contact__row">
             <div className="info col-lg-6 col-md-12 col-sm-12">
