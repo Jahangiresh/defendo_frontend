@@ -32,7 +32,6 @@ export const deleteAdvocate = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.Detail);
     }
   }
@@ -53,7 +52,9 @@ export const createAdvocate = createAsyncThunk(
         window.location = "/admin/advocates";
       })
       .catch((err) => {
-        toast.error(err.response.data.title);
+        err.map((e) => {
+          toast.error(e.response.data.errors);
+        });
       });
     return response.data;
   }
