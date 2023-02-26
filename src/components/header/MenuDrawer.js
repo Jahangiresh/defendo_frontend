@@ -66,7 +66,7 @@ export default function MenuDrawer() {
             </span>
             <div className="upperheader__container__right">
               <a
-                href="https://google.com"
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="icons__href"
@@ -74,7 +74,7 @@ export default function MenuDrawer() {
                 <img src={facebookPng} alt="" />
               </a>
               <a
-                href="https://google.com"
+                href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="icons__href"
@@ -82,7 +82,7 @@ export default function MenuDrawer() {
                 <img src={twitterPng} alt="" />
               </a>
               <a
-                href="https://google.com"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="icons__href"
@@ -90,7 +90,7 @@ export default function MenuDrawer() {
                 <img src={instagramPng} alt="" />
               </a>
             </div>
-            <div className="menudrawer__container__upper__langs">
+            {/* <div className="menudrawer__container__upper__langs">
               <span
                 onClick={() => clickLang("az")}
                 className="menudrawer__container__upper__langs__span"
@@ -109,7 +109,7 @@ export default function MenuDrawer() {
               >
                 Russian
               </span>
-            </div>
+            </div> */}
           </div>
           <div className="menudrawer__container__down">
             <ul className="menudrawer__container__down__ul">

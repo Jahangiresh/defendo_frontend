@@ -104,12 +104,12 @@ const Header = () => {
                 bizimlə əlaqə
               </button>
             </li>
-            <li className="header__container__nav__ul__li">
+            {/* <li className="header__container__nav__ul__li">
               <img src={webIcon} alt="" />
               <div className="li__lang">
                 <HeaderLangs />
               </div>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

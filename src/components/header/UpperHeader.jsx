@@ -47,7 +47,7 @@ const UpperHeader = () => {
         <div className="upperheader__container__right">
           <span className="upperheader__container__right__span">
             <a
-              href="https://google.com"
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -56,7 +56,7 @@ const UpperHeader = () => {
           </span>
           <span className="upperheader__container__right__span">
             <a
-              href="https://google.com"
+              href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,7 +65,7 @@ const UpperHeader = () => {
           </span>{" "}
           <span className="upperheader__container__right__span">
             <a
-              href="https://google.com"
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
             >
