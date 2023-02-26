@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import LoadingBox from "../components/LoadingBox";
 import "../assets/css/newscard.scss";
@@ -50,7 +50,7 @@ const SingleNews = () => {
     };
     getItem();
   }, [id]);
-
+  const navigate = useNavigate();
   return loading ? (
     <LoadingBox />
   ) : (
@@ -111,7 +111,7 @@ const SingleNews = () => {
                   .map((it) => (
                     <Link
                       key={it.id}
-                      to={`/news/${it.id}`}
+                      to={`/blogs/${it.id}`}
                       className="singlenews__container__row__right__content__li link-default"
                     >
                       <p className="singlenews__container__row__left__p right__p">

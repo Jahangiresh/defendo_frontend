@@ -4,19 +4,44 @@ import "../../assets/css/header.scss";
 import facebookPng from "../../assets/images/facebook.png";
 import twitterPng from "../../assets/images/twitter.png";
 import instagramPng from "../../assets/images/instagram.png";
+import { getAllSetting } from "../../features/settingSlice";
+import { useSelector } from "react-redux";
+
 const UpperHeader = () => {
+  const settings = useSelector(getAllSetting);
   return (
     <div className="upperheader">
       <div className="upperheader__container custom-container">
         <div className="upperheader__container__left">
           <span className="upperheader__container__left__span">
-            Mobil: +994 55 465-22-52
+            {settings &&
+              settings
+                .filter((setting) => setting.key === "Mobile")
+                .map((s) => (
+                  <>
+                    {s.key} : {s.value}
+                  </>
+                ))}
           </span>
           <span className="upperheader__container__left__span home__phone">
-            Telefon: 012 465-22-52
+            {settings &&
+              settings
+                .filter((setting) => setting.key === "Telefon")
+                .map((s) => (
+                  <>
+                    {s.key} : {s.value}
+                  </>
+                ))}
           </span>
           <span className="upperheader__container__left__span">
-            Email: officedefendo@gmail.com
+            {settings &&
+              settings
+                .filter((setting) => setting.key === "Email")
+                .map((s) => (
+                  <>
+                    {s.key} : {s.value}
+                  </>
+                ))}
           </span>
         </div>
         <div className="upperheader__container__right">

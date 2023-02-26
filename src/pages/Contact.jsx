@@ -10,8 +10,10 @@ import HeaderDown from "../components/header/HeaderDown";
 import { Formik } from "formik";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { getAllSetting } from "../features/settingSlice";
 
 const Contact = () => {
+  const settings = useSelector(getAllSetting);
   const popUp = (title, icon, text) => {
     Swal.fire({
       icon: icon,
@@ -24,15 +26,11 @@ const Contact = () => {
 
   const contactFormsPost = async (values) => {
     await axios
-      .post(
-        "https://defendovb.az/api/v1/contactusforms",
-        values,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post("https://defendovb.az/api/v1/contactusforms", values, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then(() => {
         popUp(
           "Tamamlandı",
@@ -78,33 +76,51 @@ const Contact = () => {
                 <div className="row contact__row">
                   <div className="col-lg-6 col-md-6 col-sm-12 ">
                     <img src={Clock} alt="" />
-                    <div>
-                      <h5>İş vaxtımız</h5>
-                      <p>Həftə içi: 09:00 - 18:00</p>
-                    </div>
+                    {settings &&
+                      settings
+                        .filter((setting) => setting.key === "iş vaxtı")
+                        .map((s) => (
+                          <div>
+                            <h5>{s.key}</h5>
+                            <p>{s.value}</p>
+                          </div>
+                        ))}
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <img src={Map} alt="" />
-                    <div>
-                      <h5>Ünvanımız</h5>
-                      <p>Ak. Həsən Əliyev 82F</p>
-                    </div>
+                    {settings &&
+                      settings
+                        .filter((setting) => setting.key === "Unvan")
+                        .map((s) => (
+                          <div>
+                            <h5>Ünvanımız</h5>
+                            <p>{s.value}</p>
+                          </div>
+                        ))}
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <img src={Headset} alt="" />
-                    <div>
-                      <h5>Əlaqə</h5>
-                      <p>
-                        055 465-22-52 <br /> 012 465-22-52
-                      </p>
-                    </div>
+                    {settings &&
+                      settings
+                        .filter((setting) => setting.key === "Mobile")
+                        .map((s) => (
+                          <div>
+                            <h5>Əlaqə</h5>
+                            <p>{s.value}</p>
+                          </div>
+                        ))}
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <img src={Email} alt="" />
-                    <div>
-                      <h5>Email adresimiz</h5>
-                      <p>officedefendo@gmail.com</p>
-                    </div>
+                    {settings &&
+                      settings
+                        .filter((setting) => setting.key === "Email")
+                        .map((s) => (
+                          <div>
+                            <h5>Email</h5>
+                            <p>{s.value}</p>
+                          </div>
+                        ))}
                   </div>
                 </div>
               </div>

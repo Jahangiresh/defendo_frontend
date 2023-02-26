@@ -1,7 +1,9 @@
 import axios from "axios";
 import { Formik, useFormik } from "formik";
 import React from "react";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2/dist/sweetalert2";
+import { createSetting } from "../../features/settingSlice";
 import "../scss/productdetails.scss";
 
 const CreateSetting = () => {
@@ -12,30 +14,13 @@ const CreateSetting = () => {
       text: text,
     });
   };
-
-  const { accessToken } = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
   const settingPost = async (setting) => {
     const formData = new FormData();
     formData.append("key", setting.key);
     formData.append("value", setting.value);
     formData.append("imageFile", setting.image);
-    await axios
-      .post(
-        "https://defendovb.az/api/v1/settings",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
-      .then(() => {
-        window.location = "/admin/setting";
-      })
-      .catch((error) => {
-        popUp("Oops...", "error", error.response.data.title);
-      });
+    dispatch(createSetting(formData));
   };
   const formik = useFormik({
     initialValues: {
