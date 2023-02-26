@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { createAdvocate } from "../../features/teamSlice";
 import { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
 const CreateAdvocate = () => {
   const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ const CreateAdvocate = () => {
       req.append("firstName", values.firstName);
       req.append("lastName", values.lastName);
       req.append("email", values.email);
-      req.append("phoneNumber", values.phoneNumber);
+      req.append("phoneNumber", fullnumber + values.phoneNumber);
       req.append("moreInfo", values.moreInfo);
       req.append("role", values.role);
       req.append("imageFile", values.imageFile);
@@ -40,6 +41,7 @@ const CreateAdvocate = () => {
       );
     },
   });
+  const [fullnumber, setFullNumber] = useState();
 
   return (
     <div className="createadvocates">
@@ -99,14 +101,30 @@ const CreateAdvocate = () => {
         <label className="createadvocates__forms__label" htmlFor="phoneNumber">
           phoneNumber
         </label>
-        <input
-          className="createadvocates__forms__input"
-          id="phoneNumber"
-          name="phoneNumber"
-          type="phoneNumber"
-          onChange={formik.handleChange}
-          value={formik.values.phoneNumber}
-        />
+        <div className="phonenumber__div">
+          <span>+994</span>
+          <select
+            onChange={(e) => setFullNumber("+994" + " " + e.target.value)}
+            name=""
+            id=""
+          >
+            <option value="55">55</option>
+            <option value="50">50</option>
+            <option value="51">51</option>
+            <option value="70">70</option>
+            <option value="77">77</option>
+          </select>
+          <input
+            className="createadvocates__forms__input"
+            id="phoneNumber"
+            name="phoneNumber"
+            type="phoneNumber"
+            placeholder="666-66-66"
+            onChange={formik.handleChange}
+            value={formik.values.phoneNumber}
+            maxLength={9}
+          />
+        </div>
         <label className="createadvocates__forms__label" htmlFor="moreInfo">
           moreInfo
         </label>
