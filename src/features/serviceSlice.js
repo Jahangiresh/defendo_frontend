@@ -5,6 +5,7 @@ import axios from "axios";
 const initialState = {
   items: [],
   status: null,
+  isDeleting: false,
 };
 
 export const serviceFetch = createAsyncThunk(
@@ -14,6 +15,24 @@ export const serviceFetch = createAsyncThunk(
       "https://defendovb.az/api/v1/providedservices"
     );
     return resp?.data;
+  }
+);
+
+export const deleteService = createAsyncThunk(
+  "service/deleteApi",
+  async (payload) => {
+    const { accessToken } = JSON.parse(localStorage.getItem("user"));
+
+    const response = await axios.delete(
+      `https://defendovb.az/api/v1/providedservices/${payload}`,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    return response.data;
   }
 );
 
@@ -37,5 +56,6 @@ const serviceSlice = createSlice({
 });
 export const getAllServices = (state) => state.services.items;
 export const getStatus = (state) => state.services.status;
+export const getIsDeleting = (state) => state.services.isDeleting;
 
 export default serviceSlice.reducer;
