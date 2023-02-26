@@ -21,7 +21,7 @@ class AuthService {
       });
   }
 
-  logout() {
+  async logout() {
     localStorage.removeItem("user");
     window.location = "/admin";
   }
@@ -47,11 +47,9 @@ class AuthService {
           user.refreshToken = response.data.refreshToken;
           localStorage.setItem("user", JSON.stringify(user));
         }
-        // return response.data;
       })
       .catch((err) => {
         this.logout();
-        console.log(err);
       });
   }
 }
