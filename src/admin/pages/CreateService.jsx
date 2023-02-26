@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Formik, useFormik } from "formik";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { json } from "react-router-dom";
 import Swal from "sweetalert2/dist/sweetalert2";
 import "../scss/productdetails.scss";
@@ -46,6 +47,9 @@ const CreateService = () => {
   });
   return (
     <div className="productdetails">
+      <Helmet>
+        <title>create service</title>
+      </Helmet>
       <form
         style={{
           width: "100%",

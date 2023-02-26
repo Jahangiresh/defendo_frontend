@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import "../assets/css/about.scss";
 import logoPng from "../assets/images/logoBlue.svg";
 import HeaderDown from "../components/header/HeaderDown";
@@ -9,6 +10,9 @@ const About = () => {
         <h1>haqqimizda</h1>
       </HeaderDown>
       <div className="about">
+        <Helmet>
+          <title>haqqımızda</title>
+        </Helmet>
         <div className="about__container custom-container">
           <div className="about__container__row row">
             <div className="about__container__row__left col-lg-8 col-7">

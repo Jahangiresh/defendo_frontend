@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Formik, useFormik } from "formik";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { createSetting } from "../../features/settingSlice";
@@ -34,6 +35,9 @@ const CreateSetting = () => {
   });
   return (
     <div className="productdetails">
+      <Helmet>
+        <title>add setting</title>
+      </Helmet>
       <div className="productdetails__images">
         <div className="productdetails__images__image">
           {/* {service.image && (

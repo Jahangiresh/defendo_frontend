@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import "../scss/login.scss";
 import AuthService from "../services/AuthService";
@@ -16,6 +17,9 @@ const Login = () => {
 
   return (
     <div className="login">
+      <Helmet>
+        <title>login</title>
+      </Helmet>
       <h1>login</h1>
       <div className="login__inputs">
         <label htmlFor="username">username</label>

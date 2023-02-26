@@ -16,7 +16,6 @@ import ServicesDetail from "../pages/ServicesDetail";
 import SingleAdvocate from "../pages/SingleAdvocate";
 import "../assets/css/layout.scss";
 import SingleNews from "../pages/SingleNews";
-import Blogs from "../admin/pages/Blogs";
 
 const Layout = () => {
   return (

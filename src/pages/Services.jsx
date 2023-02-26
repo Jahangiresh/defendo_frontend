@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Helmet } from "react-helmet";
 import "../assets/css/services.scss";
 import HeaderDown from "../components/header/HeaderDown";
 import ServiceCard from "../components/ServiceCard";
@@ -11,6 +12,9 @@ const Services = () => {
         <p>Peşəkar xidmətlərimizlə tanış olun.</p>
       </HeaderDown>
       <main>
+        <Helmet>
+          <title>xidmətlər</title>
+        </Helmet>
         <div className="custom-container">
           <div className="row">
             <ServiceCard />

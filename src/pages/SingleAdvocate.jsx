@@ -5,10 +5,10 @@ import "../assets/css/singleadvocate.scss";
 import mapPng from "../assets/images/mapIcon.png";
 import phonePng from "../assets/images/phonePng.png";
 import messagePng from "../assets/images/messagePng.png";
-import advocatePng from "../assets/images/vekilPng.png";
 import AdvocateCard from "../components/AdvocateCard";
 import HeaderDown from "../components/header/HeaderDown";
 import LoadingBox from "../components/LoadingBox";
+import { Helmet } from "react-helmet";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQ":
@@ -52,6 +52,11 @@ const SingleAdvocate = () => {
     <LoadingBox />
   ) : (
     <>
+      <Helmet>
+        <title>
+          Vəkillər {advocate.firstName}-{advocate.lastName}
+        </title>
+      </Helmet>
       <HeaderDown>
         <h1>Komandamız</h1>
         <p>Peşəkar komandamız ilə tanış olun.</p>
@@ -87,7 +92,7 @@ const SingleAdvocate = () => {
             </div>
             <div className="singleadvocate__container__row__right col-lg-8  col-5">
               <h1 className="singleadvocate__container__row__right__title">
-                {advocate.firstName} {" "} {advocate.lastName} 
+                {advocate.firstName} {advocate.lastName}
               </h1>
               <p className="singleadvocate__container__row__right__about">
                 {advocate.moreInfo}

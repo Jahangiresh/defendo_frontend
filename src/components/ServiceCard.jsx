@@ -1,9 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import courthouse from "../assets/images/map_courthouse.png";
 import "../assets/css/services.scss";
-import Loader from "../assets/images/Component 1.png";
 import LoadingBox from "./LoadingBox";
 import { getAllServices, getStatus } from "../features/serviceSlice";
 
@@ -11,7 +9,6 @@ const ServiceCard = () => {
   // const { items, status } = useSelector((state) => state.services);
   const services = useSelector(getAllServices);
   const status = useSelector(getStatus);
-  console.log(services);
   return status === "pending" ? (
     <LoadingBox />
   ) : (

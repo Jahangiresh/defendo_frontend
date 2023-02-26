@@ -13,7 +13,6 @@ import {
   AiOutlinePlusCircle,
 } from "react-icons/ai";
 import "../scss/adminadvocates.scss";
-import advImg from "../assets/images/avt.jpg";
 import LoadingBox from "../../components/LoadingBox";
 import Swal from "sweetalert2";
 
@@ -24,7 +23,7 @@ import {
   getIsDeleting,
 } from "../../features/blogSlice";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Blogs() {
   const navigate = useNavigate();
@@ -59,6 +58,9 @@ export default function Blogs() {
     <LoadingBox />
   ) : (
     <TableContainer component={Paper} className="adminadvocates">
+      <Helmet>
+        <title>blogs</title>
+      </Helmet>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

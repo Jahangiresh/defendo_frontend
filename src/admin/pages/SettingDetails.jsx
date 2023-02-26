@@ -11,6 +11,7 @@ import axios from "axios";
 import { height } from "@mui/system";
 import { useFormik } from "formik";
 import { Swal } from "sweetalert2/dist/sweetalert2";
+import { Helmet } from "react-helmet";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -94,6 +95,9 @@ const SettingDetails = () => {
   const [isActive, setIsActive] = useState(false);
   return (
     <div className="productdetails">
+      <Helmet>
+        <title>setting</title>
+      </Helmet>
       {setting.image && (
         <div className="productdetails__images">
           <div className="productdetails__images__image">
