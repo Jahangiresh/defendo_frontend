@@ -16,6 +16,8 @@ import "../scss/adminadvocates.scss";
 import LoadingBox from "../../components/LoadingBox";
 import Swal from "sweetalert2";
 
+import parse from "html-react-parser";
+
 import {
   getAllBlogs,
   deleteBlog,
@@ -89,7 +91,9 @@ export default function Blogs() {
                 {blog.title > 20 ? blog.title.slice(0, 20) + "..." : blog.title}
               </TableCell>
               <TableCell align="left">
-                {blog.body > 25 ? blog.body.slice(0, 25) + "..." : blog.body}
+                {parse(blog.body) > 25
+                  ? parse(blog.body).slice(0, 25) + "..."
+                  : parse(blog.body)}
               </TableCell>
               <TableCell align="right" className="adminadvocates__icons">
                 <AiOutlineEdit

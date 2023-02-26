@@ -6,24 +6,32 @@ import { useState } from "react";
 import { createBLog } from "../../features/blogSlice";
 import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 const CreateBlog = () => {
   const [tagName, setTagName] = useState("");
   const [myTags, setMyTags] = useState([]);
+  const [editortxt, setEditotxt] = useState("");
   const dispatch = useDispatch();
+
+  const handleOnChange = (e, editor) => {
+    setEditotxt(editor.getData());
+  };
 
   const formik = useFormik({
     initialValues: {
       title: "",
-      body: "",
       tags: [],
       imageFile: "",
     },
 
     onSubmit: (values) => {
+      console.log(values);
       try {
         var req = new FormData();
         req.append("title", values.title);
-        req.append("body", values.body);
+        req.append("body", editortxt);
         myTags.forEach((tag, index) => {
           req.append(`tags[${index}]`, tag);
         });
@@ -68,14 +76,7 @@ const CreateBlog = () => {
         <label className="createadvocates__forms__label" htmlFor="body">
           body{" "}
         </label>
-        <input
-          className="createadvocates__forms__input"
-          id="body"
-          name="body"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.body}
-        />
+        <CKEditor editor={ClassicEditor} onChange={handleOnChange} />
         <label className="createadvocates__forms__label" htmlFor="email">
           tags
         </label>

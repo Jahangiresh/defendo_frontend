@@ -5,6 +5,9 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useState } from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -27,6 +30,11 @@ const EditBlog = () => {
   });
   const params = useParams();
   const id = params.id;
+  const [editortxt, setEditotxt] = useState("");
+
+  const handleOnChange = (e, editor) => {
+    setEditotxt(editor.getData());
+  };
 
   useEffect(() => {
     const getBlog = async () => {
@@ -62,7 +70,7 @@ const EditBlog = () => {
           `https://defendovb.az/api/v1/blogs/${id}`,
           {
             title: values.title,
-            body: values.body,
+            body: editortxt,
             tags: values.tags,
             imageFile: values.image,
           },
@@ -124,7 +132,7 @@ const EditBlog = () => {
         <label className="createadvocates__forms__label" htmlFor="body">
           body{" "}
         </label>
-        <textarea
+        {/* <textarea
           className="createadvocates__forms__input"
           id="body"
           name="body"
@@ -132,6 +140,11 @@ const EditBlog = () => {
           onChange={formik.handleChange}
           //   value={formik.values.body}
           defaultValue={blog.body}
+        /> */}
+        <CKEditor
+          editor={ClassicEditor}
+          onChange={handleOnChange}
+          data={blog.body}
         />
         <label className="createadvocates__forms__label" htmlFor="email">
           tags
