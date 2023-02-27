@@ -85,7 +85,7 @@ const Contact = () => {
                         .filter((setting) => setting.key === "iş vaxtı")
                         .map((s) => (
                           <div>
-                            <h5>{s.key}</h5>
+                            <h5>İş vaxtı</h5>
                             <p>{s.value}</p>
                           </div>
                         ))}

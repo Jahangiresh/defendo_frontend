@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   items: [],
@@ -23,16 +24,21 @@ export const deleteService = createAsyncThunk(
   async (payload) => {
     const { accessToken } = JSON.parse(localStorage.getItem("user"));
 
-    const response = await axios.delete(
-      `https://defendovb.az/api/v1/providedservices/${payload}`,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.delete(
+        `https://defendovb.az/api/v1/providedservices/${payload}`,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log("sa");
+      toast.error(error);
+    }
   }
 );
 

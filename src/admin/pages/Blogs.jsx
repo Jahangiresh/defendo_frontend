@@ -26,6 +26,7 @@ import {
 } from "../../features/blogSlice";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { Toaster } from "react-hot-toast";
 
 export default function Blogs() {
   const navigate = useNavigate();
@@ -59,62 +60,69 @@ export default function Blogs() {
   return status === "pending" ? (
     <LoadingBox />
   ) : (
-    <TableContainer component={Paper} className="adminadvocates">
-      <Helmet>
-        <title>blogs</title>
-      </Helmet>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">body</TableCell>
-            <TableCell align="right">
-              <span>edit</span>/<span>delete</span>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {blogs.map((blog) => (
-            <TableRow
-              key={blog.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <img
-                  className="adminadvocates__img"
-                  src={`https://defendovb.az/api/v1/files?filepath=${blog.image.filePath}`}
-                  alt="img"
-                />
-              </TableCell>
-              <TableCell align="left">
-                {blog.title > 20 ? blog.title.slice(0, 20) + "..." : blog.title}
-              </TableCell>
-              <TableCell align="left">
-                {parse(blog.body) > 25
-                  ? parse(blog.body).slice(0, 25) + "..."
-                  : parse(blog.body)}
-              </TableCell>
-              <TableCell align="right" className="adminadvocates__icons">
-                <AiOutlineEdit
-                  onClick={() => navigate(`/admin/blogs/${blog.id}`)}
-                  className="edit__icons"
-                />
-                <AiOutlineDelete
-                  onClick={() => handleDelete(blog.id)}
-                  className="edit__icons"
-                />
+    <>
+      <div>
+        <Toaster />
+      </div>
+      <TableContainer component={Paper} className="adminadvocates">
+        <Helmet>
+          <title>blogs</title>
+        </Helmet>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Image</TableCell>
+              <TableCell align="left">title</TableCell>
+              <TableCell align="left">body</TableCell>
+              <TableCell align="right">
+                <span>edit</span>/<span>delete</span>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <button
-        onClick={() => navigate("/admin/blogs/create")}
-        className="adminadvocates__add"
-      >
-        blog əlavə et <AiOutlinePlusCircle className="plus__icon" />
-      </button>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {blogs.map((blog) => (
+              <TableRow
+                key={blog.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <img
+                    className="adminadvocates__img"
+                    src={`https://defendovb.az/api/v1/files?filepath=${blog.image.filePath}`}
+                    alt="img"
+                  />
+                </TableCell>
+                <TableCell align="left">
+                  {blog.title > 20
+                    ? blog.title.slice(0, 20) + "..."
+                    : blog.title}
+                </TableCell>
+                <TableCell align="left">
+                  {parse(blog.body) > 25
+                    ? parse(blog.body).slice(0, 25) + "..."
+                    : parse(blog.body)}
+                </TableCell>
+                <TableCell align="right" className="adminadvocates__icons">
+                  <AiOutlineEdit
+                    onClick={() => navigate(`/admin/blogs/${blog.id}`)}
+                    className="edit__icons"
+                  />
+                  <AiOutlineDelete
+                    onClick={() => handleDelete(blog.id)}
+                    className="edit__icons"
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <button
+          onClick={() => navigate("/admin/blogs/create")}
+          className="adminadvocates__add"
+        >
+          blog əlavə et <AiOutlinePlusCircle className="plus__icon" />
+        </button>
+      </TableContainer>
+    </>
   );
 }
