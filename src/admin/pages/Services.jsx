@@ -42,7 +42,7 @@ const Services = () => {
       if (result.isConfirmed) {
         dispatch(deleteService(id));
         setTimeout(() => {
-          // window.location.reload(false);
+          window.location.reload(false);
         }, 700);
         if (isDeleting) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -65,7 +65,7 @@ const Services = () => {
           borderRadius: "20px",
         }}
       >
-        Xidmət Yartamaq
+        Xidmət Yaratmaq
       </Link>
       <div>
         <Toaster />
@@ -118,7 +118,7 @@ const Services = () => {
                       className="btn btn-danger"
                       onClick={(e) => deleteHandler(e, service.id)}
                     >
-                      Delete
+                      sil
                     </button>
                   </TableCell>
                 </TableRow>

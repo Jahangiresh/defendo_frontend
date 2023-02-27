@@ -85,12 +85,6 @@ const Dashboard = () => {
                 {item.button}
               </button>
             </div>
-            <section>
-              <img src={item.userProfile} alt={item.user} />
-              <span>
-                Posted by <strong>{item.user}</strong>
-              </span>
-            </section>
           </div>
         ))}
       </Slider>

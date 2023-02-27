@@ -59,7 +59,7 @@ export default function Settings() {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>setting</title>
       </Helmet>
       <Link
@@ -71,7 +71,7 @@ export default function Settings() {
           borderRadius: "20px",
         }}
       >
-        Setting Yartamaq
+        Setting Yaratmaq
       </Link>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -119,7 +119,7 @@ export default function Settings() {
                       className="btn btn-danger"
                       onClick={(e) => handleDelete(e, setting.id)}
                     >
-                      Delete
+                      sil
                     </button>
                   </TableCell>
                 </TableRow>

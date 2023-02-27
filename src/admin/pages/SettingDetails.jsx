@@ -197,7 +197,7 @@ const SettingDetails = () => {
           type="submit"
           className="bg-success btn btn-success text-light  "
         >
-          Yadd saxla
+          Yadda saxla
         </button>
       </form>
     </div>

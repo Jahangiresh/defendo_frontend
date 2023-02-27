@@ -190,7 +190,7 @@ const ProductDetails = () => {
           type="submit"
           className="bg-success btn btn-success text-light  "
         >
-          Yadd saxla
+           saxla
         </button>
       </form>
     </div>

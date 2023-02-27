@@ -111,7 +111,7 @@ const EditBlog = () => {
       </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label mb-2" htmlFor="image">
-          image
+          şəkil
         </label>
         <input
           className="createadvocates__forms__input"
@@ -125,7 +125,7 @@ const EditBlog = () => {
         />
 
         <label className="createadvocates__forms__label" htmlFor="firstName">
-          title
+          başlıq
         </label>
         <input
           className="createadvocates__forms__input"
@@ -137,7 +137,7 @@ const EditBlog = () => {
           defaultValue={blog.title}
         />
         <label className="createadvocates__forms__label" htmlFor="body">
-          body{" "}
+         mövzu
         </label>
         {/* <textarea
           className="createadvocates__forms__input"
@@ -154,7 +154,7 @@ const EditBlog = () => {
           data={blog.body}
         />
         <label className="createadvocates__forms__label" htmlFor="email">
-          tags
+          taqlar
         </label>
         <input value={tagName} onChange={(e) => setTagName(e.target.value)} />
 
@@ -165,7 +165,7 @@ const EditBlog = () => {
             setTagName("");
           }}
         >
-          Add
+          əlavə et
         </button>
         <ul>
           {myTags.length > 0

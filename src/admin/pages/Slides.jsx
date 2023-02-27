@@ -59,54 +59,56 @@ export default function Slides() {
   return status === "pending" ? (
     <LoadingBox />
   ) : (
-    <TableContainer component={Paper} className="adminadvocates">
-      <Helmet>
-        <title>slides</title>
-      </Helmet>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="left">order</TableCell>
-            <TableCell align="right">
-              <span>edit</span>/<span>delete</span>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {slides.map((slide) => (
-            <TableRow
-              key={slide.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <img
-                  className="adminadvocates__img"
-                  src={`https://defendovb.az/api/v1/files?filepath=${slide.image.filePath}`}
-                  alt="img"
-                />
-              </TableCell>
-              <TableCell align="left">{slide.order}</TableCell>
-              <TableCell align="right" className="adminadvocates__icons">
-                <AiOutlineEdit
-                  onClick={() => navigate(`/admin/slides/${slide.id}`)}
-                  className="edit__icons"
-                />
-                <AiOutlineDelete
-                  onClick={() => handleDelete(slide.id)}
-                  className="edit__icons"
-                />
+    <>
+      <TableContainer component={Paper} className="adminadvocates">
+        <Helmet>
+          <title>slides</title>
+        </Helmet>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Image</TableCell>
+              <TableCell align="left">order</TableCell>
+              <TableCell align="right">
+                <span>edit</span>/<span>delete</span>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {slides.map((slide) => (
+              <TableRow
+                key={slide.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <img
+                    className="adminadvocates__img"
+                    src={`https://defendovb.az/api/v1/files?filepath=${slide.image.filePath}`}
+                    alt="img"
+                  />
+                </TableCell>
+                <TableCell align="left">{slide.order}</TableCell>
+                <TableCell align="right" className="adminadvocates__icons">
+                  <AiOutlineEdit
+                    onClick={() => navigate(`/admin/slides/${slide.id}`)}
+                    className="edit__icons"
+                  />
+                  <AiOutlineDelete
+                    onClick={() => handleDelete(slide.id)}
+                    className="edit__icons"
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <button
         onClick={() => navigate("/admin/slides/create")}
         className="adminadvocates__add"
       >
-        blog əlavə et <AiOutlinePlusCircle className="plus__icon" />
+        slide əlavə et <AiOutlinePlusCircle className="plus__icon" />
       </button>
-    </TableContainer>
+    </>
   );
 }

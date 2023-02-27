@@ -39,7 +39,7 @@ const CreateSlide = () => {
       </Helmet>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
-          image
+          şəkil
         </label>
         <input
           className="createadvocates__forms__input"
@@ -52,7 +52,7 @@ const CreateSlide = () => {
           }}
         />
         <label className="createadvocates__forms__label" htmlFor="order">
-          order
+          sıra
         </label>
         <input
           className="createadvocates__forms__input"

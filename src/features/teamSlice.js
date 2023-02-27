@@ -28,7 +28,7 @@ export const deleteAdvocate = createAsyncThunk(
           },
         }
       );
-      toast.success("succesfully deleted");
+      toast.success("Vəkil silindi");
 
       return response.data;
     } catch (error) {
@@ -48,7 +48,7 @@ export const createAdvocate = createAsyncThunk(
         },
       })
       .then(() => {
-        toast.success("Successfully toasted!");
+        toast.success("Vəkil yaradıldı");
         window.location = "/admin/advocates";
       })
       .catch((err) => {

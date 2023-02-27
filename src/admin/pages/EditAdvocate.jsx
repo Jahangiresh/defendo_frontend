@@ -67,7 +67,7 @@ const EditAdvocate = () => {
           moreInfo: values.moreInfo,
           image: values.image,
         });
-        toast.success("lawyer updated");
+        toast.success("Vəkil dəyişildi");
 
         window.location = "/admin/advocates";
       } catch (error) {
@@ -86,7 +86,7 @@ const EditAdvocate = () => {
         </div>
         <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
           <label className="createadvocates__forms__label" htmlFor="image">
-            image
+            şəkil
           </label>
           <input
             className="createadvocates__forms__input"
@@ -99,7 +99,7 @@ const EditAdvocate = () => {
             }}
           />
           <label className="createadvocates__forms__label" htmlFor="firstName">
-            firstName{" "}
+           ad
           </label>
           <input
             className="createadvocates__forms__input"
@@ -111,7 +111,7 @@ const EditAdvocate = () => {
             defaultValue={advocate.firstName}
           />
           <label className="createadvocates__forms__label" htmlFor="lastName">
-            lastName{" "}
+            soy ad
           </label>
           <input
             className="createadvocates__forms__input"
@@ -123,7 +123,7 @@ const EditAdvocate = () => {
             defaultValue={advocate.lastName}
           />
           <label className="createadvocates__forms__label" htmlFor="email">
-            Email Address
+            Email 
           </label>
           <input
             className="createadvocates__forms__input"
@@ -138,7 +138,7 @@ const EditAdvocate = () => {
             className="createadvocates__forms__label"
             htmlFor="phoneNumber"
           >
-            phoneNumber
+            nömrə
           </label>
           <input
             className="createadvocates__forms__input"
@@ -153,7 +153,7 @@ const EditAdvocate = () => {
             className="createadvocates__forms__label"
             htmlFor="phoneNumber"
           >
-            moreInfo
+            məlumat
           </label>
           <input
             className="createadvocates__forms__input"

@@ -53,7 +53,7 @@ const CreateAdvocate = () => {
       </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
-          firstName{" "}
+          şəkil
         </label>
         <input
           className="createadvocates__forms__input"
@@ -66,7 +66,7 @@ const CreateAdvocate = () => {
           }}
         />
         <label className="createadvocates__forms__label" htmlFor="firstName">
-          firstName{" "}
+          ad
         </label>
         <input
           className="createadvocates__forms__input"
@@ -77,7 +77,7 @@ const CreateAdvocate = () => {
           value={formik.values.firstName}
         />
         <label className="createadvocates__forms__label" htmlFor="lastName">
-          lastName{" "}
+          soyad
         </label>
         <input
           className="createadvocates__forms__input"
@@ -88,7 +88,7 @@ const CreateAdvocate = () => {
           value={formik.values.lastName}
         />
         <label className="createadvocates__forms__label" htmlFor="email">
-          Email Address
+          Email
         </label>
         <input
           className="createadvocates__forms__input"
@@ -99,7 +99,7 @@ const CreateAdvocate = () => {
           value={formik.values.email}
         />{" "}
         <label className="createadvocates__forms__label" htmlFor="phoneNumber">
-          phoneNumber
+          nömrə
         </label>
         <div className="phonenumber__div">
           <span>+994</span>
@@ -127,7 +127,7 @@ const CreateAdvocate = () => {
           />
         </div>
         <label className="createadvocates__forms__label" htmlFor="moreInfo">
-          moreInfo
+          məlumat
         </label>
         <textarea
           className="createadvocates__forms__input"
@@ -138,7 +138,7 @@ const CreateAdvocate = () => {
           value={formik.values.moreInfo}
         />
         <label className="createadvocates__forms__label" htmlFor="role">
-          role
+          rol
         </label>
         <input
           className="createadvocates__forms__input"

@@ -73,7 +73,7 @@ export default function Blogs() {
             <TableRow>
               <TableCell>Image</TableCell>
               <TableCell align="left">title</TableCell>
-              <TableCell align="left">body</TableCell>
+              {/* <TableCell align="left">body</TableCell> */}
               <TableCell align="right">
                 <span>edit</span>/<span>delete</span>
               </TableCell>
@@ -97,11 +97,11 @@ export default function Blogs() {
                     ? blog.title.slice(0, 20) + "..."
                     : blog.title}
                 </TableCell>
-                <TableCell align="left">
+                {/* <TableCell align="left">
                   {parse(blog.body) > 25
                     ? parse(blog.body).slice(0, 25) + "..."
                     : parse(blog.body)}
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="right" className="adminadvocates__icons">
                   <AiOutlineEdit
                     onClick={() => navigate(`/admin/blogs/${blog.id}`)}
@@ -116,13 +116,13 @@ export default function Blogs() {
             ))}
           </TableBody>
         </Table>
-        <button
-          onClick={() => navigate("/admin/blogs/create")}
-          className="adminadvocates__add"
-        >
-          blog əlavə et <AiOutlinePlusCircle className="plus__icon" />
-        </button>
       </TableContainer>
+      <button
+        onClick={() => navigate("/admin/blogs/create")}
+        className="adminadvocates__add"
+      >
+        blog əlavə et <AiOutlinePlusCircle className="plus__icon" />
+      </button>
     </>
   );
 }

@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -72,7 +74,7 @@ const EditSlide = () => {
 
         window.location = "/admin/slides";
       } catch (error) {
-        alert("salam");
+        toast.error(error);
       }
     },
   });
@@ -87,9 +89,12 @@ const EditSlide = () => {
         }`}
         alt=""
       />
+      <div>
+        <Toaster />
+      </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
-          image
+          şəkil
         </label>
         <input
           className="createadvocates__forms__input"
@@ -102,7 +107,7 @@ const EditSlide = () => {
           }}
         />
         <label className="createadvocates__forms__label" htmlFor="order">
-          order
+          sıra
         </label>
         <input
           className="createadvocates__forms__input"

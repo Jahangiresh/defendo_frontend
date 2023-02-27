@@ -52,7 +52,7 @@ const CreateBlog = () => {
       </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
-          image
+          şəkil
         </label>
         <input
           className="createadvocates__forms__input"
@@ -65,7 +65,7 @@ const CreateBlog = () => {
           }}
         />
         <label className="createadvocates__forms__label" htmlFor="firstName">
-          title{" "}
+          başlıq
         </label>
         <input
           className="createadvocates__forms__input"
@@ -76,11 +76,11 @@ const CreateBlog = () => {
           value={formik.values.title}
         />
         <label className="createadvocates__forms__label" htmlFor="body">
-          body{" "}
+          məzmun
         </label>
         <CKEditor editor={ClassicEditor} onChange={handleOnChange} />
         <label className="createadvocates__forms__label" htmlFor="email">
-          tags
+          taqlar
         </label>
         <input value={tagName} onChange={(e) => setTagName(e.target.value)} />
 
@@ -91,7 +91,7 @@ const CreateBlog = () => {
             setTagName("");
           }}
         >
-          Add
+          əlavə et
         </button>
 
         <ul>
