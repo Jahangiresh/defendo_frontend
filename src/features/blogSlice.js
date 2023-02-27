@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 const initialState = {
   blogs: [],
   status: null,
@@ -18,16 +19,22 @@ export const blogFetch = createAsyncThunk("blogs/blogFetch", async () => {
 export const deleteBlog = createAsyncThunk(
   "blogs/deleteApi",
   async (payload) => {
-    const response = await axios.delete(
-      `https://defendovb.az/api/v1/blogs/${payload}`,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.delete(
+        `https://defendovb.az/api/v1/blogs/${payload}`,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      toast.success("silindi");
+
+      return response.data;
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 );
 
@@ -40,15 +47,15 @@ export const createBLog = createAsyncThunk("blogs/postApi", async (payload) => {
       },
     })
     .then(() => {
+      toast.success("əlavə edildi");
+
       window.location = "/admin/blogs";
     })
     .catch((err) => {
-      alert(err);
+      toast.error(err);
     });
   return response.data;
 });
-
-
 
 const blogSlice = createSlice({
   name: "blogs",

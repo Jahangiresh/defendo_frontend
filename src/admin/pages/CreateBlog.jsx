@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { createBLog } from "../../features/blogSlice";
 import { Helmet } from "react-helmet";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -37,7 +37,6 @@ const CreateBlog = () => {
         });
         req.append("imageFile", values.imageFile);
         dispatch(createBLog(req));
-        toast.success("succesfully created");
       } catch (error) {
         toast.error(error.response.data.Detail);
       }
@@ -48,6 +47,9 @@ const CreateBlog = () => {
       <Helmet>
         <title>create blog</title>
       </Helmet>
+      <div>
+        <Toaster />
+      </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label" htmlFor="image">
           image

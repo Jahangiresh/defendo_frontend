@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -31,6 +32,8 @@ const EditBlog = () => {
   const params = useParams();
   const id = params.id;
   const [editortxt, setEditotxt] = useState("");
+  const [tagName, setTagName] = useState("");
+  const [myTags, setMyTags] = useState([]);
 
   const handleOnChange = (e, editor) => {
     setEditotxt(editor.getData());
@@ -61,7 +64,7 @@ const EditBlog = () => {
     initialValues: {
       title: blog.title,
       body: blog.body,
-      tags: blog.tags,
+      tags: [],
       imageFile: blog.image,
     },
     onSubmit: async (values) => {
@@ -71,7 +74,7 @@ const EditBlog = () => {
           {
             title: values.title,
             body: editortxt,
-            tags: values.tags,
+            tags: myTags,
             imageFile: values.image,
           },
           {
@@ -83,8 +86,9 @@ const EditBlog = () => {
         );
 
         window.location = "/admin/blogs";
+        toast.success("dəyişildi");
       } catch (error) {
-        alert("salam");
+        toast.error(error);
       }
     },
   });
@@ -102,6 +106,9 @@ const EditBlog = () => {
         }`}
         alt=""
       />
+      <div>
+        <Toaster />
+      </div>
       <form className="createadvocates__forms" onSubmit={formik.handleSubmit}>
         <label className="createadvocates__forms__label mb-2" htmlFor="image">
           image
@@ -149,23 +156,25 @@ const EditBlog = () => {
         <label className="createadvocates__forms__label" htmlFor="email">
           tags
         </label>
-        <input
-          defaultValue={blog.tags}
-          //  value={tagName} onChange={(e) => setTagName(e.target.value)}
-        />
+        <input value={tagName} onChange={(e) => setTagName(e.target.value)} />
 
         <button
           type="button"
-          //   onClick={() => {
-          //     setTagName("");
-          //     myTags.push({
-          //       // id: nextId++,
-          //       name: tagName,
-          //     });
-          //   }}
+          onClick={() => {
+            setMyTags([tagName, ...myTags]);
+            setTagName("");
+          }}
         >
           Add
         </button>
+        <ul>
+          {myTags.length > 0
+            ? myTags.map((myTag, index) => <li key={index}>{myTag}</li>)
+            : blog.tags &&
+              blog.tags.map((myTag, index) => (
+                <li key={index}>{myTag.name}</li>
+              ))}
+        </ul>
 
         <ul>
           {/* {myTags.map((myTag) => (

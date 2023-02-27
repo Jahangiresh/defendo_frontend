@@ -18,6 +18,7 @@ import {
   getStatus,
 } from "../../features/serviceSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -39,10 +40,9 @@ const Services = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(5);
         dispatch(deleteService(id));
         setTimeout(() => {
-          window.location.reload(false);
+          // window.location.reload(false);
         }, 700);
         if (isDeleting) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -67,6 +67,9 @@ const Services = () => {
       >
         Xidmət Yartamaq
       </Link>
+      <div>
+        <Toaster />
+      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

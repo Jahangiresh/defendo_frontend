@@ -24,11 +24,7 @@ const Footer = () => {
                   {settings &&
                     settings
                       .filter((setting) => setting.key === "Unvan")
-                      .map((s) => (
-                        <>
-                          {s.key} : {s.value}
-                        </>
-                      ))}
+                      .map((s) => <>Ünvan : {s.value}</>)}
                 </li>
                 <li className="number">
                   {settings &&
@@ -36,7 +32,7 @@ const Footer = () => {
                       .filter((setting) => setting.key === "Telefon")
                       .map((s) => (
                         <>
-                          {s.key} :{" "}
+                          Telefon :{" "}
                           <a href="tel:+994 55 465 22 52">{s.value}</a>
                         </>
                       ))}
@@ -48,8 +44,7 @@ const Footer = () => {
                         .filter((setting) => setting.key === "Email")
                         .map((s) => (
                           <>
-                            {s.key} :{" "}
-                            <a href={`mailto:${s.value}`}>{s.value}</a>
+                            Email : <a href={`mailto:${s.value}`}>{s.value}</a>
                           </>
                         ))}
                   </li>
